@@ -1,0 +1,29 @@
+[user]
+	name = Magnús Örn Gylfason
+	email = magnus.gylfason@gmail.com
+[core]
+	autocrlf = input
+	# editor = hx # use EDITOR
+
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+
+[push]
+	default = simple
+
+[alias]
+	c = commit
+	s = status
+	ch = checkout
+	b = branch
+	p = push
+	po = push origin HEAD
+	pf = push --follow-tags
+	pu = pull --ff
+	d = diff
+	a = add
+	l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	cem = commit --allow-empty

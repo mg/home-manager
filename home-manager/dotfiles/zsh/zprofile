@@ -1,0 +1,30 @@
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden --exclude .git .cache'
+export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
+
+export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden --exclude .git'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
+
+# bat
+export BAT_PAGER="less -R"
+
+# https://github.com/junegunn/fzf/wiki/Examples
+function git-commit-browser() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+  FZF-EOF"
+} 
+
+# bindkey '\ec' fzf-cd-widget
+# bindkey '\ef' fzf-file-widget
+
+# start zellij
+eval "$(zellij setup --generate-auto-start zsh)"

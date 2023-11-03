@@ -1,0 +1,26 @@
+# flutter
+export PATH=$PATH:~/opt/flutter/bin
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# flutter + fastlane
+# export FLUTTER_ROOT=~/Projects/flutter
+
+# Android
+export PATH=$PATH:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/cmdline-tools/latest/bin
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/
+export ANDROID_HOME=~/Library/Android/sdk/
+
+# VSCode
+export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# NVM
+export NVM_DIR=~/.nvm
+# source $(brew --prefix nvm)/nvm.sh
+
+# brew
+export PATH=$PATH:/opt/homebrew/bin
+
+# local bin
+export PATH=$PATH:~/bin
+
+export EDITOR=hx
