@@ -27,7 +27,7 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    
+
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
       flake = false;
@@ -47,23 +47,12 @@
           inherit system;
           inherit pkgs;
 
-          specialArgs = { inherit inputs hostname username home; };
+          specialArgs = { inherit inputs system hostname username home; };
 
           modules = [
             ./darwin
-
-            inputs.nix-homebrew.darwinModules.nix-homebrew (import ./homebrew { inherit inputs username; })
-
-            # https://nix-community.github.io/home-manager/index.html#ch-installation
-            home-manager.darwinModules.home-manager
-            {
-              # https://nix-community.github.io/home-manager/options.html
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.mg = import ./home-manager { inherit pkgs inputs hostname username home; };
-              };
-            }
+            inputs.nix-homebrew.darwinModules.nix-homebrew (import ./homebrew)
+            home-manager.darwinModules.home-manager (import ./home-manager)
           ];
         };
       };
