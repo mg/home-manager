@@ -1,6 +1,6 @@
 # https://github.com/zhaofengli/nix-homebrew
 
-{ inputs, userConfig, ... }:
+{ inputs, machineConfig, ... }:
 {
   nix-homebrew = {
     enable = true;
@@ -8,7 +8,7 @@
     # TODO: fails with 'ln /usr/local/bin/brew: No such file or directory"
     # enableRosetta = true;
     
-    user = userConfig.username;
+    user = machineConfig.username;
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle; # https://github.com/zhaofengli/nix-homebrew/issues/9#issuecomment-1774684583

@@ -1,16 +1,16 @@
 # https://nix-community.github.io/home-manager/
 # https://nix-community.github.io/home-manager/options.html
 
-{ userConfig, ... }: 
+{ machineConfig, ... }: 
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.${userConfig.username} = {
-      home.username = userConfig.username;
+    users.${machineConfig.username} = {
+      home.username = machineConfig.username;
       # home.homeDirectory = home; # clashes with nix-darwin
 
-      home.stateVersion = userConfig.homeManager.stateVersion;
+      home.stateVersion = machineConfig.homeManager.stateVersion;
 
       imports = [
         ./packages.nix

@@ -2,7 +2,7 @@
 # https://daiderd.com/nix-darwin/manual/index.html
 # https://dev.jmgilman.com/environment/tools/nix/nix-darwin/
 
-{ pkgs, userConfig, ... }: 
+{ pkgs, machineConfig, ... }: 
 {
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -11,9 +11,9 @@
 
 
   services.nix-daemon.enable = true;
-  users.users.${userConfig.username} = {
-    name = userConfig.username;
-    home = userConfig.home;
+  users.users.${machineConfig.username} = {
+    name = machineConfig.username;
+    home = machineConfig.home;
   };
 
   programs.zsh.enable = true;
@@ -37,9 +37,9 @@
     (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "FiraMono" ]; }) 
   ];
 
-  networking.computerName = userConfig.hostname;
-  networking.hostName = userConfig.hostname;
-  networking.localHostName = userConfig.hostname;
+  networking.computerName = machineConfig.hostname;
+  networking.hostName = machineConfig.hostname;
+  networking.localHostName = machineConfig.hostname;
 
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
