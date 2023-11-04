@@ -40,13 +40,12 @@
       hostname = "mg-m2";
       username = "mg";
       home = "/Users/mg";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
     in 
       {
         darwinConfigurations.${hostname}= darwin.lib.darwinSystem {
           inherit system;
           inherit pkgs;
-
           specialArgs = { inherit inputs system hostname username home; };
 
           modules = [

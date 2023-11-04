@@ -11,7 +11,6 @@
       # home.homeDirectory = "/Users/mg"; # clashes with nix-darwin
 
       home.stateVersion = "23.05";
-      nixpkgs.config.allowUnfree = true;
 
       imports = [
         ./packages.nix
