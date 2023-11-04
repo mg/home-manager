@@ -1,6 +1,9 @@
-{ pkgs, hostname, username, home, ... }: {
-  # darwin configuration
-  # manual: https://daiderd.com/nix-darwin/manual/index.html
+# https://github.com/LnL7/nix-darwin
+# https://daiderd.com/nix-darwin/manual/index.html
+# https://dev.jmgilman.com/environment/tools/nix/nix-darwin/
+
+{ pkgs, hostname, username, home, ... }: 
+{
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';

@@ -1,11 +1,14 @@
-{ username, ... }: {
-  # https://nix-community.github.io/home-manager/options.html
+# https://nix-community.github.io/home-manager/
+# https://nix-community.github.io/home-manager/options.html
+
+{ username, ... }: 
+{
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.mg = {
       home.username = username;
-      # home.homeDirectory = "/Users/mg"; 
+      # home.homeDirectory = "/Users/mg"; # clashes with nix-darwin
 
       home.stateVersion = "23.05";
       nixpkgs.config.allowUnfree = true;

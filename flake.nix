@@ -34,7 +34,7 @@
     };
   };
 
-  outputs = { nixpkgs, darwin, home-manager, ...}@inputs:
+  outputs = { nixpkgs, darwin, home-manager, nix-homebrew, ...}@inputs:
     let
       system =  "aarch64-darwin";
       hostname = "mg-m2";
@@ -51,7 +51,7 @@
 
           modules = [
             ./darwin
-            inputs.nix-homebrew.darwinModules.nix-homebrew (import ./homebrew)
+            nix-homebrew.darwinModules.nix-homebrew (import ./homebrew)
             home-manager.darwinModules.home-manager (import ./home-manager)
           ];
         };
