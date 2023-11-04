@@ -36,17 +36,20 @@
 
   outputs = { nixpkgs, darwin, home-manager, nix-homebrew, ...}@inputs:
     let
-      system =  "aarch64-darwin";
-      hostname = "mg-m2";
-      username = "mg";
-      home = "/Users/mg";
-      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      userConfig = {
+        system =  "aarch64-darwin";
+        hostname = "mg-m2";
+        username = "mg";
+        home = "/Users/mg";
+        homeManager.stateVersion = "23.05";
+      };
+      pkgs = import nixpkgs { system = userConfig.system; config.allowUnfree = true; };
     in 
       {
-        darwinConfigurations.${hostname}= darwin.lib.darwinSystem {
-          inherit system;
+        darwinConfigurations.${userConfig.hostname}= darwin.lib.darwinSystem {
+          system = userConfig.system;
           inherit pkgs;
-          specialArgs = { inherit inputs system hostname username home; };
+          specialArgs = { inherit inputs userConfig; };
 
           modules = [
             ./darwin
