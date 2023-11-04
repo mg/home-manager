@@ -6,9 +6,9 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.mg = {
+    users.${username} = {
       home.username = username;
-      # home.homeDirectory = "/Users/mg"; # clashes with nix-darwin
+      # home.homeDirectory = home; # clashes with nix-darwin
 
       home.stateVersion = "23.05";
 
