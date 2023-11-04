@@ -137,17 +137,17 @@
       WebKitDeveloperExtrasEnabledPreferenceKey = true;
       WebContinuousSpellCheckingEnabled = true;
       WebAutomaticSpellingCorrectionEnabled = false;
-      AutoFillFromAddressBook = false;
-      AutoFillCreditCardData = false;
-      AutoFillMiscellaneousForms = false;
+      AutoFillFromAddressBook = true;
+      AutoFillCreditCardData = true;
+      AutoFillMiscellaneousForms = true;
       WarnAboutFraudulentWebsites = true;
-      WebKitJavaEnabled = false;
+      WebKitJavaEnabled = true;
       WebKitJavaScriptCanOpenWindowsAutomatically = false;
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = true;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = true;
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
     };
     "com.apple.mail" = {
