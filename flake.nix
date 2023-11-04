@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = { nixpkgs, darwin, home-manager, nix-homebrew, homebrew-core, homebrew-bundle, homebrew-cask, ...}@inputs:
+  outputs = { nixpkgs, darwin, home-manager, ...}@inputs:
     let
       system =  "aarch64-darwin";
       hostname = "mg-m2";
@@ -43,16 +43,16 @@
             ./darwin
 
             # https://github.com/zhaofengli/nix-homebrew
-            nix-homebrew.darwinModules.nix-homebrew
+            inputs.nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
                 enable = true;
                 # enableRosetta = true;
                 user = username;
                 taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-core" = inputs.homebrew-core;
+                  "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+                  "homebrew/homebrew-cask" = inputs.homebrew-cask;
                 };
                 mutableTaps = false;
                 # autoMigrate = true; # remember this before first run
