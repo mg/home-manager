@@ -10,6 +10,8 @@
 
     # homebrew
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
+    
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
