@@ -84,6 +84,7 @@
         kamadorueda.alejandra
         arrterian.nix-env-selector
         mkhl.direnv
+        # missing: https://marketplace.visualstudio.com/items?itemName=pinage404.nix-extension-pack
 
         # python support
         ms-toolsai.jupyter

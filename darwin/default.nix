@@ -11,7 +11,7 @@
 
 
   services.nix-daemon.enable = true;
-  users.users.mg = {
+  users.users.${username} = {
     name = username;
     inherit home;
   };
