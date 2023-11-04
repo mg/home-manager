@@ -1,17 +1,19 @@
-{ pkgs, homebrew-core, homebrew-cask, ... }: {
+{ inputs, username, ... }:
   # https://github.com/zhaofengli/nix-homebrew
-  nix-homebrew.darwinModules.nix-homebrew
-  {
-    nix-homebrew = {
-      enable = true;
-      enableRosetta = true;
-      user = "mg";
-      taps = {
-        "homebrew/homebrew-core" = homebrew-core;
-        "homebrew/homebrew-cask" = homebrew-cask;
-      };
-      # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-      mutableTaps = false;
-    }
-  }
+{
+  nix-homebrew = {
+    enable = true;
+    # enableRosetta = true;
+    user = username;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
+    mutableTaps = false;
+    # autoMigrate = true; # remember this before first run
+    extraEnv = {
+      HOMEBREW_NO_ANALYTICS = "1";
+    };
+  };
 }

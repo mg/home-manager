@@ -42,25 +42,7 @@
           modules = [
             ./darwin
 
-            # https://github.com/zhaofengli/nix-homebrew
-            inputs.nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                enable = true;
-                # enableRosetta = true;
-                user = username;
-                taps = {
-                  "homebrew/homebrew-core" = inputs.homebrew-core;
-                  "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-                  "homebrew/homebrew-cask" = inputs.homebrew-cask;
-                };
-                mutableTaps = false;
-                # autoMigrate = true; # remember this before first run
-                extraEnv = {
-                  HOMEBREW_NO_ANALYTICS = "1";
-                };
-              };
-            }
+            inputs.nix-homebrew.darwinModules.nix-homebrew (import ./homebrew { inherit inputs username; })
 
             # https://nix-community.github.io/home-manager/index.html#ch-installation
             home-manager.darwinModules.home-manager
