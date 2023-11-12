@@ -19,23 +19,6 @@
 
     git.enable = true;
 
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableAutosuggestions = true;
-      syntaxHighlighting.enable = true;
-    };
-
-    zsh.shellAliases = { 
-      # ls = "eza"; 
-      cat = "bat";
-      gc = "git checkout $(git branch | fzf)";
-      gco = "git checkout $(git branch --remote | fzf)";
-      gcb = "git-commit-browser";
-      nixswitch = "pushd ~/Projects/home-manager; darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
-      nixup = "pushd ~/Projects/home-manager; nix flake update; nixswitch; popd;";
-    };
-
     nushell = {
       enable = true;
       configFile.source = dotfiles/nushell/shell.nu;

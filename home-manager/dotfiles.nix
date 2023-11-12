@@ -15,7 +15,5 @@
 
     # ssh setup
     file.".ssh/config".source = ./dotfiles/ssh/config;
-    file.".ssh/github.priv".source = ./dotfiles/ssh/github.priv;
-    file.".ssh/github.pub".source = ./dotfiles/ssh/github.pub;
   };
 }

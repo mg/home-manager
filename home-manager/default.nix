@@ -15,6 +15,7 @@
       imports = [
         ./packages.nix
         ./programs.nix
+        ./programs/zsh.nix
         ./session-variables.nix
         ./dotfiles.nix
         ./zellij.nix
