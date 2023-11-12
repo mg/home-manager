@@ -177,13 +177,7 @@
     "com.apple.commerce".AutoUpdate = true;
   };
 
-  services.sketchybar.enable = true;
-  services.sketchybar.config = ''
-    sketchybar --bar height=24
-    sketchybar --update
-  '';
-
-  services.skhd.enable = true;
+  # services.skhd.enable = true;
   /*
   services.yabai.enable = true;
   services.yabai.config = {
