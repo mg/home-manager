@@ -122,7 +122,7 @@
       location = "~/Desktop";
       type = "png";
     };*/
-    "com.apple.Safari" = {
+    /*"com.apple.Safari" = {
       # Privacy: don’t send search queries to Apple
       UniversalSearchEnabled = false;
       SuppressSearchSuggestions = true;
@@ -149,7 +149,7 @@
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = true;
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = true;
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
-    };
+    };*/
     "com.apple.mail" = {
       # Disable inline attachments (just show the icons)
       # DisableInlineAttachmentViewing = true;

@@ -6,5 +6,5 @@ let
   };
 in 
   {
-    home.file.".config/zellij/plugins/monocle.wasm".source = zellij-monocole;
+    # home.file.".config/zellij/plugins/monocle.wasm".source = zellij-monocole;
   }

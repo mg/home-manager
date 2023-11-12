@@ -16,9 +16,10 @@
         ./packages.nix
         ./programs.nix
         ./programs/zsh.nix
+        # ./programs/vscode.nix
+        ./programs/zellij.nix
         ./session-variables.nix
         ./dotfiles.nix
-        ./zellij.nix
       ];
     };
   };
