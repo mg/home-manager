@@ -16,6 +16,7 @@
 
     initExtra = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      eval "$(${pkgs.zellij}/bin/zellij setup --generate-auto-start zsh)"
     '';
   };
 }

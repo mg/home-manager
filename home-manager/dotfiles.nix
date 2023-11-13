@@ -5,7 +5,6 @@
     file."./.config/git/config".source = ./dotfiles/gitconfig;
     file."./.config/alacritty/alacritty.yml".source = ./dotfiles/alacritty.yml;
     file."./.config/kitty/kitty.conf".source = ./dotfiles/kitty/kitty.conf;
-    file."./.config/kitty/macos-launch-services-cmdline".source = ./dotfiles/kitty/cmdline;
     file."./.config/starship.toml".source = ./dotfiles/starship/starship.toml;
     file."./.config/zellij/config.kdl".source = ./dotfiles/zellij.kdl;
     file."./.hammerspoon/init.lua".source = ./dotfiles/hammerspoon/init.lua;
