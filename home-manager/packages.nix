@@ -12,7 +12,7 @@
     choose
     delta
     less
-    cheat
+    cheat # https://github.com/cheat/cheat
     glances
     hyperfine
     gping
