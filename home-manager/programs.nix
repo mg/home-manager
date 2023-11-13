@@ -12,9 +12,9 @@
     # https://eza.rocks/
     eza = {
       enable = true;
-      git = true;
+      # git = true;
       enableAliases = true;
-      # icons = true;
+      icons = true;
     };
 
     git.enable = true;

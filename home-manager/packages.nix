@@ -33,6 +33,7 @@
     broot # https://dystroy.org/broot/
     lf # https://pkg.go.dev/github.com/gokcehan/lf
     mc # https://midnight-commander.org/
+    eza # https://github.com/eza-community/eza
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
