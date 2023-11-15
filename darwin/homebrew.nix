@@ -19,6 +19,7 @@
     "xcodes" 
     "hammerspoon" 
     "element"
+    "lapce" # https://lapce.dev/
     #"google-chrome"
     #"firefox"
     #"visual-studio-code"
