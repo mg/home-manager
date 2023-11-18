@@ -7,6 +7,7 @@
     zsh-fzf-history-search
     zsh-fzf-tab
     lazydocker
+    tldr
 
     # modern unix: https://github.com/ibraheemdev/modern-unix 
     choose
@@ -73,6 +74,10 @@
     pciutils # lspci
     keychain # https://www.funtoo.org/Funtoo:Keychain
     
+    # terminal recording 
+    asciinema # https://asciinema.org/
+    asciinema-agg # https://github.com/asciinema/agg
+
     # software development
     lazygit
     tig # https://jonas.github.io/tig/

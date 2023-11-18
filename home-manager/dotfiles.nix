@@ -8,6 +8,7 @@
       ${builtins.readFile ./dotfiles/kitty/kitty.conf} 
       ${builtins.readFile ./dotfiles/kitty/catppuccin-mocha.conf}
     '';
+    file."./.config/tig/config".source = ./dotfiles/tigrc;
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
     file."./.config/helix/themes/catppuccin-mocha.toml".source = ./dotfiles/helix/catppuccin-mocha-theme.toml;
     file."./.config/starship.toml".source = ./dotfiles/starship/starship.toml;
