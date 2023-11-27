@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [ 
-    entr
     nb
     zsh-forgit # https://github.com/wfxr/forgit, https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/shells/zsh/zsh-forgit/default.nix#L51
     zsh-fzf-history-search
@@ -17,7 +16,6 @@
     glances
     hyperfine
     gping
-    zoxide
     lsd # https://github.com/lsd-rs/lsd
 
     # shells
@@ -35,6 +33,7 @@
     lf # https://pkg.go.dev/github.com/gokcehan/lf
     mc # https://midnight-commander.org/
     eza # https://github.com/eza-community/eza
+    entr # https://eradman.com/entrproject/
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher

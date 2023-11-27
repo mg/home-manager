@@ -25,6 +25,12 @@
       envFile.source = dotfiles/nushell/env.nu;
     };
 
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+    };
+
     # https://starship.rs
     starship = { 
       enable = true;

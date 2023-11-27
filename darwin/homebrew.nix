@@ -19,6 +19,7 @@
     "xcodes" 
     "hammerspoon" 
     "element"
+    "devtoys" # https://github.com/ObuchiYuki/DevToysMac
     "lapce" # https://lapce.dev/
     #"google-chrome"
     #"firefox"
