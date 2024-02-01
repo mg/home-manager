@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     nb
     zsh-forgit # https://github.com/wfxr/forgit, https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/shells/zsh/zsh-forgit/default.nix#L51
     zsh-fzf-history-search
@@ -29,11 +29,12 @@
     nnn # https://github.com/jarun/nnn
     tree
     ranger # https://ranger.github.io/
-    broot # https://dystroy.org/broot/
+    # broot # https://dystroy.org/broot/
     lf # https://pkg.go.dev/github.com/gokcehan/lf
     mc # https://midnight-commander.org/
     eza # https://github.com/eza-community/eza
     entr # https://eradman.com/entrproject/
+    renameutils # https://www.nongnu.org/renameutils/
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
@@ -44,6 +45,7 @@
     wget
     curl
     youtube-dl
+    rclone # https://rclone.org/
 
     # monitoring
     iftop # network monitoring
@@ -55,12 +57,15 @@
 
     # disk tools
     duf
-    du-dust 
+    du-dust
     ncdu # https://dev.yorhel.nl/ncdu
 
     # text tools
     helix # https://helix-editor.com/
     sad # https://github.com/ms-jpq/sad
+
+    # image tools
+    imagemagick
 
     # file viewers
     glow
@@ -72,7 +77,8 @@
     # system tools
     pciutils # lspci
     keychain # https://www.funtoo.org/Funtoo:Keychain
-    
+    trippy # https://trippy.cli.rs/
+
     # terminal recording 
     asciinema # https://asciinema.org/
     asciinema-agg # https://github.com/asciinema/agg
@@ -88,8 +94,10 @@
     jql # https://github.com/yamafaktory/jql
     fastgron # https://github.com/adamritter/fastgron
     fx # https://fx.wtf/
+    ast-grep # https://ast-grep.github.io/
 
     # nix tools
     nix-output-monitor # https://github.com/maralorn/nix-output-monitor
+    nixpkgs-fmt # code formatter
   ];
 }

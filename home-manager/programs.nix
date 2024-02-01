@@ -32,7 +32,7 @@
     };
 
     # https://starship.rs
-    starship = { 
+    starship = {
       enable = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
@@ -47,8 +47,13 @@
       config.source = dotfiles/direnv.toml;
     };
 
+    #mise = {
+    #  enable = true;
+    #  enableZshIntegration = true;
+    #};
+
     # https://yazi-rs.github.io/
-    yazi = { 
+    yazi = {
       enable = true;
       enableZshIntegration = true;
     };

@@ -10,17 +10,18 @@
     "TestFlight" = 899247664;
     "Transporter" = 1450874784;
   };*/
-  brews = [ "mas" ];
-  casks = [ 
-    "db-browser-for-sqlite" 
-    "alacritty" 
-    "kitty" 
+  brews = [ "mas" "cocoapods" ];
+  casks = [
+    "db-browser-for-sqlite"
+    "alacritty"
+    "kitty"
     "wezterm" # https://wezfurlong.org/wezterm/index.html
-    "xcodes" 
-    "hammerspoon" 
+    "xcodes"
+    "hammerspoon"
     "element"
     "devtoys" # https://github.com/ObuchiYuki/DevToysMac
     "lapce" # https://lapce.dev/
+    "zed" # https://zed.dev/
     #"google-chrome"
     #"firefox"
     #"visual-studio-code"
@@ -29,5 +30,7 @@
     #"vlc"
     #"lastpass"
     #"discord"
+  ];
+  taps = [
   ];
 }

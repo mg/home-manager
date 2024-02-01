@@ -19,6 +19,8 @@
     # home.file.".profile".source = ./dotfiles/zsh/zprofile;
     # home.file.".zshenv".source = ./dotfiles/zsh/zshenv;
     # home.file."./.config/lsd/config.yaml".source = ./dotfiles/lsd.yaml;
+    file."./.config/mc/mc.ini".source = ./dotfiles/mc/ini;
+    file."./.local/share/mc/skins/catpuccin.ini".source = ./dotfiles/mc/catpuccin.ini;
 
     # ssh setup
     file.".ssh/config".source = ./dotfiles/ssh/config;

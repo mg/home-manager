@@ -21,6 +21,9 @@
       then
         eval "$(${pkgs.zellij}/bin/zellij setup --generate-auto-start zsh)"
       fi
+
+      export PATH=$PATH:~/opt/flutter/bin
+
     '';
   };
 }
