@@ -10,6 +10,7 @@
     "TestFlight" = 899247664;
     "Transporter" = 1450874784;
   };*/
+
   brews = [ "mas" "cocoapods" ];
   casks = [
     "db-browser-for-sqlite"
@@ -19,9 +20,11 @@
     "xcodes"
     "hammerspoon"
     "element"
+    "bruno" # https://www.usebruno.com/ni
     "devtoys" # https://github.com/ObuchiYuki/DevToysMac
     "lapce" # https://lapce.dev/
     "zed" # https://zed.dev/
+    "obs" # https://obsproject.com/
     #"google-chrome"
     #"firefox"
     #"visual-studio-code"

@@ -2,7 +2,7 @@
 # https://daiderd.com/nix-darwin/manual/index.html
 # https://dev.jmgilman.com/environment/tools/nix/nix-darwin/
 
-{ pkgs, machineConfig, ... }: 
+{ pkgs, machineConfig, ... }:
 {
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -21,8 +21,8 @@
   environment = {
     shells = with pkgs; [ nushell ];
     loginShell = pkgs.zsh;
-  
-    systemPackages = [ 
+
+    systemPackages = [
       pkgs.coreutils-full
     ];
 
@@ -31,10 +31,10 @@
   };
 
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [ 
+  fonts.fonts = with pkgs; [
     fira-code
     fira-code-symbols
-    (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "FiraMono" ]; }) 
+    (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "FiraMono" ]; })
   ];
 
   networking.computerName = machineConfig.hostname;
@@ -44,7 +44,7 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
-  system.defaults.finder ={ 
+  system.defaults.finder = {
     ShowPathbar = true;
     ShowStatusBar = true;
     _FXShowPosixPathInTitle = true;
@@ -99,6 +99,7 @@
     NSGlobalDomain = {
       # Add a context menu item for showing the Web Inspector in web views
       WebKitDeveloperExtras = true;
+      AppleFontSmoothing = 0; # https://www.macrumors.com/how-to/disable-font-smoothing-in-macos-big-sur/
     };
     "com.apple.finder" = {
       ShowExternalHardDrivesOnDesktop = true;
@@ -179,8 +180,8 @@
 
   # services.skhd.enable = true;
   /*
-  services.yabai.enable = true;
-  services.yabai.config = {
+    services.yabai.enable = true;
+    services.yabai.config = {
     # focus_follows_mouse = "autoraise";
     mouse_follows_focus = "off";
     window_placement    = "second_child";
@@ -190,7 +191,7 @@
     left_padding        = 10;
     right_padding       = 10;
     window_gap          = 10;
-  };
+    };
   */
 
   system.activationScripts.postUserActivation.text = ''

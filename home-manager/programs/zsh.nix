@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -6,13 +6,19 @@
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
 
-    shellAliases = { 
-      gc = "git checkout $(git branch | fzf)";
-      gco = "git checkout $(git branch --remote | fzf)";
-      gcb = "git-commit-browser";
+    shellAliases = {
       code = "\"/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code\"";
       nixswitch = "pushd ~/Projects/home-manager; darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
       nixup = "pushd ~/Projects/home-manager; nix flake update; nixswitch; popd;";
+
+      gc = "git checkout $(git branch | fzf)";
+      gco = "git checkout $(git branch --remote | fzf)";
+      gfl = "git-forgit log";
+      gfd = "git-forgit diff";
+      gfs = "git-forgit stash_show";
+      gfb = "git-forgit blame";
+      tokei = "tokei -n dots";
+      zj = "zellij";
     };
 
     initExtra = ''

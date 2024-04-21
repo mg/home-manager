@@ -8,7 +8,7 @@
     lazydocker
     tldr
 
-    # modern unix: https://github.com/ibraheemdev/modern-unix 
+    # modern unix: https://github.com/ibraheemdev/modern-unix
     choose
     delta
     less
@@ -40,6 +40,7 @@
     silver-searcher # https://github.com/ggreer/the_silver_searcher
     fd # https://github.com/sharkdp/fd
     ripgrep # https://github.com/BurntSushi/ripgrep
+    fselect # https://fselect.rocks/
 
     # downloaders
     wget
@@ -55,6 +56,9 @@
     btop
     procs # https://github.com/dalance/procs
 
+    # process management
+    pueue # https://github.com/Nukesor/pueue
+
     # disk tools
     duf
     du-dust
@@ -63,6 +67,8 @@
     # text tools
     helix # https://helix-editor.com/
     sad # https://github.com/ms-jpq/sad
+    gnused
+    gawk
 
     # image tools
     imagemagick
@@ -79,22 +85,26 @@
     keychain # https://www.funtoo.org/Funtoo:Keychain
     trippy # https://trippy.cli.rs/
 
-    # terminal recording 
+    # terminal recording
     asciinema # https://asciinema.org/
     asciinema-agg # https://github.com/asciinema/agg
 
     # software development
     lazygit
     tig # https://jonas.github.io/tig/
+    gitui # https://github.com/extrawurst/gitui
     gh # https://cli.github.com/
     tig
     httpie
     jq # https://jqlang.github.io/jq/
     jqp # https://github.com/noahgorstein/jqp
     jql # https://github.com/yamafaktory/jql
+    yq-go # https://mikefarah.gitbook.io/yq/
     fastgron # https://github.com/adamritter/fastgron
     fx # https://fx.wtf/
     ast-grep # https://ast-grep.github.io/
+    difftastic # https://difftastic.wilfred.me.uk/
+    tokei # https://github.com/XAMPPRocky/tokei
 
     # nix tools
     nix-output-monitor # https://github.com/maralorn/nix-output-monitor

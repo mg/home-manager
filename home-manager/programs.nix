@@ -1,3 +1,5 @@
+# https://nix-community.github.io/home-manager/options.xhtml
+
 { pkgs, ... }:
 {
   programs = {
@@ -29,6 +31,7 @@
       enable = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
+      options = ["--cmd cd"];
     };
 
     # https://starship.rs

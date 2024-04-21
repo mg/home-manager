@@ -5,7 +5,7 @@
     file."./.config/git/config".source = ./dotfiles/gitconfig;
     file."./.config/alacritty/alacritty.yml".source = ./dotfiles/alacritty.yml;
     file."./.config/kitty/kitty.conf".text = ''
-      ${builtins.readFile ./dotfiles/kitty/kitty.conf} 
+      ${builtins.readFile ./dotfiles/kitty/kitty.conf}
       ${builtins.readFile ./dotfiles/kitty/catppuccin-mocha.conf}
     '';
     file."./.config/tig/config".source = ./dotfiles/tigrc;
@@ -21,6 +21,7 @@
     # home.file."./.config/lsd/config.yaml".source = ./dotfiles/lsd.yaml;
     file."./.config/mc/mc.ini".source = ./dotfiles/mc/ini;
     file."./.local/share/mc/skins/catpuccin.ini".source = ./dotfiles/mc/catpuccin.ini;
+    file."./.config/zed/settings.json".source = ./dotfiles/zed/settings.json;
 
     # ssh setup
     file.".ssh/config".source = ./dotfiles/ssh/config;

@@ -1,7 +1,7 @@
 # https://nix-community.github.io/home-manager/
-# https://nix-community.github.io/home-manager/options.html
+# https://nix-community.github.io/home-manager/options.xhtml
 
-{ machineConfig, ... }: 
+{ machineConfig, ... }:
 {
   home-manager = {
     useGlobalPkgs = true;
