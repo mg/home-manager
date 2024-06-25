@@ -25,6 +25,7 @@
     "lapce" # https://lapce.dev/
     "zed" # https://zed.dev/
     "obs" # https://obsproject.com/
+    "rio" # https://raphamorim.io/rio/
     #"google-chrome"
     #"firefox"
     #"visual-studio-code"

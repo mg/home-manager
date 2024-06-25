@@ -35,6 +35,8 @@
     eza # https://github.com/eza-community/eza
     entr # https://eradman.com/entrproject/
     renameutils # https://www.nongnu.org/renameutils/
+    rm-improved # https://github.com/nivekuil/rip
+    fswatch # https://github.com/emcrisostomo/fswatch
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
@@ -56,6 +58,10 @@
     btop
     procs # https://github.com/dalance/procs
 
+    # containers
+    ctop # https://github.com/bcicen/ctop
+    dive # https://github.com/wagoodman/dive
+
     # process management
     pueue # https://github.com/Nukesor/pueue
 
@@ -65,6 +71,7 @@
     ncdu # https://dev.yorhel.nl/ncdu
 
     # text tools
+    neovim # https://neovim.io/
     helix # https://helix-editor.com/
     sad # https://github.com/ms-jpq/sad
     gnused
@@ -79,6 +86,7 @@
     # log tools
     tailspin # https://github.com/bensadeh/tailspin
     lnav # https://lnav.org/
+    angle-grinder # https://github.com/rcoh/angle-grinder
 
     # system tools
     pciutils # lspci
@@ -94,6 +102,7 @@
     tig # https://jonas.github.io/tig/
     gitui # https://github.com/extrawurst/gitui
     gh # https://cli.github.com/
+    gh-dash # https://github.com/dlvhdr/gh-dash
     tig
     httpie
     jq # https://jqlang.github.io/jq/
@@ -105,9 +114,19 @@
     ast-grep # https://ast-grep.github.io/
     difftastic # https://difftastic.wilfred.me.uk/
     tokei # https://github.com/XAMPPRocky/tokei
+    amber # https://github.com/dalance/amber
+
+    # pdf
+    pandoc # https://pandoc.org/
+    groff # https://www.gnu.org/software/groff/
+    ghostscript
 
     # nix tools
     nix-output-monitor # https://github.com/maralorn/nix-output-monitor
     nixpkgs-fmt # code formatter
+    
+    # just for nvim
+    stow
+    go
   ];
 }

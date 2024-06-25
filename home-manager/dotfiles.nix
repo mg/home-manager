@@ -3,19 +3,25 @@
   home = {
     file.".inputrc".source = ./dotfiles/inputrc;
     file."./.config/git/config".source = ./dotfiles/gitconfig;
-    file."./.config/alacritty/alacritty.yml".source = ./dotfiles/alacritty.yml;
+    # file."./.config/alacritty/alacritty.yml".source = ./dotfiles/alacritty.yml;
     file."./.config/kitty/kitty.conf".text = ''
       ${builtins.readFile ./dotfiles/kitty/kitty.conf}
       ${builtins.readFile ./dotfiles/kitty/catppuccin-mocha.conf}
     '';
+    file."./.config/nvim" = { source = ./dotfiles/nvim; recursive = true; };
+    #file."./.config/nvim/init.lua".source = ./dotfiles/nvim/init.lua;
+    #file."./.config/nvim/lua/kickstart/plugins/neo-tree.lua".source = ./dotfiles/nvim/lua/kickstart.plugins/neo-tree.lua;
+    #file."./.config/nvim/lua/custom/plugins/oil.lua".source = ./dotfiles/nvim/lua/custom.plugins/oil.lua;
+
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
     file."./.config/helix/themes/catppuccin-mocha.toml".source = ./dotfiles/helix/catppuccin-mocha-theme.toml;
     file."./.config/starship.toml".source = ./dotfiles/starship/starship.toml;
     file.".jqp.yaml".source = ./dotfiles/jqp.yaml;
-    file."./.config/zellij/config.kdl".source = ./dotfiles/zellij.kdl;
+    file."./.config/zellij/config.kdl".source = ./dotfiles/zellij/config.kdl;
+    file."./.config/zellij/plugins/monocle.wasm".source = ./dotfiles/zellij/monocle.wasm;
     file."./.hammerspoon/init.lua".source = ./dotfiles/hammerspoon/init.lua;
-    file."./.hammerspoon/windowmanager.lua".source = ./dotfiles/hammerspoon/windowmanager.lua;
+    # file."./.hammerspoon/windowmanager.lua".source = ./dotfiles/hammerspoon/windowmanager.lua;
     # home.file.".profile".source = ./dotfiles/zsh/zprofile;
     # home.file.".zshenv".source = ./dotfiles/zsh/zshenv;
     # home.file."./.config/lsd/config.yaml".source = ./dotfiles/lsd.yaml;

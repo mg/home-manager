@@ -15,7 +15,6 @@
     eza = {
       enable = true;
       # git = true;
-      enableAliases = true;
       icons = true;
     };
 
@@ -55,11 +54,16 @@
     #  enableZshIntegration = true;
     #};
 
-    # https://yazi-rs.github.io/
+    # https://yazi-rs.github.io/
     yazi = {
       enable = true;
       enableZshIntegration = true;
     };
+
+    #carapace = {
+    #  enable = true;
+    #  enableZshIntegration = true;
+    #};
 
     # https://xplr.dev/
     xplr.enable = true;

@@ -10,6 +10,7 @@
   "theme": "Ayu Dark",
   "ui_font_size": 20,
   "buffer_font_size": 20,
+  "vim_mode": true,
   "terminal": {
     "dock": "bottom",
     "font_family": "MesloLGL Nerd Font Mono"

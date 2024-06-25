@@ -1,0 +1,4 @@
+keybinds {
+    shared_except "locked" {
+    }
+}
