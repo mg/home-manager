@@ -65,4 +65,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 0 -- use tapstop value for shiftwidth (<< and >>)
 
 vim.opt.virtualedit = "block" -- virtual edit in visual block mode
+vim.opt.wrap = true
+
 vim.opt.termguicolors = true -- enable true color support
+
+-- set LSP server path
+vim.opt.path:append("~/.local/share/nvim/mason/bin")

@@ -2,14 +2,15 @@
   enable = true;
   caskArgs.no_quarantine = true;
   global.brewfile = true;
-  /*masApps = {
-    "LimeChat" = 414030210;
+  masApps = {
+    # "Gifski" = 1351639930;
+    /* "LimeChat" = 414030210;
     "Pastebot" = 1179623856;
     "Ivory" = 2145332318;
     "Apple Developer" = 640199958;
     "TestFlight" = 899247664;
-    "Transporter" = 1450874784;
-  };*/
+    "Transporter" = 1450874784; */
+  };
 
   brews = [ "mas" "cocoapods" ];
   casks = [

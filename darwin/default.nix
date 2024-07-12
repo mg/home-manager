@@ -77,6 +77,7 @@
     AppleICUForce24HourTime = true;
     InitialKeyRepeat = 15;
     KeyRepeat = 2;
+    ApplePressAndHoldEnabled = false;
     NSAutomaticCapitalizationEnabled = false;
     NSAutomaticDashSubstitutionEnabled = false;
     NSAutomaticPeriodSubstitutionEnabled = false;

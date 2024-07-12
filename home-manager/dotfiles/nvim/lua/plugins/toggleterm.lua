@@ -4,6 +4,12 @@ return {
 	opts = {--[[ things you want to change go here]]
 	},
 	config = function()
+		require("toggleterm").setup({
+			float_opts = {
+				border = "rounded",
+			},
+		})
+
 		local Terminal = require("toggleterm.terminal").Terminal
 		local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
 
@@ -11,6 +17,7 @@ return {
 			lazygit:toggle()
 		end
 
-		vim.api.nvim_set_keymap("n", "<leader>gl", "<cmd>lua LazygitToggle()<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>tt", ":ToggleTerm direction=float<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>hl", "<cmd>lua LazygitToggle()<CR>", { noremap = true, silent = true })
 	end,
 }

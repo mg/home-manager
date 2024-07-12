@@ -15,6 +15,7 @@ return { -- LSP Configuration & Plugins
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
+		local lspconfig = require("lspconfig")
 		-- Brief aside: **What is LSP?**
 		--
 		-- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -165,7 +166,16 @@ return { -- LSP Configuration & Plugins
 			--    https://github.com/pmizio/typescript-tools.nvim
 			--
 			-- But for many setups, the LSP (`tsserver`) will work just fine
-			-- tsserver = {},
+			tsserver = {},
+			eslint_d = {
+				-- cmd = { "vscode-eslint-language-server" },
+				-- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				-- root_dir = lspconfig.util.root_pattern(".eslintrc.json"),
+				-- diagnostics = {
+				-- enable = true,
+				-- run_on = "type",
+				-- },
+			},
 			--
 
 			lua_ls = {

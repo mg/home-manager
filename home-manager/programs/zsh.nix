@@ -20,6 +20,7 @@
       gfb = "git-forgit blame";
       tokei = "tokei -n dots";
       zj = "zellij";
+      vim = "nvim";
     };
 
     initExtra = ''
