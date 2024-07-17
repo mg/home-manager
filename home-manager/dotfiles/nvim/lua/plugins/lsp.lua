@@ -176,7 +176,14 @@ return { -- LSP Configuration & Plugins
 				-- run_on = "type",
 				-- },
 			},
-			--
+
+			-- Elixir LS options
+			-- Guide: https://elixirforum.com/t/neovim-elixir-setup-configuration-from-scratch-guide/46310
+			-- Comparing servers: https://gist.github.com/Nezteb/dc63f1d5ad9d88907dd103da2ca000b1
+			-- ElixirLS: https://github.com/elixir-lsp/elixir-ls
+			-- Lexical: https://github.com/lexical-lsp/lexical
+			-- Next-ls: https://github.com/elixir-tools/next-ls
+			elixirls = {},
 
 			lua_ls = {
 				-- cmd = {...},

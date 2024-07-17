@@ -21,6 +21,9 @@ return { -- Highlight, edit, and navigate code
 			"gitignore",
 			"yaml",
 			"css",
+			"elixir",
+			"eex",
+			"heex",
 		},
 		-- Autoinstall languages that are not installed
 		auto_install = true,
