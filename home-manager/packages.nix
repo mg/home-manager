@@ -50,8 +50,8 @@
     # downloaders
     wget
     curl
-    youtube-dl
     rclone # https://rclone.org/
+    yt-dlp
 
     # monitoring
     iftop # network monitoring
