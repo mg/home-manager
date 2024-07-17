@@ -133,7 +133,7 @@ return { -- LSP Configuration & Plugins
 				-- This may be unwanted, since they displace some of your code
 				if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
 					map("<leader>th", function()
-						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 					end, "[T]oggle Inlay [H]ints")
 				end
 			end,
@@ -175,15 +175,16 @@ return { -- LSP Configuration & Plugins
 				-- enable = true,
 				-- run_on = "type",
 				-- },
-			},
 
-			-- Elixir LS options
-			-- Guide: https://elixirforum.com/t/neovim-elixir-setup-configuration-from-scratch-guide/46310
-			-- Comparing servers: https://gist.github.com/Nezteb/dc63f1d5ad9d88907dd103da2ca000b1
-			-- ElixirLS: https://github.com/elixir-lsp/elixir-ls
-			-- Lexical: https://github.com/lexical-lsp/lexical
-			-- Next-ls: https://github.com/elixir-tools/next-ls
-			elixirls = {},
+				-- Elixir LS options
+				-- Guide: https://elixirforum.com/t/neovim-elixir-setup-configuration-from-scratch-guide/46310
+				-- Comparing servers: https://gist.github.com/Nezteb/dc63f1d5ad9d88907dd103da2ca000b1
+				-- ElixirLS: https://github.com/elixir-lsp/elixir-ls
+				-- Lexical: https://github.com/lexical-lsp/lexical
+				-- Next-ls: https://github.com/elixir-tools/next-ls
+				elixirls = {},
+			},
+			--
 
 			lua_ls = {
 				-- cmd = {...},
