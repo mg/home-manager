@@ -1,4 +1,5 @@
 require("opt")
+require("neovide")
 require("keymaps")
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

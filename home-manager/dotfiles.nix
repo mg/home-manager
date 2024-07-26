@@ -9,9 +9,7 @@
       ${builtins.readFile ./dotfiles/kitty/catppuccin-mocha.conf}
     '';
     file."./.config/nvim" = { source = ./dotfiles/nvim; recursive = true; };
-    #file."./.config/nvim/init.lua".source = ./dotfiles/nvim/init.lua;
-    #file."./.config/nvim/lua/kickstart/plugins/neo-tree.lua".source = ./dotfiles/nvim/lua/kickstart.plugins/neo-tree.lua;
-    #file."./.config/nvim/lua/custom/plugins/oil.lua".source = ./dotfiles/nvim/lua/custom.plugins/oil.lua;
+    file."./.config/neovide/config.toml".source = ./dotfiles/neovide/config.toml;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
