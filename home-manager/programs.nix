@@ -10,6 +10,16 @@
       enable = true;
       enableZshIntegration = true;
     };
+   
+    # https://github.com/atuinsh/atuin
+    # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.atuin.enable
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+      flags = [
+        "--disable-ctrl-r"            
+      ];
+    };
 
     # https://eza.rocks/
     eza = {

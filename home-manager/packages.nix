@@ -1,3 +1,5 @@
+# https://github.com/rothgar/awesome-tuis
+
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
@@ -132,6 +134,7 @@
     pandoc # https://pandoc.org/
     groff # https://www.gnu.org/software/groff/
     ghostscript
+    typst # https://github.com/typst/typst
 
     # nix tools
     nix-output-monitor # https://github.com/maralorn/nix-output-monitor
