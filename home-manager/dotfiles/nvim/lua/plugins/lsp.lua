@@ -183,7 +183,7 @@ return { -- LSP Configuration & Plugins
 			-- ElixirLS: https://github.com/elixir-lsp/elixir-ls
 			-- Lexical: https://github.com/lexical-lsp/lexical
 			-- Next-ls: https://github.com/elixir-tools/next-ls
-			elixirls = {},
+			lexical = {},
 			--
 
 			lua_ls = {
