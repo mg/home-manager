@@ -40,6 +40,7 @@
     renameutils # https://www.nongnu.org/renameutils/
     rm-improved # https://github.com/nivekuil/rip
     fswatch # https://github.com/emcrisostomo/fswatch
+    # fex # https://github.com/18alantom/fex
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
@@ -97,7 +98,7 @@
     tailspin # https://github.com/bensadeh/tailspin
     lnav # https://lnav.org/
     angle-grinder # https://github.com/rcoh/angle-grinder
-    # tabiew # https://github.com/shshemi/tabiew
+    tabiew # https://github.com/shshemi/tabiew
     fx # https://fx.wtf/
 
     # system tools
