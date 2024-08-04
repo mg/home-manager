@@ -7,7 +7,6 @@
     zsh-forgit # https://github.com/wfxr/forgit, https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/shells/zsh/zsh-forgit/default.nix#L51
     zsh-fzf-history-search
     zsh-fzf-tab
-    lazydocker
     tldr
     # https://github.com/robertpsoane/ducker
 
@@ -63,10 +62,13 @@
     gtop
     btop
     procs # https://github.com/dalance/procs
+    zenith # https://github.com/bvaisvil/zenith
 
     # containers
     ctop # https://github.com/bcicen/ctop
     dive # https://github.com/wagoodman/dive
+    lazydocker # https://github.com/jesseduffield/lazydocker
+    dry # https://github.com/moncho/dry
 
     # process management
     pueue # https://github.com/Nukesor/pueue
@@ -143,7 +145,6 @@
     nix-search-cli # https://github.com/peterldowns/nix-search-cli
     
     # just for nvim
-    stow
     go
     
     # small terminal tools
