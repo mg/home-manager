@@ -68,7 +68,7 @@
     ctop # https://github.com/bcicen/ctop
     dive # https://github.com/wagoodman/dive
     lazydocker # https://github.com/jesseduffield/lazydocker
-    dry # https://github.com/moncho/dry
+    # dry # https://github.com/moncho/dry
 
     # process management
     pueue # https://github.com/Nukesor/pueue
