@@ -51,7 +51,7 @@
   };
 
   system.defaults.dock = {
-    autohide = false;
+    autohide = true;
     appswitcher-all-displays = true;
     expose-group-by-app = true;
     magnification = true;
