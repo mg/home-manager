@@ -146,6 +146,8 @@ return { -- LSP Configuration & Plugins
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+		-- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 		--
@@ -197,6 +199,18 @@ return { -- LSP Configuration & Plugins
 						},
 						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 						-- diagnostics = { disable = { 'missing-fields' } },
+					},
+				},
+			},
+
+			tailwindcss = {
+				settings = {
+					tailwindCSS = {
+						experimental = {
+							classRegex = {
+								'class[:]\\s*"([^"]*)"',
+							},
+						},
 					},
 				},
 			},
