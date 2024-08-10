@@ -32,6 +32,3 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- move lines
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line down" })
-
--- revert to saved
-vim.keymap.set("n", "<leader>uc", ":earlier 1f<CR>", { desc = "Revert to saved" })

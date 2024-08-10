@@ -132,6 +132,7 @@
     tokei # https://github.com/XAMPPRocky/tokei
     amber # https://github.com/dalance/amber
     difftastic # https://github.com/Wilfred/difftastic
+    exercism # https://exercism.org/
 
     # pdf
     pandoc # https://pandoc.org/
@@ -146,6 +147,7 @@
     
     # just for nvim
     go
+    nodejs_22 
     
     # small terminal tools
     # https://github.com/maraloon/timer-tui

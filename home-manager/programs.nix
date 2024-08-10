@@ -59,6 +59,17 @@
       config.source = dotfiles/direnv.toml;
     };
 
+/*     neovim = {
+      enable = true;
+      extraLuaPackages = ps: [ ps.magick ];
+      extraPackages = ps: [ ps.imagemagick ];
+      vimAlias = true;
+      vimDiffAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+    };
+ */
     #mise = {
     #  enable = true;
     #  enableZshIntegration = true;
