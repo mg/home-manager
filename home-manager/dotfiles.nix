@@ -18,6 +18,7 @@
     file.".jqp.yaml".source = ./dotfiles/jqp.yaml;
     file."./.config/zellij/config.kdl".source = ./dotfiles/zellij/config.kdl;
     file."./.config/zellij/plugins/monocle.wasm".source = ./dotfiles/zellij/monocle.wasm;
+    file."./.config/tmux/tmux.conf".source = ./dotfiles/tmux/tmux.conf;
     file."./.hammerspoon/init.lua".source = ./dotfiles/hammerspoon/init.lua;
     # file."./.hammerspoon/windowmanager.lua".source = ./dotfiles/hammerspoon/windowmanager.lua;
     # home.file.".profile".source = ./dotfiles/zsh/zprofile;

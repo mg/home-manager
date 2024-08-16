@@ -26,6 +26,7 @@
     # terminal
     zellij # https://zellij.dev/
     wtf # https://wtfutil.com/
+    tmux # https://github.com/tmux/tmux/wiki
 
     # file managers & file system tools
     nnn # https://github.com/jarun/nnn

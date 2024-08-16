@@ -19,16 +19,16 @@
       gfs = "git-forgit stash_show";
       gfb = "git-forgit blame";
       tokei = "tokei -n dots";
-      zj = "zellij";
+      # zj = "zellij";
       vim = "nvim";
     };
 
     initExtra = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-      if [[ $TERM == "xterm-kitty" ]]
-      then
-        eval "$(${pkgs.zellij}/bin/zellij setup --generate-auto-start zsh)"
-      fi
+      # if [[ $TERM == "xterm-kitty" ]]
+      # then
+      #  eval "$(${pkgs.zellij}/bin/zellij setup --generate-auto-start zsh)"
+      # fi */
 
       export PATH=$PATH:~/opt/flutter/bin
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
