@@ -178,6 +178,7 @@ return { -- LSP Configuration & Plugins
 				-- run_on = "type",
 				-- },
 			},
+			prettierd = {},
 
 			-- Elixir LS options
 			-- Guide: https://elixirforum.com/t/neovim-elixir-setup-configuration-from-scratch-guide/46310
