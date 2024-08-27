@@ -8,6 +8,7 @@
     zsh-fzf-history-search
     zsh-fzf-tab
     tldr
+    fpp # https://github.com/facebook/pathpicker/
     # https://github.com/robertpsoane/ducker
 
     # modern unix: https://github.com/ibraheemdev/modern-unix
@@ -26,7 +27,6 @@
     # terminal
     zellij # https://zellij.dev/
     wtf # https://wtfutil.com/
-    tmux # https://github.com/tmux/tmux/wiki
 
     # file managers & file system tools
     nnn # https://github.com/jarun/nnn
@@ -104,6 +104,9 @@
     tabiew # https://github.com/shshemi/tabiew
     fx # https://fx.wtf/
 
+    # data 
+    duckdb
+
     # system tools
     pciutils # lspci
     keychain # https://www.funtoo.org/Funtoo:Keychain
@@ -134,6 +137,8 @@
     amber # https://github.com/dalance/amber
     difftastic # https://github.com/Wilfred/difftastic
     exercism # https://exercism.org/
+    diffsitter # https://github.com/afnanenayet/diffsitter
+    universal-ctags # https://ctags.io/
 
     # pdf
     pandoc # https://pandoc.org/
@@ -152,5 +157,8 @@
     
     # small terminal tools
     # https://github.com/maraloon/timer-tui
+    
+    # llms
+    aichat # https://github.com/sigoden/aichat
   ];
 }
