@@ -8,6 +8,7 @@ $git_status\
 $git_metrics\
 $fill\
 $nix_shell\
+$elixir\
 $nodejs\
 $cmd_duration $jobs $time\
 $line_break\
@@ -15,6 +16,9 @@ $character"""
 
 [nodejs]
 format = "[$symbol($version )]($style)"
+
+[elixir]
+format = "[$symbol$version OTP:$otp_version]() "
 
 [nix_shell]
 symbol = "❄"
