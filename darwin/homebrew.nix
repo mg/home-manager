@@ -31,7 +31,6 @@
     "karabiner-elements" # https://karabiner-elements.pqrs.org/
     #"google-chrome"
     #"firefox"
-    #"visual-studio-code"
     #"obsidian"
     #"netnewswire"
     #"vlc"
