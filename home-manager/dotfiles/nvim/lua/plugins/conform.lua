@@ -37,6 +37,7 @@ return { -- Autoformat
 			typescriptreact = { { "prettierd" } },
 			html = { { "prettierd" } },
 			json = { { "prettierd" } },
+			go = { "gofmt" },
 		},
 	},
 }
