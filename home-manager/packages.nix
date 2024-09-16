@@ -10,6 +10,7 @@
     tldr
     fpp # https://github.com/facebook/pathpicker/
     # https://github.com/robertpsoane/ducker
+    jira-cli-go # https://github.com/ankitpokhrel/jira-cli
 
     # modern unix: https://github.com/ibraheemdev/modern-unix
     choose
@@ -104,13 +105,11 @@
     tabiew # https://github.com/shshemi/tabiew
     fx # https://fx.wtf/
 
-    # data 
-    duckdb
-
     # system tools
     pciutils # lspci
     keychain # https://www.funtoo.org/Funtoo:Keychain
     trippy # https://trippy.cli.rs/
+    cyme # https://github.com/tuna-f1sh/cyme
 
     # terminal recording
     asciinema # https://asciinema.org/
@@ -123,7 +122,6 @@
     gitui # https://github.com/extrawurst/gitui
     gh # https://cli.github.com/
     gh-dash # https://github.com/dlvhdr/gh-dash
-    tig
     httpie
     jq # https://jqlang.github.io/jq/
     jqp # https://github.com/noahgorstein/jqp

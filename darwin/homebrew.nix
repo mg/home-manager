@@ -29,6 +29,7 @@
     "obs" # https://obsproject.com/
     "rio" # https://raphamorim.io/rio/
     "karabiner-elements" # https://karabiner-elements.pqrs.org/
+    "yaak" # https://yaak.app/
     #"google-chrome"
     #"firefox"
     #"obsidian"
