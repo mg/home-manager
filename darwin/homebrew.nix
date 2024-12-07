@@ -25,7 +25,6 @@
     "devtoys" # https://github.com/ObuchiYuki/DevToysMac
     "lapce" # https://lapce.dev/
     "zed" # https://zed.dev/
-    "neovide" # https://github.com/neovide/neovide
     "obs" # https://obsproject.com/
     "rio" # https://raphamorim.io/rio/
     "karabiner-elements" # https://karabiner-elements.pqrs.org/

@@ -4,6 +4,7 @@
 
 { pkgs, machineConfig, ... }:
 {
+  system.stateVersion = 5;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -20,7 +21,6 @@
 
   environment = {
     shells = with pkgs; [ nushell ];
-    loginShell = pkgs.zsh;
 
     systemPackages = [
       pkgs.coreutils-full
@@ -30,12 +30,21 @@
     # pathsToLink = [ "/Applications" ];
   };
 
-  fonts.packages = with pkgs; [
+  fonts.packages = with pkgs.nerd-fonts; [
     fira-code
-    fira-code-symbols
-    (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "FiraMono" ]; })
+    #fira-code-symbols
+    meslo-lg
+    fira-mono
+    #(nerdfonts.override { fonts = [ "Meslo" "FiraCode" "FiraMono" ]; })
   ];
 
+  /* fonts = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.fira-code-symbols
+    nerd-fonts.fira-mono
+    nerd-fonts.meslo
+  ];
+*/
   networking.computerName = machineConfig.hostname;
   networking.hostName = machineConfig.hostname;
   networking.localHostName = machineConfig.hostname;

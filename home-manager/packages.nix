@@ -1,7 +1,5 @@
 # https://github.com/rothgar/awesome-tuis
-
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     nb
     zsh-forgit # https://github.com/wfxr/forgit, https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/shells/zsh/zsh-forgit/default.nix#L51
@@ -26,8 +24,8 @@
     # xonsh # https://xon.sh/
 
     # terminal
-    zellij # https://zellij.dev/
-    wtf # https://wtfutil.com/
+    #jzellij # https://zellij.dev/
+    # wtf # https://wtfutil.com/
 
     # file managers & file system tools
     nnn # https://github.com/jarun/nnn
@@ -42,6 +40,7 @@
     rm-improved # https://github.com/nivekuil/rip
     fswatch # https://github.com/emcrisostomo/fswatch
     # fex # https://github.com/18alantom/fex
+    pls # https://pls.cli.rs/
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
@@ -49,7 +48,6 @@
     ripgrep # https://github.com/BurntSushi/ripgrep
     fselect # https://fselect.rocks/
     # serpl # https://github.com/yassinebridi/serpl
-    
 
     # downloaders
     wget
@@ -100,7 +98,7 @@
 
     # log tools
     tailspin # https://github.com/bensadeh/tailspin
-    lnav # https://lnav.org/
+    #lnav # https://lnav.org/
     angle-grinder # https://github.com/rcoh/angle-grinder
     tabiew # https://github.com/shshemi/tabiew
     fx # https://fx.wtf/
@@ -138,6 +136,10 @@
     diffsitter # https://github.com/afnanenayet/diffsitter
     universal-ctags # https://ctags.io/
 
+    # database
+    gobang # https://github.com/TaKO8Ki/gobang
+    # rainfrog # https://github.com/achristmascarl/rainfrog
+
     # pdf
     pandoc # https://pandoc.org/
     groff # https://www.gnu.org/software/groff/
@@ -146,17 +148,15 @@
 
     # nix tools
     nix-output-monitor # https://github.com/maralorn/nix-output-monitor
-    nixpkgs-fmt # code formatter
+    nixd # nix lsp
+    alejandra # code formatter
     nix-search-cli # https://github.com/peterldowns/nix-search-cli
-    
+
     # just for nvim
     go
-    nodejs_22 
-    
+    nodejs_22
+
     # small terminal tools
     # https://github.com/maraloon/timer-tui
-    
-    # llms
-    aichat # https://github.com/sigoden/aichat
   ];
 }

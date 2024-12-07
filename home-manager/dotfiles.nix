@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home = {
     file.".inputrc".source = ./dotfiles/inputrc;
     file."./.config/git/config".source = ./dotfiles/gitconfig;
@@ -8,7 +7,10 @@
       ${builtins.readFile ./dotfiles/kitty/kitty.conf}
       ${builtins.readFile ./dotfiles/kitty/catppuccin-mocha.conf}
     '';
-    file."./.config/nvim" = { source = ./dotfiles/nvim; recursive = true; };
+    file."./.config/nvim" = {
+      source = ./dotfiles/nvim;
+      recursive = true;
+    };
     file."./.config/neovide/config.toml".source = ./dotfiles/neovide/config.toml;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;

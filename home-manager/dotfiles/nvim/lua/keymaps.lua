@@ -32,3 +32,7 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- move lines
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line down" })
+
+-- quickfix prev/next
+vim.keymap.set("", "<S-F9>", ":cprev<CR>", { desc = "Previous Quickfix item" })
+vim.keymap.set("", "<S-F10>", ":cnext<CR>", { desc = "Next Quickfix item" })

@@ -25,7 +25,7 @@
     eza = {
       enable = true;
       # git = true;
-      icons = true;
+      icons = "auto";
     };
 
     git.enable = true;
@@ -59,10 +59,23 @@
       prefix = "C-a";
       sensibleOnTop = true;
       escapeTime = 0;
+      baseIndex = 1;
       plugins = with pkgs; [
-        tmuxPlugins.cpu
-        tmuxPlugins.mode-indicator
+        {
+          plugin = tmuxPlugins.resurrect;
+          extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        }
+        {
+          plugin = tmuxPlugins.continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+         '';
+        }
         tmuxPlugins.nord
+        {
+          plugin = tmuxPlugins.mode-indicator;
+          # extraConfig = "set -g status-right '#{status-right} #{tmux_mode_indicator}'";
+        } 
         tmuxPlugins.fingers
       ];
       extraConfig = '' 
@@ -70,8 +83,27 @@
         bind c new-window -c "#{pane_current_path}"
         bind '"' split-window -c "#{pane_current_path}"
         bind % split-window -h -c "#{pane_current_path}"
+
+        # start indexing from 1, not 0. Automatically renumber when closing/creating
+        set -g renumber-windows on
+        
+        set -g default-terminal "screen-256color"
+        
+        # resize panes key bindings
+       bind-key -r -T prefix H resize-pane -L
+       bind-key -r -T prefix J resize-pane -D
+       bind-key -r -T prefix K resize-pane -U
+       bind-key -r -T prefix L resize-pane -R
       '';
     };
+    
+    # Some plugins to check
+    # https://github.com/erikw/tmux-powerline
+    # https://github.com/wfxr/tmux-fzf-url
+    # https://github.com/sainnhe/tmux-fzf
+    # https://github.com/AngryMorrocoy/tmux-neolazygit?tab=readme-ov-file
+    # https://github.com/noscript/tmux-mighty-scroll
+    # https://github.com/jaclu/tmux-menus
 
     # https://direnv.net/
     direnv = {

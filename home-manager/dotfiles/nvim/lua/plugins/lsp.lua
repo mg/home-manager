@@ -215,8 +215,48 @@ return { -- LSP Configuration & Plugins
 					},
 				},
 			},
+
+			ruff_lsp = {},
+			pylsp = {
+				settings = {
+					pylsp = {
+						plugins = {
+							-- linters
+							pylint = { enabled = false },
+							pyflakes = { enabled = false },
+							pycodestyle = { enabled = false },
+							-- formatters
+							black = { enabled = false },
+							autopep8 = { enabled = false },
+							yapf = { enabled = false },
+
+							jedi_completion = { fuzzy = true },
+							pylsp_mypy = { enabled = true },
+						},
+					},
+				},
+			},
 		}
 
+		-- nixd not in mason
+		require("lspconfig").nixd.setup({
+			cmd = { "nixd" },
+			settings = {
+				nixd = {
+					nixpkgs = {
+						expr = "import <nixpkgs>{ }",
+					},
+					formatting = {
+						command = { "alejandra" },
+					},
+					options = {
+						home_manager = {
+							-- expr = '(builtins.getFlake "github:mg/home-manager").homeConfigurations.CONFIGNAME.options',
+						},
+					},
+				},
+			},
+		})
 		-- Ensure the servers and tools above are installed
 		--  To check the current status of installed tools and/or manually install
 		--  other tools, you can run
