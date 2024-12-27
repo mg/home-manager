@@ -2,6 +2,7 @@
 
 return {
 	"Rics-Dev/project-explorer.nvim",
+	enabled = false,
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},

@@ -168,7 +168,7 @@ return { -- LSP Configuration & Plugins
 			--    https://github.com/pmizio/typescript-tools.nvim
 			--
 			-- But for many setups, the LSP (`tsserver`) will work just fine
-			tsserver = {},
+			ts_ls = {},
 			eslint_d = {
 				-- cmd = { "vscode-eslint-language-server" },
 				-- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -216,7 +216,7 @@ return { -- LSP Configuration & Plugins
 				},
 			},
 
-			ruff_lsp = {},
+			ruff = {},
 			pylsp = {
 				settings = {
 					pylsp = {

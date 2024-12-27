@@ -41,6 +41,8 @@
     fswatch # https://github.com/emcrisostomo/fswatch
     # fex # https://github.com/18alantom/fex
     pls # https://pls.cli.rs/
+    television # https://github.com/alexpasmantier/television
+    superfile # https://superfile.netlify.app/
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
@@ -151,6 +153,9 @@
     nixd # nix lsp
     alejandra # code formatter
     nix-search-cli # https://github.com/peterldowns/nix-search-cli
+    
+    # llms
+    ollama
 
     # just for nvim
     go

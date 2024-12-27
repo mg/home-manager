@@ -11,7 +11,6 @@
       source = ./dotfiles/nvim;
       recursive = true;
     };
-    file."./.config/neovide/config.toml".source = ./dotfiles/neovide/config.toml;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
