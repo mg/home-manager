@@ -11,6 +11,7 @@
       source = ./dotfiles/nvim;
       recursive = true;
     };
+    file."./.config/ghostty/config".source = ./dotfiles/ghostty;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
