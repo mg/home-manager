@@ -54,6 +54,7 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 8
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -71,3 +72,8 @@ vim.opt.termguicolors = true -- enable true color support
 
 -- set LSP server path
 vim.opt.path:append("~/.local/share/nvim/mason/bin")
+
+-- fold methods
+vim.opt.foldmethod = "expr"
+vim.opt.foldlevel = 20
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

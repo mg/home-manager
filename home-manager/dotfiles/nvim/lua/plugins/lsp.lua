@@ -221,17 +221,18 @@ return { -- LSP Configuration & Plugins
 				settings = {
 					pylsp = {
 						plugins = {
-							-- linters
 							pylint = { enabled = false },
 							pyflakes = { enabled = false },
 							pycodestyle = { enabled = false },
-							-- formatters
 							black = { enabled = false },
 							autopep8 = { enabled = false },
 							yapf = { enabled = false },
+							pylsp_mypy = { enabled = false },
+							pylsp_black = { enabled = false },
+							pylsp_isort = { enabled = false },
+							mccabe = { enabled = false },
 
 							jedi_completion = { fuzzy = true },
-							pylsp_mypy = { enabled = true },
 						},
 					},
 				},
