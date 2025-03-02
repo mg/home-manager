@@ -63,7 +63,12 @@
       plugins = with pkgs; [
         {
           plugin = tmuxPlugins.resurrect;
-          extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+          extraConfig = ''
+            set -g @resurrect-strategy-nvim 'session'
+            set -g @resurrect-default-shell "/bin/zsh"
+            set -g @resurrect-default-command "/bin/zsh"
+            set -g @resurrect-processes 'all'
+          '';
         }
         {
           plugin = tmuxPlugins.continuum;
@@ -90,10 +95,15 @@
         set -g default-terminal "screen-256color"
         
         # resize panes key bindings
-       bind-key -r -T prefix H resize-pane -L
-       bind-key -r -T prefix J resize-pane -D
-       bind-key -r -T prefix K resize-pane -U
-       bind-key -r -T prefix L resize-pane -R
+        bind-key -r -T prefix H resize-pane -L
+        bind-key -r -T prefix J resize-pane -D
+        bind-key -r -T prefix K resize-pane -U
+        bind-key -r -T prefix L resize-pane -R
+
+        # use zsh 
+        set-option -g default-shell /bin/zsh
+        set -g default-shell /bin/zsh
+        set -g default-command /bin/zsh
       '';
     };
     
