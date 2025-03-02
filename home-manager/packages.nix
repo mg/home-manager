@@ -59,6 +59,7 @@
 
     # monitoring
     iftop # network monitoring
+    # nping # https://github.com/hanshuaikang/Nping
     bottom
     htop
     gtop
@@ -99,7 +100,9 @@
     glow
 
     # log tools
-    tailspin # https://github.com/bensadeh/tailspin
+    # 2025-03-02 removed
+    # error fixed here https://github.com/NixOS/nixpkgs/pull/353457 but not out
+    # tailspin # https://github.com/bensadeh/tailspin
     #lnav # https://lnav.org/
     angle-grinder # https://github.com/rcoh/angle-grinder
     tabiew # https://github.com/shshemi/tabiew

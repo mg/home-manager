@@ -5,13 +5,13 @@
 { pkgs, machineConfig, ... }:
 {
   system.stateVersion = 5;
+  ids.gids.nixbld = 30000; # TODO: remove this when changing to next Mac and reinstalling
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
   #ssl-cert-file = /etc/ssl/certs/w00402.cer
 
 
-  services.nix-daemon.enable = true;
   users.users.${machineConfig.username} = {
     name = machineConfig.username;
     home = machineConfig.home;
@@ -62,7 +62,7 @@
   system.defaults.dock = {
     autohide = true;
     appswitcher-all-displays = true;
-    expose-group-by-app = true;
+    expose-group-apps = true;
     magnification = true;
     mru-spaces = false;
     orientation = "bottom";
@@ -100,7 +100,7 @@
     loginwindow.GuestEnabled = false;
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   homebrew = import ./homebrew.nix;
 
