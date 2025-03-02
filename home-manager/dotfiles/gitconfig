@@ -1,12 +1,28 @@
 [user]
 	name = Magnús Örn Gylfason
 	email = magnus.gylfason@gmail.com
+
 [core]
 	autocrlf = input
 	# editor = hx # use EDITOR
 
+[column]
+	ui = auto
+
+[branch]
+	sort = -comitterdate
+
+[tag]
+	sort = version:refname
+
 [init]
   defaultBranch = main
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = true
+	mnemonicPrefix = true
 
 [color]
 	status = auto
@@ -16,6 +32,15 @@
 
 [push]
 	default = simple
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[commit]
+	verbose = true
 
 [alias]
 	c = commit
