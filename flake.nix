@@ -38,7 +38,7 @@
     let
       machineConfig = {
         system =  "aarch64-darwin";
-        hostname = "mg-m2";
+        hostname = "L45024";
         username = "mg";
         home = "/Users/mg";
         homeManager.stateVersion = "23.05";
