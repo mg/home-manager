@@ -14,6 +14,7 @@
     file."./.config/ghostty/config".source = ./dotfiles/ghostty;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
+    file."./.config/gh-dash/config.yml".source = ./dotfiles/gh-dash.yml;
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
     file."./.config/helix/themes/catppuccin-mocha.toml".source = ./dotfiles/helix/catppuccin-mocha-theme.toml;
     file."./.config/starship.toml".source = ./dotfiles/starship/starship.toml;
