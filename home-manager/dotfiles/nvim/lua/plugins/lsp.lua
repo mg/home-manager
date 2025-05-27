@@ -186,8 +186,11 @@ return { -- LSP Configuration & Plugins
 			-- ElixirLS: https://github.com/elixir-lsp/elixir-ls
 			-- Lexical: https://github.com/lexical-lsp/lexical
 			-- Next-ls: https://github.com/elixir-tools/next-ls
-			lexical = {},
+			-- lexical = {},
 			--
+			elixirls = {
+				cmd = { vim.fn.stdpath("data") .. "/mason/bin/elixir-ls" },
+			},
 
 			lua_ls = {
 				-- cmd = {...},

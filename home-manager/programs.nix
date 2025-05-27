@@ -61,21 +61,6 @@
       escapeTime = 0;
       baseIndex = 1;
       plugins = with pkgs; [
-        {
-          plugin = tmuxPlugins.resurrect;
-          extraConfig = ''
-            set -g @resurrect-strategy-nvim 'session'
-            set -g @resurrect-default-shell "/bin/zsh"
-            set -g @resurrect-default-command "/bin/zsh"
-            set -g @resurrect-processes 'all'
-          '';
-        }
-        {
-          plugin = tmuxPlugins.continuum;
-          extraConfig = ''
-            set -g @continuum-restore 'on'
-         '';
-        }
         tmuxPlugins.nord
         {
           plugin = tmuxPlugins.mode-indicator;

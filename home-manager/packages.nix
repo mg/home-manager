@@ -20,8 +20,14 @@
     gping
     lsd # https://github.com/lsd-rs/lsd
 
+    uutils-coreutils-noprefix # https://github.com/uutils/coreutils
+
     # shells
     # xonsh # https://xon.sh/
+
+    # task runners
+    just 
+    mask # https://github.com/jacobdeichert/mask
 
     # terminal
     #jzellij # https://zellij.dev/
@@ -75,6 +81,7 @@
 
     # process management
     pueue # https://github.com/Nukesor/pueue
+    mprocs # https://github.com/pvolok/mprocs
 
     # disk tools
     duf
@@ -88,9 +95,11 @@
     # text tools
     neovim # https://neovim.io/
     helix # https://helix-editor.com/
+    evil-helix # https://github.com/usagi-flow/evil-helix
     sad # https://github.com/ms-jpq/sad
     gnused
     gawk
+    xan
 
     # video & image tools
     gifski
@@ -117,15 +126,18 @@
     # terminal recording
     asciinema # https://asciinema.org/
     asciinema-agg # https://github.com/asciinema/agg
+    presenterm # https://github.com/mfontanini/presenterm
 
     # software development
     lazygit
     git-cliff # https://git-cliff.org/
     tig # https://jonas.github.io/tig/
     gitui # https://github.com/extrawurst/gitui
+    gitu # https://github.com/altsem/gitu
     gh # https://cli.github.com/
     gh-dash # https://github.com/dlvhdr/gh-dash
     httpie
+    xh # https://github.com/ducaale/xh
     jq # https://jqlang.github.io/jq/
     jqp # https://github.com/noahgorstein/jqp
     jql # https://github.com/yamafaktory/jql
@@ -144,12 +156,14 @@
     # database
     gobang # https://github.com/TaKO8Ki/gobang
     # rainfrog # https://github.com/achristmascarl/rainfrog
+    duckdb
 
     # pdf
     pandoc # https://pandoc.org/
     groff # https://www.gnu.org/software/groff/
     ghostscript
     typst # https://github.com/typst/typst
+    ripgrep-all # https://github.com/phiresky/ripgrep-all
 
     # nix tools
     nix-output-monitor # https://github.com/maralorn/nix-output-monitor
@@ -159,6 +173,7 @@
     
     # llms
     ollama
+    # tmuxai # https://tmuxai.dev/
 
     # just for nvim
     go

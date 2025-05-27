@@ -207,4 +207,22 @@
     # Following line should allow us to avoid a logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
+  
+  # setup ollama services
+  launchd.user.agents.ollama = {
+    serviceConfig = {
+      Label = "com.user.ollama";
+      ProgramArguments = [
+        "${pkgs.ollama}/bin/ollama" 
+        "serve"
+      ];
+      RunAtLoad = true;
+      KeepAlive = true;
+      StandardOutPath = "/tmp/ollama.log";
+      StandardErrorPath = "/tmp/ollama.error.log";
+      EnvironmentVariables = {
+        PATH = "${pkgs.ollama}/bin:${pkgs.bash}/bin:/usr/bin:/bin";
+      };
+    };
+  };
 }
