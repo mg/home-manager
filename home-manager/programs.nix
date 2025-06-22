@@ -85,6 +85,22 @@
         bind-key -r -T prefix K resize-pane -U
         bind-key -r -T prefix L resize-pane -R
 
+        # navigation
+        bind h select-pane -L
+        bind j select-pane -D
+        bind k select-pane -U
+        bind l select-pane -R
+        
+        # Use cmd + z (Mac) or alt/esc + z (Linux) to maximize pane size vertically
+        bind -n M-z if -F '#{==:#{@pane_zoomed},1}' \
+        'select-layout "#{@layout_save}"; set -u @layout_save; set -u @pane_zoomed' \
+        'set -g @layout_save "#{window_layout}"; set -g @pane_zoomed 1; resize-pane -y 100%'
+        
+        # Use cmd + x or alt/esc + x (Linux) to maximize pane size horizontally
+        bind -n M-x if -F '#{@layout_save}' \
+        {run 'tmux select-layout "#{@layout_save}" ; set -up @layout_save'} \
+        {set -Fp @layout_save "#{window_layout}" ; run 'tmux resize-pane -x 100%'} 
+
         # use zsh 
         set-option -g default-shell /bin/zsh
         set -g default-shell /bin/zsh

@@ -122,6 +122,7 @@ return { -- Autocompletion
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "buffer" },
+				{ name = "supermaven" },
 			},
 		})
 	end,

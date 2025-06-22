@@ -94,7 +94,7 @@
 
     # text tools
     neovim # https://neovim.io/
-    helix # https://helix-editor.com/
+    # helix # https://helix-editor.com/
     evil-helix # https://github.com/usagi-flow/evil-helix
     sad # https://github.com/ms-jpq/sad
     gnused

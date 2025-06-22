@@ -32,6 +32,11 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
+    dagger-tap = {
+      url = "github:dagger/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, darwin, home-manager, nix-homebrew, ...}@inputs:
