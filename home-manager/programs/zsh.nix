@@ -7,7 +7,6 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      code = "\"/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code\"";
       nixswitch = "pushd ~/Projects/home-manager; darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
       nixup = "pushd ~/Projects/home-manager; nix flake update; nixswitch; popd;";
       nixclean = "nix-collect-garbage";

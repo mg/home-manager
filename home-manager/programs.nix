@@ -69,6 +69,10 @@
         tmuxPlugins.fingers
       ];
       extraConfig = '' 
+        set -g allow-passthrough on
+        set -ga update-environment TERM
+        set -ga update-environment TERM_PROGRAM
+        
         # Set new panes to open in current directory
         bind c new-window -c "#{pane_current_path}"
         bind '"' split-window -c "#{pane_current_path}"
@@ -105,6 +109,12 @@
         set-option -g default-shell /bin/zsh
         set -g default-shell /bin/zsh
         set -g default-command /bin/zsh
+
+        # popups
+        bind g display-popup -d "#{pane_current_path}" -w 80%  -h 80%  -E "lazygit"
+        bind S display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
+        bind e display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "yazi"
+        bind T display-popup -d "#{pane_current_path}" -w 75% -h 75% -E "zsh"
       '';
     };
     

@@ -152,11 +152,13 @@
     exercism # https://exercism.org/
     diffsitter # https://github.com/afnanenayet/diffsitter
     universal-ctags # https://ctags.io/
+    atac # https://atac.julien-cpsn.com/
 
     # database
     gobang # https://github.com/TaKO8Ki/gobang
-    # rainfrog # https://github.com/achristmascarl/rainfrog
+    rainfrog # https://github.com/achristmascarl/rainfrog
     duckdb
+    harlequin # https://harlequin.sh/docs/getting-started/usage
 
     # pdf
     pandoc # https://pandoc.org/

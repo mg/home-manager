@@ -10,4 +10,4 @@ window-padding-color = background
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 
-keybind = shift+enter=\x1b[13;2u
+# keybind = shift+enter=\x1b[13;2u
