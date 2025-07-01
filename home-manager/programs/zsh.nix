@@ -19,7 +19,6 @@
       gfb = "git-forgit blame";
       tokei = "tokei -n dots";
       # zj = "zellij";
-      vim = "nvim";
     };
 
     initExtra = ''
@@ -33,6 +32,7 @@
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
       export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
 
+      export MANPAGER='nvim +Man!'
     '';
   };
 }
