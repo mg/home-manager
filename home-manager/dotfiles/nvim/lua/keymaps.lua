@@ -36,3 +36,6 @@ vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line down" })
 -- quickfix prev/next
 vim.keymap.set("", "<S-F9>", ":cprev<CR>", { desc = "Previous Quickfix item" })
 vim.keymap.set("", "<S-F10>", ":cnext<CR>", { desc = "Next Quickfix item" })
+
+-- copy current file path to clipboard (realative to PWD)
+vim.keymap.set("n", "<leader>fp", ":let @+ = expand('%:.')<CR>", { desc = "Copy current file [p]ath" })
