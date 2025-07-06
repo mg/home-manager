@@ -12,7 +12,11 @@
     "Transporter" = 1450874784; */
   };
 
-  brews = [ "mas" "cocoapods" ];
+  brews = [ 
+    "mas" 
+    "cocoapods" 
+    "simtool" # https://github.com/azizuysal/simtool
+  ];
   casks = [
     "db-browser-for-sqlite"
     "alacritty"
@@ -29,6 +33,7 @@
     "rio" # https://raphamorim.io/rio/
     "karabiner-elements" # https://karabiner-elements.pqrs.org/
     "yaak" # https://yaak.app/
+    # "simtool" # https://github.com/azizuysal/simtool
     #"lume" # https://github.com/trycua/lume, vm on macos
     #"google-chrome"
     #"firefox"
@@ -39,5 +44,6 @@
     #"discord"
   ];
   taps = [
+    "azizuysal/simtool" 
   ];
 }

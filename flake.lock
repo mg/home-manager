@@ -200,7 +200,24 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "simtool-tap": "simtool-tap"
+      }
+    },
+    "simtool-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751665641,
+        "narHash": "sha256-f7yj0iXzFJ99FGida4uU74y8+ITmkadeVcSwcp/UtBg=",
+        "owner": "azizuysal",
+        "repo": "simtool",
+        "rev": "b7d252116c7d3dda584e04a765094d8bfaf85fb6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "azizuysal",
+        "repo": "simtool",
+        "type": "github"
       }
     }
   },

@@ -72,6 +72,7 @@
         set -g allow-passthrough on
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
+        set-option -g focus-events on
         
         # Set new panes to open in current directory
         bind c new-window -c "#{pane_current_path}"

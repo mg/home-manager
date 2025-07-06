@@ -37,6 +37,11 @@
       url = "github:dagger/homebrew-tap";
       flake = false;
     };
+
+    simtool-tap = {
+      url = "github:azizuysal/simtool";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, darwin, home-manager, nix-homebrew, ...}@inputs:
