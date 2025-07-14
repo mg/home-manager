@@ -1,5 +1,6 @@
 require("opt")
 require("keymaps")
+require("filetypes")
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
