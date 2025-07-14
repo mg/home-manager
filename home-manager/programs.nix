@@ -73,7 +73,14 @@
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
         set-option -g focus-events on
-        
+
+        # vim mode for copy mode 
+        setw -g mode-keys vi
+        bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel 'pbcopy'
+
+        # session management
+        bind-key N command-prompt -p "New session name:" "new-session -s '%%'"
+
         # Set new panes to open in current directory
         bind c new-window -c "#{pane_current_path}"
         bind '"' split-window -c "#{pane_current_path}"
