@@ -118,11 +118,16 @@
         set -g default-shell /bin/zsh
         set -g default-command /bin/zsh
 
-        # popups
-        bind g display-popup -d "#{pane_current_path}" -w 80%  -h 80%  -E "lazygit"
-        bind S display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
-        bind e display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "yazi"
-        bind T display-popup -d "#{pane_current_path}" -w 75% -h 75% -E "zsh"
+        # break pane out of window
+        bind-key B break-pane -d 
+        bind-key E command-prompt -p "join pane from: " "join-pane -h -s '%%'"
+
+        # tool windows 
+        bind-key G new-window -n lazygit -c "#{pane_current_path}" "lazygit"
+        bind-key H new-window -n serpl -c "#{pane_current_path}" "serpl"
+        bind-key Y new-window -n yazi -c "#{pane_current_path}" "yazi"
+        bind-key M new-window -n glow -c "#{pane_current_path}" "glow"
+        bind-key A new-window -n claude -c "#{pane_current_path}" "claude"
       '';
     };
     

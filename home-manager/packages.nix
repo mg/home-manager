@@ -49,6 +49,7 @@
     pls # https://pls.cli.rs/
     television # https://github.com/alexpasmantier/television
     superfile # https://superfile.netlify.app/
+    serpl # https://github.com/yassinebridi/serpl
 
     # search
     silver-searcher # https://github.com/ggreer/the_silver_searcher
