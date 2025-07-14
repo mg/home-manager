@@ -175,6 +175,8 @@
     
     # llms
     ollama
+    # opencode
+    # nix search nixpkgs opencode
     # tmuxai # https://tmuxai.dev/
 
     # just for nvim
