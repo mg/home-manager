@@ -66,6 +66,8 @@
 
     # monitoring
     iftop # network monitoring
+    bandwhich 
+    gping
     # nping # https://github.com/hanshuaikang/Nping
     bottom
     htop
