@@ -19,7 +19,7 @@
   ];
   casks = [
     "db-browser-for-sqlite"
-    "xcodes"
+    # "xcodes"
     "hammerspoon"
     "element"
     "bruno" # https://www.usebruno.com
