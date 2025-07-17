@@ -127,7 +127,9 @@
         bind-key H new-window -n serpl -c "#{pane_current_path}" "serpl"
         bind-key Y new-window -n yazi -c "#{pane_current_path}" "yazi"
         bind-key M new-window -n glow -c "#{pane_current_path}" "glow"
-        bind-key A new-window -n claude -c "#{pane_current_path}" "claude"
+        bind-key A display-menu -T "Select app" \
+          "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
+          "OpenCode" o "new-window -n OpenCode -c '#{pane_current_path}' opencode"
       '';
     };
     
