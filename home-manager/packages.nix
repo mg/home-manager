@@ -161,7 +161,9 @@
     gobang # https://github.com/TaKO8Ki/gobang
     rainfrog # https://github.com/achristmascarl/rainfrog
     duckdb
-    harlequin # https://harlequin.sh/docs/getting-started/usage
+
+    # disable because it is pulling in a borken python package (trouble-log.md#2025-07-17) 
+    # harlequin # https://harlequin.sh/docs/getting-started/usage
 
     # pdf
     pandoc # https://pandoc.org/

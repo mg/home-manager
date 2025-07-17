@@ -4,6 +4,7 @@
 
 { pkgs, machineConfig, ... }:
 {
+  system.primaryUser = "mg"; 
   system.stateVersion = 5;
   ids.gids.nixbld = 30000; # TODO: remove this when changing to next Mac and reinstalling
   nix.extraOptions = ''
@@ -202,12 +203,16 @@
     window_gap          = 10;
     };
   */
-
-  system.activationScripts.postUserActivation.text = ''
-    # Following line should allow us to avoid a logout/login cycle
-    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  system.activationScripts.activateUserSettings.text = ''
+    # Run activateSettings as the primary user
+    sudo -u mg /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
-  
+
+  # system.activationScripts.postUserActivation.text = ''
+  #   # Following line should allow us to avoid a logout/login cycle
+  #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  # '';
+
   # setup ollama services
   launchd.user.agents.ollama = {
     serviceConfig = {
