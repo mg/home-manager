@@ -19,9 +19,6 @@
   ];
   casks = [
     "db-browser-for-sqlite"
-    "alacritty"
-    "kitty"
-    "wezterm" # https://wezfurlong.org/wezterm/index.html
     "xcodes"
     "hammerspoon"
     "element"
