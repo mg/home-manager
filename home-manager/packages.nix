@@ -177,6 +177,7 @@
     nixd # nix lsp
     alejandra # code formatter
     nix-search-cli # https://github.com/peterldowns/nix-search-cli
+    nix-tree
     
     # llms
     ollama

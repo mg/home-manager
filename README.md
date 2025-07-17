@@ -4,6 +4,7 @@
 - nix-shell -p git
 - nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.workstation.system
 - ./result/sw/bin/darwin-rebbuild switch --flake flake.nix
-- darwin-rebuild switch --flake flake.nix
+- sudo darwin-rebuild switch --flake .
 - nixup
-- nixswitch
+- nix flake update
+- nix-tree .#darwinConfigurations.L45024.system
