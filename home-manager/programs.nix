@@ -123,11 +123,17 @@
         bind-key E command-prompt -p "join pane from: " "join-pane -h -s '%%'"
 
         # tool windows 
-        bind-key G new-window -n lazygit -c "#{pane_current_path}" "lazygit"
+        bind-key G display-menu -T "Select git tool" \
+          "lazygit" l "new-window -n lazygit -c '#{pane_current_path}' lazygit" \
+          "tig" t "new-window -n tig -c '#{pane_current_path}' tig" \
+          "gitui" i "new-window -n gitui -c '#{pane_current_path}' gitui" \
+          "gitu" u "new-window -n gitu -c '#{pane_current_path}' gitu" \
+          "gh-dash" h "new-window -n gh-dash -c '#{pane_current_path}' gh-dash"
+
         bind-key H new-window -n serpl -c "#{pane_current_path}" "serpl"
         bind-key Y new-window -n yazi -c "#{pane_current_path}" "yazi"
         bind-key M new-window -n glow -c "#{pane_current_path}" "glow"
-        bind-key A display-menu -T "Select app" \
+        bind-key A display-menu -T "Select agent" \
           "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
           "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" \
           "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
