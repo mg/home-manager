@@ -129,6 +129,8 @@
         bind-key M new-window -n glow -c "#{pane_current_path}" "glow"
         bind-key A display-menu -T "Select app" \
           "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
+          "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" \
+          "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
           "OpenCode" o "new-window -n OpenCode -c '#{pane_current_path}' opencode"
       '';
     };

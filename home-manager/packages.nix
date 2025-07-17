@@ -182,6 +182,9 @@
     # llms
     ollama
     opencode
+    claude-code
+    gemini-cli
+    codex
     # tmuxai # https://tmuxai.dev/
 
     # just for nvim
