@@ -7,9 +7,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      nixswitch = "pushd ~/Projects/home-manager; sudo darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
-      nixup = "pushd ~/Projects/home-manager; nix flake update; nixswitch; popd;";
-      nixclean = "nix-collect-garbage";
+      #nixswitch = "pushd ~/Projects/home-manager; sudo darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
 
       gc = "git checkout $(git branch | fzf)";
       gco = "git checkout $(git branch --remote | fzf)";

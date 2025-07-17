@@ -2,24 +2,28 @@
 
 # List available commands
 default:
-    @just --list
+  @just --list
 
 # Rebuild and switch to new configuration
 switch:
-    sudo darwin-rebuild switch --flake .
+  sudo darwin-rebuild switch --flake .
 
 # Update flake inputs
 update:
-    nix flake update
+  nix flake update
 
 # Update nix channel
 update-channel:
-    nix-channel --update
+  nix-channel --update
 
 # Search for packages
 search package_name:
-    nix-search "{{package_name}}"
+  nix-search "{{package_name}}"
+
+# Run grabage collection
+clean:
+	nix-collect-garbage 
 
 # Inspect system configuration dependencies
 inspect:
-    nix-tree .#darwinConfigurations.L45024.system
+  nix-tree .#darwinConfigurations.L45024.system
