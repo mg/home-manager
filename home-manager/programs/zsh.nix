@@ -7,7 +7,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      nixswitch = "pushd ~/Projects/home-manager; darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
+      nixswitch = "pushd ~/Projects/home-manager; sudo darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
       nixup = "pushd ~/Projects/home-manager; nix flake update; nixswitch; popd;";
       nixclean = "nix-collect-garbage";
 
@@ -21,12 +21,8 @@
       # zj = "zellij";
     };
 
-    initExtra = ''
+    initContent = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-      # if [[ $TERM == "xterm-kitty" ]]
-      # then
-      #  eval "$(${pkgs.zellij}/bin/zellij setup --generate-auto-start zsh)"
-      # fi */
 
       export PATH=$PATH:~/opt/flutter/bin
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
