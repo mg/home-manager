@@ -16,16 +16,17 @@ update:
 update-channel:
   nix-channel --update
 
-# Search for packages
+# Search for package
 search package:
   nix-search -d -m 10 "{{package}}"
 
 # Run grabage collection
 clean:
-	nix-collect-garbage 
+  nix-collect-garbage 
 
+# Run package in temporary shell
 run package:
-	-nix-shell -p "{{package}}"
+  -nix-shell -p "{{package}}"
 	
 # Inspect system configuration dependencies
 inspect:
