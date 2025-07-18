@@ -22,7 +22,7 @@ search package:
 
 # Run grabage collection
 clean:
-  nix-collect-garbage 
+  nix-collect-garbage -d
 
 # Run package in temporary shell
 run package:
