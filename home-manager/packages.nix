@@ -185,6 +185,7 @@
     claude-code
     gemini-cli
     codex
+    aider-chat-full
     # tmuxai # https://tmuxai.dev/
 
     # just for nvim

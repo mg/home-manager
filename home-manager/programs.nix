@@ -137,7 +137,8 @@
           "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
           "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" \
           "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
-          "OpenCode" o "new-window -n OpenCode -c '#{pane_current_path}' opencode"
+          "OpenCode" o "new-window -n OpenCode -c '#{pane_current_path}' opencode" \
+          "Aider" a "new-window -n Aider -c '#{pane_current_path}' aider --no-gitignore"
       '';
     };
     
