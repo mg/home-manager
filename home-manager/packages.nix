@@ -139,6 +139,7 @@
     gitu # https://github.com/altsem/gitu
     gh # https://cli.github.com/
     gh-dash # https://github.com/dlvhdr/gh-dash
+    act # https://nektosact.com/usage/index.html
     httpie
     xh # https://github.com/ducaale/xh
     jq # https://jqlang.github.io/jq/
