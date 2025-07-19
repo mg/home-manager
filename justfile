@@ -17,8 +17,8 @@ update-channel:
   nix-channel --update
 
 # Search for package
-search package:
-  nix-search -d -m 10 "{{package}}"
+search package limit="10":
+  nix-search -d -m {{limit}} "{{package}}"
 
 # Run grabage collection
 clean:
