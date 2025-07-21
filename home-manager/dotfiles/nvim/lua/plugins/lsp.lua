@@ -188,9 +188,15 @@ return { -- LSP Configuration & Plugins
 			-- Next-ls: https://github.com/elixir-tools/next-ls
 			-- lexical = {},
 			--
-			elixirls = {
-				cmd = { vim.fn.stdpath("data") .. "/mason/bin/elixir-ls" },
-			},
+			-- elixirls = {},
+			-- 	cmd = { vim.fn.stdpath("data") .. "/mason/bin/elixir-ls" },
+			-- 	root_dir = require("lspconfig.util").root_pattern("mix.exs", ".git"),
+			-- 	env = {
+			-- 		ELS_ELIXIR_SOURCE = vim.fn.getenv("ELS_ELIXIR_SOURCE"),
+			-- 	},
+			-- },
+
+			-- nextls = {},
 
 			lua_ls = {
 				-- cmd = {...},
@@ -288,6 +294,11 @@ return { -- LSP Configuration & Plugins
 					require("lspconfig")[server_name].setup(server)
 				end,
 			},
+		})
+
+		-- custom elixir-ls setup
+		require("lspconfig").elixirls.setup({
+			cmd = { os.getenv("HOME") .. "/.local/share/elixir-ls/release/language_server.sh" },
 		})
 	end,
 }

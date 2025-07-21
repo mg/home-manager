@@ -195,5 +195,9 @@
 
     # small terminal tools
     # https://github.com/maraloon/timer-tui
+
+    # global install of elixir 
+    beam.packages.erlang_27.erlang
+    beam.packages.erlang_27.elixir_1_18
   ];
 }
