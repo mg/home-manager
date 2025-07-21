@@ -132,7 +132,7 @@
 
         bind-key H new-window -n serpl -c "#{pane_current_path}" "serpl"
         bind-key Y new-window -n yazi -c "#{pane_current_path}" "yazi"
-        bind-key M new-window -n glow -c "#{pane_current_path}" "glow"
+        bind-key M new-window -n glow -c "#{pane_current_path}" "glow -w 180"
         bind-key A display-menu -T "Select agent" \
           "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
           "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" \
