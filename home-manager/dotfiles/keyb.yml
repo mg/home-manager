@@ -1,0 +1,30 @@
+- name: tmux 
+  prefix: "[Ctrl] [a]"
+  keybinds:
+    - name: "Enter copy mode"
+      key: "["
+      
+- name: tmux session management
+  prefix: "[Ctrl] [a]"
+  keybinds:
+    - name: "Create new session"
+      key: "N"
+    - name: "Toggle session"
+      key: "O"
+    - name: "List sessions"
+      key: "S"
+    - name: "Kill current session"
+      key: "Q"
+
+- name: tmux window management
+  prefix: "[Ctrl] [a]"
+  keybinds:
+    - name: "Break pane from window"
+      key: "B"
+    - name: "Join pane into window"
+      key: "E"
+      
+- name: neovim 
+  keybinds:
+    - name: "Run tools"
+      key: "[Space] t r"

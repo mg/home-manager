@@ -17,6 +17,13 @@
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     file."./.config/gh-dash/config.yml".source = ./dotfiles/gh-dash.yml;
+    
+    # keyb not available in nix yet
+    # https://github.com/NixOS/nixpkgs/blob/master/CONTRIBUTING.md
+    # install via go to GOPATH
+    # go install github.com/kencx/keyb@latest
+    file."./.config/keyb/keyb.yml".source = ./dotfiles/keyb.yml;
+
     file."./.config/helix/config.toml".source = ./dotfiles/helix/config.toml;
     file."./.config/helix/themes/catppuccin-mocha.toml".source = ./dotfiles/helix/catppuccin-mocha-theme.toml;
     file."./.config/starship.toml".source = ./dotfiles/starship/starship.toml;
