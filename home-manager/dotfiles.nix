@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home = {
     file.".inputrc".source = ./dotfiles/inputrc;
     file."./.config/git/config".source = ./dotfiles/gitconfig;
@@ -11,6 +11,8 @@
       source = ./dotfiles/nvim;
       recursive = true;
     };
+    # can seem to get this to work, create the symlink manually for now
+    # file.".config/nvim-homemanager".source = "/home/mg/Projects/home-manager/home-manager/dotfiles/nvim";
     file."./.config/ghostty/config".source = ./dotfiles/ghostty;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;

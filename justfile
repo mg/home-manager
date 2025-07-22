@@ -31,3 +31,7 @@ run package:
 # Inspect system configuration dependencies
 inspect:
   nix-tree .#darwinConfigurations.L45024.system
+
+# Test neovim configuration 
+test-nvim:
+  pushd ./home-manager/dotfiles/nvim; export NVIM_APPNAME=nvim-homemanager && nvim; popd
