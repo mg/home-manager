@@ -3,7 +3,7 @@
 return {
 	"cousine/opencode-context.nvim",
 	opts = {
-		tmux_target = "OpenCode", -- Manual override: "session:window.pane"
+		tmux_target = "Opencode", -- Manual override: "session:window.pane"
 		auto_detect_pane = true, -- Auto-detect opencode pane in current window
 	},
 	keys = {

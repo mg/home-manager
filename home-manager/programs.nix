@@ -80,7 +80,7 @@
 
         # session management
         bind-key N command-prompt -p "New session name:" "new-session -s '%%'"
-        bind-key -r s run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
+        bind-key S display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
 
         # Set new panes to open in current directory
         bind c new-window -c "#{pane_current_path}"
@@ -136,10 +136,10 @@
         bind-key M new-window -n glow -c "#{pane_current_path}" "glow -w 180"
         bind-key A display-menu -T "Select agent" \
           "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
-          "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" \
+          "Opencode" o "new-window -n Opencode -c '#{pane_current_path}' opencode" \
+          "Aider" a "new-window -n Aider -c '#{pane_current_path}' aider --no-gitignore" \
           "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
-          "OpenCode" o "new-window -n OpenCode -c '#{pane_current_path}' opencode" \
-          "Aider" a "new-window -n Aider -c '#{pane_current_path}' aider --no-gitignore"
+          "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" 
       '';
     };
     

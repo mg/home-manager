@@ -325,7 +325,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-if [[ "$selected" =~ ^\[TMUX\]\ (.+)$ ]]; then
+if [[ "$selected" =~ ^\>\ (.+)$ ]]; then
     selected="${BASH_REMATCH[1]}"
 fi
 
