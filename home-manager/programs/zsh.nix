@@ -22,11 +22,15 @@
     initContent = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
-      export PATH=~/opt/flutter/bin:$PATH
+      export GOPATH=~/opt/go
+
+      export PATH=~/opt/flutter/bin:$GOPATH/bin:$PATH
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
       export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
+      export XDG_CONFIG_HOME=~/.config
 
       export MANPAGER='nvim +Man!'
+
     '';
   };
 }
