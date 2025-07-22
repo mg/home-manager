@@ -80,6 +80,7 @@
 
         # session management
         bind-key N command-prompt -p "New session name:" "new-session -s '%%'"
+        bind-key -r s run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 
         # Set new panes to open in current directory
         bind c new-window -c "#{pane_current_path}"

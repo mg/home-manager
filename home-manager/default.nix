@@ -17,6 +17,7 @@
         ./programs/zellij.nix
         ./session-variables.nix
         ./dotfiles.nix
+        ./scripts.nix
       ];
     };
   };

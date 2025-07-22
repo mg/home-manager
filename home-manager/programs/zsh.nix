@@ -22,7 +22,7 @@
     initContent = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
-      export PATH=$PATH:~/opt/flutter/bin
+      export PATH=~/opt/flutter/bin:$PATH
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
       export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
 
