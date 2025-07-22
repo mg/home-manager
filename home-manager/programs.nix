@@ -81,6 +81,12 @@
         # session management
         bind-key N command-prompt -p "New session name:" "new-session -s '%%'"
         bind-key S display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
+        bind-key O switch-client -l
+        bind-key Q run-shell '
+          OLD_SESSION=$(tmux display-message -p '#S') 
+          tmux switch-client -l 
+          tmux kill-session -t "$OLD_SESSION"
+        '
 
         # Set new panes to open in current directory
         bind c new-window -c "#{pane_current_path}"
