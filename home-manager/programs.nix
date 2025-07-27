@@ -148,6 +148,10 @@
           "Aider" a "new-window -n Aider -c '#{pane_current_path}' aider --no-gitignore" \
           "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
           "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" 
+
+        bind-key D display-menu -T "Select db client" \
+          "DuckDB" d "new-window -n DuckDB -c '#{pane_current_path}' open-duckdb" \
+          "Rainfrog" r "new-window -n Rainfrog -c '#{pane_current_path}' open-rainfrog" \
       '';
     };
     

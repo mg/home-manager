@@ -189,9 +189,11 @@
     aider-chat-full
     # tmuxai # https://tmuxai.dev/
 
-    # just for nvim
+    # system wide runtimes and compilers 
     go
     nodejs_22
+    uv
+
 
     # small terminal tools
     # https://github.com/maraloon/timer-tui
