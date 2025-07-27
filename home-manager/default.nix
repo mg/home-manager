@@ -14,6 +14,7 @@
         ./packages.nix
         ./programs.nix
         ./programs/zsh.nix
+        ./programs/tmux.nix
         ./programs/zellij.nix
         ./session-variables.nix
         ./dotfiles.nix
