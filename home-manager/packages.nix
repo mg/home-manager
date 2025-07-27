@@ -145,6 +145,7 @@
     jq # https://jqlang.github.io/jq/
     jqp # https://github.com/noahgorstein/jqp
     jql # https://github.com/yamafaktory/jql
+    otree # https://github.com/fioncat/otree
     yq-go # https://mikefarah.gitbook.io/yq/
     fastgron # https://github.com/adamritter/fastgron
     fx # https://fx.wtf/
@@ -159,7 +160,6 @@
     atac # https://atac.julien-cpsn.com/
 
     # database
-    gobang # https://github.com/TaKO8Ki/gobang
     rainfrog # https://github.com/achristmascarl/rainfrog
     duckdb
 
