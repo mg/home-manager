@@ -7,8 +7,6 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      #nixswitch = "pushd ~/Projects/home-manager; sudo darwin-rebuild switch --flake ~/Projects/home-manager/.#; popd;";
-
       gc = "git checkout $(git branch | fzf)";
       gco = "git checkout $(git branch --remote | fzf)";
       gfl = "git-forgit log";
@@ -16,21 +14,23 @@
       gfs = "git-forgit stash_show";
       gfb = "git-forgit blame";
       tokei = "tokei -n dots";
-      # zj = "zellij";
     };
 
     initContent = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
-      export GOPATH=~/opt/go
-
-      export PATH=~/opt/flutter/bin:$GOPATH/bin:$PATH
-      export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
-      export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
       export XDG_CONFIG_HOME=~/.config
 
-      export MANPAGER='nvim +Man!'
+      # go should go under ~/.local/lib/go
+      # flutter should go under ~/.local/lib/flutter
+      mkdir -p ~/.local/lib/go
+      export GOPATH=~/.local/lib/go
+      export PATH=~/.local/bin:~/.local/lib/flutter/bin:$GOPATH/bin:$PATH
 
+      export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
+      export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
+
+      export MANPAGER='nvim +Man!'
     '';
   };
 }
