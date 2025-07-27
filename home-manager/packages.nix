@@ -193,6 +193,7 @@
     go
     nodejs_22
     uv
+    cargo
 
 
     # small terminal tools

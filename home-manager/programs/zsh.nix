@@ -23,9 +23,16 @@
 
       # go should go under ~/.local/lib/go
       # flutter should go under ~/.local/lib/flutter
+      # rust shold go under ~/.local/lib/cargo
+      # dart should go under ~./local/lib/dart
       mkdir -p ~/.local/lib/go
       export GOPATH=~/.local/lib/go
-      export PATH=~/.local/bin:~/.local/lib/flutter/bin:$GOPATH/bin:$PATH
+      mkdir -p ~/.local/lib/cargo
+      export CARGO_HOME="$HOME/.local/lib/cargo"
+      mkdir -p ~/.local/lib/dart
+      export PUB_CACHE="$HOME/.local/lib/dart"
+      
+      export PATH=~/.local/bin:~/.local/lib/flutter/bin:~/.local/lib/cargo/bin:$GOPATH/bin:~/.local/lib/dart/bin:$PATH
 
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
       export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
