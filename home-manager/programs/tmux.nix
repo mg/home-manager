@@ -107,3 +107,12 @@
     '';
   };
 }
+
+    # Some plugins to check
+    # https://github.com/erikw/tmux-powerline
+    # https://github.com/wfxr/tmux-fzf-url
+    # https://github.com/sainnhe/tmux-fzf
+    # https://github.com/AngryMorrocoy/tmux-neolazygit?tab=readme-ov-file
+    # https://github.com/noscript/tmux-mighty-scroll
+    # https://github.com/jaclu/tmux-menus
+
