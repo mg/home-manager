@@ -101,6 +101,7 @@
         "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" 
 
       bind-key D display-menu -T "Select db client" \
+        "psql" p "new-window -n psql -c '#{pane_current_path}' open-psql" \
         "DuckDB" d "new-window -n DuckDB -c '#{pane_current_path}' open-duckdb" \
         "Rainfrog" r "new-window -n Rainfrog -c '#{pane_current_path}' open-rainfrog" \
     '';

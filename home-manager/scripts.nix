@@ -8,6 +8,10 @@
        source = ./scripts/open-duckdb.py;
        executable = true;
     };
+    file."./.local/bin/open-psql" = {
+       source = ./scripts/open-psql.py;
+       executable = true;
+    };
     file."./.local/bin/open-rainfrog" = {
        source = ./scripts/open-rainfrog.py;
        executable = true;
