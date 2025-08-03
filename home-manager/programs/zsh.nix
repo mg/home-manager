@@ -38,6 +38,12 @@
       export WOBSIDIAN_PATH="$OBSIDIAN_PATH/work"
 
       export MANPAGER='nvim +Man!'
+
+      # https://github.com/n1ghtmare/tiny-dc
+      dc() {
+        local result=$(command tiny-dc "$@")
+        [ -n "$result" ] && cd -- "$result"
+      }
     '';
   };
 }
