@@ -1,5 +1,21 @@
 # Trouble log
 
+## 2025-08-04
+
+### Problem
+
+Version 1.3.2 of `superfile` is not building because some tests are failing. Version `1.3.3` is out but not yet in the `nix` package repository.
+
+### Solution
+
+Since it is just failing tests and the binary works, I can disable the test for now inside `home-manager/home-manager/package.nix`:
+
+```nix
+    (superfile.overrideAttrs (oldAttrs: {
+      doCheck = false;
+    }))
+```
+
 ## 2025-07-20
 
 ### Problem

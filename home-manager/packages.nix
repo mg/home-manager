@@ -48,7 +48,11 @@
     # fex # https://github.com/18alantom/fex
     pls # https://pls.cli.rs/
     television # https://github.com/alexpasmantier/television
-    superfile # https://superfile.netlify.app/
+    # superfile # https://superfile.netlify.app/
+    (superfile.overrideAttrs (oldAttrs: {
+      doCheck = false;
+    }))
+    # v1.3.2 
     serpl # https://github.com/yassinebridi/serpl
 
     # search
@@ -142,6 +146,7 @@
     gitu # https://github.com/altsem/gitu
     gh # https://cli.github.com/
     gh-dash # https://github.com/dlvhdr/gh-dash
+    gmap # https://github.com/seeyebe/gmap
     act # https://nektosact.com/usage/index.html
     httpie
     xh # https://github.com/ducaale/xh
