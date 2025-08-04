@@ -40,7 +40,7 @@
     # broot # https://dystroy.org/broot/
     lf # https://pkg.go.dev/github.com/gokcehan/lf
     mc # https://midnight-commander.org/
-    eza # https://github.com/eza-community/eza
+    eza # https://github.com/eza-community/ezhttps://github.com/ouch-org/oucha
     entr # https://eradman.com/entrproject/
     renameutils # https://www.nongnu.org/renameutils/
     rm-improved # https://github.com/nivekuil/rip
@@ -63,6 +63,9 @@
     curl
     rclone # https://rclone.org/
     yt-dlp
+
+    # archives
+    ouch # https://Sgithub.com/ouch-org/ouch
 
     # monitoring
     iftop # network monitoring
