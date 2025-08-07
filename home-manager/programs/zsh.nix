@@ -20,6 +20,9 @@
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
       export XDG_CONFIG_HOME=~/.config
+      export XDG_DATA_HOME=~/.local/share
+      export XDG_CACHE_HOME=~/.cache
+      export XDG_STATE_HOME=~/.local/state
 
       # go should go under ~/.local/lib/go
       # flutter should go under ~/.local/lib/flutter
