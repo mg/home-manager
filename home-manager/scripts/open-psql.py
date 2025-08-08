@@ -12,18 +12,22 @@ import re
 def find_psql_in_direnv():
     """Find psql binary by looking for .direnv folder and nix-profile files"""
     current_dir = Path.cwd()
+    # print("Current dir : ", current_dir)
 
     # Walk up directories looking for .direnv
     while current_dir != current_dir.parent:
         direnv_path = current_dir / ".direnv"
         if direnv_path.exists() and direnv_path.is_dir():
+            # print(f"found direnv at #{direnv_path}")
             # Look for files starting with nix-profile
             nix_profile_files = list(direnv_path.glob("nix-profile*"))
 
             for profile_file in nix_profile_files:
                 try:
+                    # print(f"open file #{profile_file}")
                     with open(profile_file, "r") as f:
                         content = f.read()
+                    # print(f"read file #{profile_file}")
 
                     # Try to parse as JSON first (structured data)
                     try:
@@ -70,10 +74,11 @@ def find_psql_in_direnv():
                                         return psql_path
 
                 except Exception:
+                    # print("Exception")
                     continue
 
-                # Stop after checking the first profile file as requested
-                break
+            # quit after processing first direnv path
+            break
 
         current_dir = current_dir.parent
 
