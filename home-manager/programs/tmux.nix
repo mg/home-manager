@@ -97,6 +97,7 @@
       bind-key A display-menu -T "Select agent" \
         "Claude" c "new-window -n Claude -c '#{pane_current_path}' claude" \
         "Opencode" o "new-window -n Opencode -c '#{pane_current_path}' opencode" \
+        "Crush" s "new-window -n Crush -c '#{pane_current_path}' crush" \
         "Aider" a "new-window -n Aider -c '#{pane_current_path}' aider --no-gitignore" \
         "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
         "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" 

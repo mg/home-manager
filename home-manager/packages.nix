@@ -194,6 +194,8 @@
     claude-code
     gemini-cli
     codex
+    crush
+    mcp-proxy
     aider-chat-full
     # tmuxai # https://tmuxai.dev/
 
