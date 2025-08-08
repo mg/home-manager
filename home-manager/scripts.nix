@@ -1,7 +1,14 @@
 {pkgs, ...}: {
   home = {
+    # scripting libraries 
+    file.".local/lib/system" = {
+      source = ./scripts/lib;
+      recursive = true;
+    };
+
+    # scripts
     file."./.local/bin/scriptlog" = {
-       source = ./scripts/view-scriptlog.sh;
+       source = ./scripts/view-scriptlog.py;
        executable = true;
     };
     file."./.local/bin/open-duckdb" = {

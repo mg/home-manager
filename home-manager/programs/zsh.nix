@@ -47,6 +47,10 @@
         local result=$(command tiny-dc "$@")
         [ -n "$result" ] && cd -- "$result"
       }
+
+      # custom python packages go under ~./local/lib/system
+      export PYTHONPATH="$HOME/.local/lib/system:$PYTHONPATH"
+      mkdir -p ~/.local/lib/system 
     '';
   };
 }

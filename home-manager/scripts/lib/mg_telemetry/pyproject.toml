@@ -1,0 +1,4 @@
+[project]
+name = "mg_telemetry"
+authors= [{ name = "Magnús Örn Gylfason", email = "magnus.gylfason@gmail.com"}]
+requires-python = ">=3.12"

@@ -5,33 +5,11 @@ import os
 import subprocess
 import sys
 import tempfile
-from datetime import datetime
-from pathlib import Path
-
-
-def log_script_execution():
-    """Log script execution to ~/.local/share/logs/scripts.csv"""
-    log_dir = Path.home() / ".local" / "share" / "logs"
-    log_file = log_dir / "scripts.csv"
-    script_name = Path(__file__).stem  # Get filename without extension
-    utc_time = datetime.utcnow().isoformat() + "Z"
-
-    # Create log directory if it doesn't exist
-    log_dir.mkdir(parents=True, exist_ok=True)
-
-    # Write header if file doesn't exist
-    if not log_file.exists():
-        with open(log_file, "w") as f:
-            f.write("timestamp,script\n")
-
-    # Append log entry
-    with open(log_file, "a") as f:
-        f.write(f"{utc_time},{script_name}\n")
+from mg_telemetry import log_execution
 
 
 def main():
-    # Log script execution
-    log_script_execution()
+    log_execution(__file__)
 
     config_file = ".db.json"
 
