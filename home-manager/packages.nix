@@ -200,6 +200,7 @@
     # system wide runtimes and compilers 
     go
     nodejs_22
+    bun
     uv
     cargo
 
