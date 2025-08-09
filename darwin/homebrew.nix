@@ -30,6 +30,7 @@
     "rio" # https://raphamorim.io/rio/
     "karabiner-elements" # https://karabiner-elements.pqrs.org/
     "yaak" # https://yaak.app/
+    "container-use"
     # "simtool" # https://github.com/azizuysal/simtool
     #"lume" # https://github.com/trycua/lume, vm on macos
     #"google-chrome"
