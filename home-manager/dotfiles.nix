@@ -15,7 +15,7 @@
     file."./.config/ghostty/config".source = ./dotfiles/ghostty;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
-    file."./.config/gh-dash/config.yml".source = ./dotfiles/gh-dash.yml;
+    # file."./.config/gh-dash/config.yml".source = ./dotfiles/gh-dash.yml;
     
     # keyb not available in nix yet
     # https://github.com/NixOS/nixpkgs/blob/master/CONTRIBUTING.md
