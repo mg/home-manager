@@ -196,7 +196,8 @@
     codex
     crush
     mcp-proxy
-    aider-chat-full
+
+    # aider-chat-full
     # tmuxai # https://tmuxai.dev/
 
     # system wide runtimes and compilers 
