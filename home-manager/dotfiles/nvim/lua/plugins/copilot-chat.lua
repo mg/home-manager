@@ -6,7 +6,7 @@ return {
 		},
 		opts = {
 			-- See Configuration section for options
-			model = "gpt-4.1", -- AI model to use
+			model = "gpt-5", -- AI model to use
 			temperature = 0.1, -- Lower = focused, higher = creative
 			window = {
 				layout = "vertical", -- 'vertical', 'horizontal', 'float'

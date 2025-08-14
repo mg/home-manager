@@ -7,18 +7,18 @@ return {
 	opts = {},
 	setup = function()
 		require("magenta").setup({
+			-- {
+			-- 	name = "claude-max",
+			-- 	provider = "anthropic",
+			-- 	model = "claude-4-sonnet-latest",
+			-- 	fastModel = "claude-3-5-haiku-latest",
+			-- 	authType = "max", -- Use Anthropic OAuth instead of API key
+			-- },
 			{
-				name = "claude-max",
-				provider = "anthropic",
-				model = "claude-4-sonnet-latest",
-				fastModel = "claude-3-5-haiku-latest",
-				authType = "max", -- Use Anthropic OAuth instead of API key
-			},
-			{
-				name = "copilot-claude",
+				name = "copilot",
 				provider = "copilot",
-				model = "claude-3.7-sonnet",
-				fastModel = "claude-3-5-haiku-latest", -- optional, defaults provided
+				model = "gpt-5",
+				fastModel = "claude-sonnet-4", -- optional, defaults provided
 				-- No apiKeyEnvVar needed - uses existing Copilot authentication
 			},
 			picker = "telescope",
