@@ -23,5 +23,9 @@
        source = ./scripts/open-rainfrog.py;
        executable = true;
     };
+    file."./.local/bin/worktree" = {
+       source = ./scripts/worktree.py;
+       executable = true;
+    };
   };
 }

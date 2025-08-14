@@ -66,6 +66,24 @@
       # custom python packages go under ~./local/lib/system
       export PYTHONPATH="$HOME/.local/lib/system:$PYTHONPATH"
       mkdir -p ~/.local/lib/system 
+
+      # worktree scripts
+      wta() {
+        result=$(worktree add "$@")
+        echo $result
+        local cd_cmd=$(echo "$result" | grep "^cd " | tail -1)
+        if [[ -n "$cd_cmd" ]]; then
+          eval "$cd_cmd"
+        fi
+      } 
+
+      wtr() {
+        worktree remove "$@"
+      } 
+
+      wtl() {
+        worktree list
+      } 
     '';
   };
 }
