@@ -69,8 +69,9 @@
 
       # worktree scripts
       wta() {
+        # Usage: wta BRANCH [NAME]
         result=$(worktree add "$@")
-        echo $result
+        echo "$result"
         local cd_cmd=$(echo "$result" | grep "^cd " | tail -1)
         if [[ -n "$cd_cmd" ]]; then
           eval "$cd_cmd"

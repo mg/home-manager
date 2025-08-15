@@ -38,45 +38,45 @@ def branch_exists(name):
     return result and result.returncode == 0 and name in result.stdout
 
 
-def add_worktree(name):
-    """Add a worktree or cd to existing one"""
-    if worktree_exists(name):
+def add_worktree(branch, name=None):
+    """Add a worktree for branch at ../name (or ../branch if name is None), or cd to existing one"""
+    dir_name = name if name else branch
+    if worktree_exists(dir_name):
         print(
-            f"Worktree '{name}' already exists. Use 'cd ../{name}' to navigate to it."
+            f"Worktree '{dir_name}' already exists. Use 'cd ../{dir_name}' to navigate to it."
         )
-        # Note: We can't actually cd from a script, so we print the command
-        print(f"cd ../{name}")
+        print(f"cd ../{dir_name}")
     else:
-        print(f"Creating new worktree '{name}'...")
+        print(f"Creating new worktree for branch '{branch}' at '../{dir_name}'...")
 
         # Check if local branch exists
-        if branch_exists(name):
-            print(f"Local branch '{name}' exists, using existing branch...")
-            result = run_command(["git", "worktree", "add", f"../{name}", name])
+        if branch_exists(branch):
+            print(f"Local branch '{branch}' exists, using existing branch...")
+            result = run_command(["git", "worktree", "add", f"../{dir_name}", branch])
         else:
-            print(f"Creating new branch '{name}' from origin/{name}...")
+            print(f"Creating new branch '{branch}' from origin/{branch}...")
             result = run_command(
-                ["git", "worktree", "add", "-b", name, f"../{name}", f"origin/{name}"]
+                ["git", "worktree", "add", "-b", branch, f"../{dir_name}", f"origin/{branch}"]
             )
 
         if result and result.returncode == 0:
-            print(f"Worktree '{name}' created successfully!")
-            print(f"cd ../{name}")
+            print(f"Worktree for branch '{branch}' created successfully at '../{dir_name}'!")
+            print(f"cd ../{dir_name}")
         else:
-            print(f"Failed to create worktree '{name}'")
+            print(f"Failed to create worktree for branch '{branch}' at '../{dir_name}'")
             if result:
                 print(f"Error: {result.stderr}")
                 # If branch creation failed, try without -b flag
                 if "already exists" in result.stderr:
-                    print(f"Trying to use existing local branch '{name}'...")
+                    print(f"Trying to use existing local branch '{branch}'...")
                     result2 = run_command(
-                        ["git", "worktree", "add", f"../{name}", name]
+                        ["git", "worktree", "add", f"../{dir_name}", branch]
                     )
                     if result2 and result2.returncode == 0:
                         print(
-                            f"Worktree '{name}' created successfully using existing branch!"
+                            f"Worktree for branch '{branch}' created successfully using existing branch at '../{dir_name}'!"
                         )
-                        print(f"cd ../{name}")
+                        print(f"cd ../{dir_name}")
                     else:
                         print(
                             f"Still failed: {result2.stderr if result2 else 'Unknown error'}"
@@ -136,10 +136,11 @@ def main():
 
     if command == "add":
         if len(sys.argv) < 3:
-            print("Error: 'add' command requires a name parameter")
+            print("Error: 'add' command requires at least a branch parameter")
             sys.exit(1)
-        name = sys.argv[2]
-        add_worktree(name)
+        branch = sys.argv[2]
+        name = sys.argv[3] if len(sys.argv) > 3 else None
+        add_worktree(branch, name)
 
     elif command == "remove":
         if len(sys.argv) < 3:
