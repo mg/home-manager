@@ -31,18 +31,18 @@
 
       # rust shold go under ~/.local/lib/cargo
       mkdir -p ~/.local/lib/cargo
-      export CARGO_HOME="$HOME/.local/lib/cargo
+      export CARGO_HOME=$HOME/.local/lib/cargo
       export PATH=~/.local/lib/cargo/bin:$PATH
 
       # dart should go under ~./local/lib/dart
       # flutter should go under ~/.local/lib/flutter
       mkdir -p ~/.local/lib/dart
-      export PUB_CACHE="$HOME/.local/lib/dart"
+      export PUB_CACHE=$HOME/.local/lib/dart
       export PATH=~/.local/lib/flutter/bin:~/.local/lib/dart/bin:$PATH
 
       # bun js should go under ~/.local/lib/bun
       mkdir -p ~/.local/lib/bun
-      export BUN_INSTALL="$HOME/.local/lib/bun
+      export BUN_INSTALL=$HOME/.local/lib/bun
       export PATH=~/.local/lib/bun/bin:$PATH
 
       # uv python should go under ~./local/lib/python
@@ -64,7 +64,7 @@
       }
 
       # custom python packages go under ~./local/lib/system
-      export PYTHONPATH="$HOME/.local/lib/system:$PYTHONPATH"
+      export PYTHONPATH=$HOME/.local/lib/system:$PYTHONPATH
       mkdir -p ~/.local/lib/system 
 
       # worktree scripts
