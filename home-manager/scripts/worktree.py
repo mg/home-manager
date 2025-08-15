@@ -107,6 +107,44 @@ def remove_worktree(name):
                 print("Force removal also failed.")
 
 
+def get_current_worktree():
+    """Return the absolute path of the current worktree (cwd)"""
+    result = run_command(["git", "rev-parse", "--show-toplevel"])
+    if result and result.returncode == 0:
+        return result.stdout.strip()
+    return None
+
+
+def switch_worktree():
+    """fzf select a worktree (except current), emit cd command"""
+    # Get all worktrees
+    result = run_command(["git", "worktree", "list", "--porcelain"])
+    if not result or result.returncode != 0:
+        print("Failed to list worktrees")
+        if result:
+            print(f"Error: {result.stderr}")
+        return
+    current = get_current_worktree()
+    # Parse worktree paths
+    worktrees = []
+    for line in result.stdout.strip().split("\n"):
+        if line.startswith("worktree "):
+            path = line.replace("worktree ", "").strip()
+            if path != current:
+                worktrees.append(path)
+    if not worktrees:
+        print("No other worktrees to switch to.")
+        return
+    # Pipe to fzf
+    try:
+        fzf = subprocess.run(["fzf"], input="\n".join(worktrees), capture_output=True, text=True)
+        selected = fzf.stdout.strip()
+        if selected:
+            print(f"cd {selected}")
+    except Exception as e:
+        print(f"Error running fzf: {e}")
+
+
 def list_worktrees():
     """List all worktrees"""
     result = run_command(["git", "worktree", "list"])
@@ -130,6 +168,7 @@ def main():
         print("  add <name>    - Add worktree or navigate to existing one")
         print("  remove <name> - Remove worktree")
         print("  list          - List all worktrees")
+        print("  switch        - Fuzzy switch to another worktree (fzf)")
         sys.exit(1)
 
     command = sys.argv[1].lower()
@@ -152,9 +191,12 @@ def main():
     elif command == "list":
         list_worktrees()
 
+    elif command == "switch":
+        switch_worktree()
+
     else:
         print(f"Unknown command: {command}")
-        print("Available commands: add, remove, list")
+        print("Available commands: add, remove, list, switch")
         sys.exit(1)
 
 

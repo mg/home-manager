@@ -85,6 +85,16 @@
       wtl() {
         worktree list
       } 
+
+      wts() {
+        # Fuzzy switch to another worktree
+        result=$(worktree switch)
+        echo "$result"
+        local cd_cmd=$(echo "$result" | grep "^cd " | tail -1)
+        if [[ -n "$cd_cmd" ]]; then
+          eval "$cd_cmd"
+        fi
+      } 
     '';
   };
 }
