@@ -1,2 +1,5 @@
 color cursor  color0 color2
 color title-focus  color0 color4
+
+bind generic P @open-pr %(commit)
+bind generic u !git pull

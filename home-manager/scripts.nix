@@ -27,5 +27,9 @@
        source = ./scripts/worktree.py;
        executable = true;
     };
+    file."./.local/bin/open-pr" = {
+       source = ./scripts/open-pr.py;
+       executable = true;
+    };
   };
 }
