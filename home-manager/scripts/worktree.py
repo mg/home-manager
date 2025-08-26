@@ -46,6 +46,9 @@ def add_worktree(branch, name=None):
             f"Worktree '{dir_name}' already exists. Use 'cd ../{dir_name}' to navigate to it."
         )
         print(f"cd ../{dir_name}")
+        # Also run linking logic if not a root branch
+        if branch not in ["develop", "release", "master"]:
+            link_node_modules_if_unchanged(branch, dir_name)
     else:
         print(f"Creating new worktree for branch '{branch}' at '../{dir_name}'...")
 
@@ -62,6 +65,10 @@ def add_worktree(branch, name=None):
         if result and result.returncode == 0:
             print(f"Worktree for branch '{branch}' created successfully at '../{dir_name}'!")
             print(f"cd ../{dir_name}")
+            # Call node_modules/linking logic for non-root branches
+            if branch not in ["develop", "release", "master"]:
+                link_node_modules_if_unchanged(branch, dir_name)
+
         else:
             print(f"Failed to create worktree for branch '{branch}' at '../{dir_name}'")
             if result:
@@ -77,11 +84,90 @@ def add_worktree(branch, name=None):
                             f"Worktree for branch '{branch}' created successfully using existing branch at '../{dir_name}'!"
                         )
                         print(f"cd ../{dir_name}")
+                        # Also run linking logic if not a root branch
+                        if branch not in ["develop", "release", "master"]:
+                            link_node_modules_if_unchanged(branch, dir_name)
                     else:
                         print(
                             f"Still failed: {result2.stderr if result2 else 'Unknown error'}"
                         )
 
+
+import os
+import filecmp
+
+def link_node_modules_if_unchanged(new_branch, dir_name):
+    """
+    If the branch is not develop, release, or master, find the nearest ancestor branch checked out in a worktree.
+    Compare package.json, targets/mobile/package.json, targets/mobile/config.xml between the new worktree and the root worktree.
+    If unchanged, hard link or symlink as specified; if changed, echo a message.
+    """
+    # 1. Get all worktrees and their branches
+    result = run_command(["git", "worktree", "list", "--porcelain"])
+    if not result or result.returncode != 0:
+        print("Could not list worktrees for linking node_modules.")
+        return
+    lines = result.stdout.strip().split("\n")
+    worktrees = []  # list of (path, branch)
+    i = 0
+    while i < len(lines):
+        if lines[i].startswith("worktree "):
+            path = lines[i].replace("worktree ", "").strip()
+            branch = None
+            # Look for branch in next lines
+            for j in range(i+1, min(i+4, len(lines))):
+                if lines[j].startswith("branch "):
+                    branch = lines[j].replace("branch ", "").replace("refs/heads/", "").strip()
+                    break
+            if branch:
+                worktrees.append((path, branch))
+        i += 1
+    # 2. Find the root branch checked out in a worktree (not new_branch)
+    root_candidates = [wt for wt in worktrees if wt[1] != new_branch]
+    if not root_candidates:
+        print("No ancestor worktree found for linking node_modules.")
+        return
+    # Heuristic: pick the first candidate (could be improved to find true ancestor)
+    root_path, root_branch = root_candidates[0]
+    new_path = os.path.abspath(os.path.join("..", dir_name))
+    # 3. Compare files
+    def same_file(relpath):
+        a = os.path.join(root_path, relpath)
+        b = os.path.join(new_path, relpath)
+        return os.path.exists(a) and os.path.exists(b) and filecmp.cmp(a, b, shallow=False)
+    # package.json
+    if same_file("package.json"):
+        src = os.path.join(root_path, "node_modules")
+        dst = os.path.join(new_path, "node_modules")
+        if os.path.exists(src):
+            try:
+                if not os.path.exists(dst):
+                    os.symlink(src, dst)
+                print(f"Symlinked node_modules from {root_branch} to {new_branch} (package.json unchanged)")
+            except Exception as e:
+                print(f"Failed to symlink node_modules: {e}")
+        else:
+            print(f"No node_modules found in {root_branch}")
+    else:
+        print("Changes detected in package.json, not linking node_modules.")
+    # targets/mobile/package.json and config.xml
+    mobile_pkg_same = same_file("targets/mobile/package.json")
+    mobile_cfg_same = same_file("targets/mobile/config.xml")
+    if mobile_pkg_same and mobile_cfg_same:
+        for subdir in ["node_modules", "platforms", "plugins"]:
+            src = os.path.join(root_path, "targets/mobile", subdir)
+            dst = os.path.join(new_path, "targets/mobile", subdir)
+            if os.path.exists(src):
+                try:
+                    if not os.path.exists(dst):
+                        os.symlink(src, dst)
+                    print(f"Symlinked {subdir} from {root_branch} to {new_branch} (mobile unchanged)")
+                except Exception as e:
+                    print(f"Failed to symlink {subdir}: {e}")
+            else:
+                print(f"No {subdir} found in {root_branch}/targets/mobile")
+    else:
+        print("Changes detected in targets/mobile/package.json or config.xml, not linking mobile dirs.")
 
 def remove_worktree(name):
     """Remove a worktree"""
