@@ -170,7 +170,29 @@ def link_node_modules_if_unchanged(new_branch, dir_name):
         print("Changes detected in targets/mobile/package.json or config.xml, not linking mobile dirs.")
 
 def remove_worktree(name):
-    """Remove a worktree"""
+    """Remove a worktree. If name == '.', infer worktree name from current directory."""
+    import os
+    if name == ".":
+        # Get current directory absolute path
+        cwd = os.path.abspath(os.getcwd())
+        # List all worktrees
+        result = run_command(["git", "worktree", "list", "--porcelain"])
+        if not result or result.returncode != 0:
+            print("Could not list worktrees.")
+            return
+        lines = result.stdout.strip().split("\n")
+        found = False
+        for line in lines:
+            if line.startswith("worktree "):
+                worktree_path = line.replace("worktree ", "").strip()
+                if os.path.abspath(worktree_path) == cwd:
+                    # Infer name as last path component
+                    name = os.path.basename(worktree_path)
+                    found = True
+                    break
+        if not found:
+            print("Current directory is not a git worktree.")
+            return
     if not worktree_exists(name):
         print(f"Worktree '{name}' does not exist.")
         return
