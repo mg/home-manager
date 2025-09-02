@@ -33,9 +33,20 @@ def worktree_exists(name):
 
 
 def branch_exists(name):
-    """Check if a local branch exists"""
+    """Check if a local branch exists (in main repo or current worktree)"""
     result = run_command(["git", "branch", "--list", name])
-    return result and result.returncode == 0 and name in result.stdout
+    if result and result.returncode == 0:
+        for line in result.stdout.strip().split("\n"):
+            branch_name = line.replace("*", "").strip()
+            if branch_name == name:
+                return True
+    # Also check current branch in worktree
+    head_result = run_command(["git", "rev-parse", "--abbrev-ref", "HEAD"])
+    if head_result and head_result.returncode == 0:
+        current_branch = head_result.stdout.strip()
+        if current_branch == name:
+            return True
+    return False
 
 
 def add_worktree(branch, name=None):
@@ -58,9 +69,49 @@ def add_worktree(branch, name=None):
             result = run_command(["git", "worktree", "add", f"../{dir_name}", branch])
         else:
             print(f"Creating new branch '{branch}' from origin/{branch}...")
-            result = run_command(
-                ["git", "worktree", "add", "-b", branch, f"../{dir_name}", f"origin/{branch}"]
-            )
+            # Fetch the remote branch first
+            fetch_result = run_command(["git", "fetch", "origin", branch])
+            if fetch_result and fetch_result.returncode == 0:
+                result = run_command(
+                    ["git", "worktree", "add", "-b", branch, f"../{dir_name}", f"origin/{branch}"]
+                )
+            else:
+                print(f"Remote branch origin/{branch} does not exist. Creating new local branch from HEAD...")
+                # Create new local branch from HEAD of develop
+                # Always create new branch from current HEAD
+                commit_result = run_command(["git", "rev-parse", "HEAD"])
+                commit_hash = commit_result.stdout.strip() if commit_result and commit_result.returncode == 0 else None
+                if not commit_hash:
+                    print("Failed to get commit hash for HEAD.")
+                    result = None
+                else:
+                    import os
+                    # Get main repo directory
+                    git_dir_result = run_command(["git", "rev-parse", "--git-dir"])
+                    main_repo_dir = os.path.abspath(os.path.join(git_dir_result.stdout.strip(), "..")) if git_dir_result and git_dir_result.returncode == 0 else os.getcwd()
+                    orig_dir = os.getcwd()
+                    try:
+                        os.chdir(main_repo_dir)
+                        branch_exists_result = run_command(["git", "branch", "--list", branch])
+                        branch_already_exists = False
+                        if branch_exists_result and branch_exists_result.returncode == 0:
+                            for line in branch_exists_result.stdout.strip().split("\n"):
+                                if line.replace("*", "").strip() == branch:
+                                    branch_already_exists = True
+                                    break
+                        if branch_already_exists:
+                            result = run_command(["git", "worktree", "add", f"../{dir_name}", branch])
+                        else:
+                            branch_create_result = run_command(["git", "branch", branch, commit_hash])
+                            if branch_create_result and branch_create_result.returncode == 0:
+                                result = run_command(["git", "worktree", "add", f"../{dir_name}", branch])
+                            elif branch_create_result and branch_create_result.returncode == 128 and 'already exists' in branch_create_result.stderr:
+                                result = run_command(["git", "worktree", "add", f"../{dir_name}", branch])
+                            else:
+                                print(f"Failed to create local branch '{branch}' from HEAD.")
+                                result = None
+                    finally:
+                        os.chdir(orig_dir)
 
         if result and result.returncode == 0:
             print(f"Worktree for branch '{branch}' created successfully at '../{dir_name}'!")
