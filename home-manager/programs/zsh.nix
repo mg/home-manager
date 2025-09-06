@@ -57,6 +57,8 @@
 
       export MANPAGER='nvim +Man!'
 
+      eval "$(intelli-shell init zsh)" # install with cargo install intelli-shell --locked
+
       # https://github.com/n1ghtmare/tiny-dc
       dc() {
         local result=$(command tiny-dc "$@")

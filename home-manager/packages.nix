@@ -5,6 +5,8 @@
     zsh-forgit # https://github.com/wfxr/forgit, https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/shells/zsh/zsh-forgit/default.nix#L51
     zsh-fzf-history-search
     zsh-fzf-tab
+    # intelli-shell # https://lasantosr.github.io/intelli-shell/index.html
+    # envx # https://github.com/mikeleppane/envx  # cargo install envex
     tldr
     fpp # https://github.com/facebook/pathpicker/
     # https://github.com/robertpsoane/ducker
