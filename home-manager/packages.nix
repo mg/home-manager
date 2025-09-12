@@ -189,6 +189,8 @@
     alejandra # code formatter
     nix-search-cli # https://github.com/peterldowns/nix-search-cli
     nix-tree
+    mcp-nixos # https://github.com/utensils/mcp-nixos 
+    # claude mcp add nixos mcp-nixos -> ~/.claude.json
     
     # llms
     ollama
