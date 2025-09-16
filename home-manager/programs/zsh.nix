@@ -48,6 +48,7 @@
       # uv python should go under ~./local/lib/python
       mkdir -p ~/.local/lib/python
       export PYTHONUSERBASE=$HOME/.local/lib/python/bin
+      export PATH=$PYTHONUSERBASE:$PATH
       
       # add my scripts first 
       export PATH=~/.local/bin:$PATH
