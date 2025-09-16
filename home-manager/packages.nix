@@ -106,6 +106,7 @@
 
     # text tools
     neovim # https://neovim.io/
+    neovim-remote # https://github.com/mhinz/neovim-remote
     # helix # https://helix-editor.com/
     evil-helix # https://github.com/usagi-flow/evil-helix
     sad # https://github.com/ms-jpq/sad
