@@ -246,6 +246,7 @@ return { -- LSP Configuration & Plugins
 					},
 				},
 			},
+
 		}
 
 		-- nixd not in mason
@@ -267,6 +268,15 @@ return { -- LSP Configuration & Plugins
 				},
 			},
 		})
+
+		-- expert lsp setup (not in mason)
+		vim.lsp.config('expert', {
+			cmd = { 'expert' },
+			root_markers = { 'mix.exs', '.git' },
+			filetypes = { 'elixir', 'eelixir', 'heex' },
+		})
+		vim.lsp.enable('expert')
+
 		-- Ensure the servers and tools above are installed
 		--  To check the current status of installed tools and/or manually install
 		--  other tools, you can run
@@ -297,8 +307,8 @@ return { -- LSP Configuration & Plugins
 		})
 
 		-- custom elixir-ls setup
-		require("lspconfig").elixirls.setup({
-			cmd = { os.getenv("HOME") .. "/.local/share/elixir-ls/release/language_server.sh" },
-		})
+		-- require("lspconfig").elixirls.setup({
+		-- 	cmd = { os.getenv("HOME") .. "/.local/share/elixir-ls/release/language_server.sh" },
+		-- })
 	end,
 }
