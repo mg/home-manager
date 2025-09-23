@@ -23,6 +23,7 @@
       export XDG_DATA_HOME=~/.local/share
       export XDG_CACHE_HOME=~/.cache
       export XDG_STATE_HOME=~/.local/state
+      export XDG_BIN_DIR=~/.local/bin
 
       # go should go under ~/.local/lib/go
       mkdir -p ~/.local/lib/go

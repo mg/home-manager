@@ -195,7 +195,7 @@
     
     # llms
     ollama
-    opencode
+    # opencode
     claude-code
     gemini-cli
     codex
