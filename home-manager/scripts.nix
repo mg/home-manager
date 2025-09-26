@@ -31,5 +31,9 @@
        source = ./scripts/open-pr.py;
        executable = true;
     };
+    file."./.local/bin/release-log" = {
+       source = ./scripts/release-log.py;
+       executable = true;
+    };
   };
 }
