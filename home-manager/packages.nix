@@ -169,6 +169,7 @@
     diffsitter # https://github.com/afnanenayet/diffsitter
     universal-ctags # https://ctags.io/
     atac # https://atac.julien-cpsn.com/
+    stylua # https://github.com/JohnnyMorganz/StyLua
 
     # database
     rainfrog # https://github.com/achristmascarl/rainfrog

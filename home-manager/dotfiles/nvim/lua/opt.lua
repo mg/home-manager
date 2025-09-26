@@ -63,7 +63,9 @@ vim.opt.sidescrolloff = 8
 vim.opt.hlsearch = true
 
 vim.opt.tabstop = 2
-vim.opt.shiftwidth = 0 -- use tapstop value for shiftwidth (<< and >>)
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
 
 vim.opt.virtualedit = "block" -- virtual edit in visual block mode
 vim.opt.wrap = true
