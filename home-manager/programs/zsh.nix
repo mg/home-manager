@@ -99,6 +99,10 @@
           eval "$cd_cmd"
         fi
       } 
+
+      rndpwd() {
+        openssl rand -base64 32 | pbcopy 
+      }
     '';
   };
 }
