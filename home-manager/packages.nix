@@ -197,7 +197,7 @@
     # llms
     ollama
     # opencode
-    claude-code
+    # claude-code
     gemini-cli
     codex
     crush

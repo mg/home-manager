@@ -45,6 +45,10 @@
       mkdir -p ~/.local/lib/bun
       export BUN_INSTALL=$HOME/.local/lib/bun
       export PATH=~/.local/lib/bun/bin:$PATH
+      
+      # node js should go under ~/.local/lib/node
+      mkdir -p ~/.local/lib/node/bin
+      export PATH=~/.local/lib/node/bin:$PATH
 
       # uv python should go under ~./local/lib/python
       mkdir -p ~/.local/lib/python
