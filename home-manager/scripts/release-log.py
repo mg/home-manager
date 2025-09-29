@@ -226,8 +226,12 @@ def extract_issue_keys_from_resolves(body: str) -> Set[str]:
             j = i + 1
             while j < len(lines):
                 l = lines[j]
-                if l.strip() == "" or l.startswith('#'):
-                    break
+                stripped = l.strip()
+                if stripped.startswith('#'):
+                    break  # next markdown header
+                if stripped == "":
+                    j += 1
+                    continue
                 keys |= extract_issue_keys_from_text(l)
                 j += 1
     return keys

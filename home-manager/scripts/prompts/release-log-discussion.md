@@ -193,5 +193,69 @@ Security cleanup; removes committed secret; aligns with standard secret injectio
 - Warn (even non-verbose) when PAT missing.
 - Parallelize PR fetch.
 
+## 10. 2025-09-29 Resolves Parsing Fix
+
+### Context
+
+PR 7991 contained:
+
+## Resolves
+
+- WEB-35306 ...
+- WEB-35309 ...
+
+WEB-35309 was not collected.
+
+### Root Cause
+
+• extract_issue_keys_from_resolves stopped at the first blank line after the header (if l.strip() == "" or l.startswith('#'): break).
+• Result: Entire bullet list skipped when a blank line follows the header.
+• Regex \bWEB-\d+\b was not the issue in this case.
+
+### Fix
+
+Replaced loop (lines 227–232) to:
+
+• Skip blank lines (continue) instead of breaking.
+• Only break on next markdown header (^#).
+
+### Patch
+
+ while j < len(lines):
+-    l = lines[j]
+-    if l.strip() == "" or l.startswith('#'):
+-        break
+-    keys |= extract_issue_keys_from_text(l)
+-    j += 1
++    l = lines[j]
++    stripped = l.strip()
++    if stripped.startswith('#'):
++        break  # next markdown header
++    if stripped == "":
++        j += 1
++        continue
++    keys |= extract_issue_keys_from_text(l)
++    j += 1
+
+### Verification Snippet
+
+body = """## Resolves
+
+- WEB-35306
+- WEB-35309
+"""
+print(extract_issue_keys_from_resolves(body))
+# => {'WEB-35306', 'WEB-35309'}
+
+### Impact
+
+• All issue keys under “## Resolves” now captured even with a separating blank line.
+• Prevents silent misses for common markdown formatting.
+
+### Possible Follow-Ups
+
+• Add unit tests around header + blank line + bullets pattern.
+• Optional: also parse “Resolved” / “Fixes” aliases via expanded header regex.
+
 ---
 Generated for internal reference (MG request).
