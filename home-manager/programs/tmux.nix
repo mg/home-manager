@@ -30,8 +30,8 @@
 
       # session management
       bind-key N command-prompt -p "New session name:" "new-session -s '%%'"
-      bind-key S display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
-      bind-key W display-popup -E "tmux list-windows -F '#I: #W #{?window_active,(active),}' | fzf --reverse | cut -d: -f1 | xargs tmux select-window -t"
+      bind-key S display-popup -E "tmux-session-manage"
+      bind-key W display-popup -E "tmux list-windows -F '#I: #W #{?window_active,(active),}' | fzf --reverse | cut -d: -f2 | xargs tmux select-window -t"
       bind-key O switch-client -l
       bind-key Q run-shell '
         OLD_SESSION=$(tmux display-message -p '#S') 

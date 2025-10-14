@@ -35,5 +35,9 @@
        source = ./scripts/release-log.py;
        executable = true;
     };
+    file."./.local/bin/tmux-session-manage" = {
+       source = ./scripts/tmux-session-manage.sh;
+       executable = true;
+    };
   };
 }
