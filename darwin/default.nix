@@ -218,7 +218,7 @@
     serviceConfig = {
       Label = "com.user.ollama";
       ProgramArguments = [
-        "${pkgs.ollama}/bin/ollama" 
+        "/Applications/Ollama.app/Contents/Resources/ollama" # https://ollama.com/download
         "serve"
       ];
       RunAtLoad = true;
@@ -226,7 +226,7 @@
       StandardOutPath = "/tmp/ollama.log";
       StandardErrorPath = "/tmp/ollama.error.log";
       EnvironmentVariables = {
-        PATH = "${pkgs.ollama}/bin:${pkgs.bash}/bin:/usr/bin:/bin";
+        PATH = "${pkgs.bash}/bin:/usr/bin:/bin";
       };
     };
   };

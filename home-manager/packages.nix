@@ -195,7 +195,7 @@
     # claude mcp add nixos --scope project mcp-nixos -> ~/.claude.json
     
     # llms
-    ollama
+    # ollama
     # opencode
     # claude-code
     gemini-cli
