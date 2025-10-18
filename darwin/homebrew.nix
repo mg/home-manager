@@ -12,10 +12,12 @@
     "Transporter" = 1450874784; */
   };
 
-  brews = [ 
-    "mas" 
-    "cocoapods" 
+  brews = [
+    "mas"
+    "cocoapods"
     "simtool" # https://github.com/azizuysal/simtool
+    "postgresql@17"
+    "pgvector" # https://github.com/pgvector/pgvector
   ];
   casks = [
     "db-browser-for-sqlite"
@@ -45,3 +47,8 @@
     "azizuysal/simtool" 
   ];
 }
+ # PostgreSQL is managed via Homebrew (see darwin/homebrew.nix)
+ # Start with: brew services start postgresql@17
+ # Stop with: brew services stop postgresql@17
+ # Status: brew services list
+

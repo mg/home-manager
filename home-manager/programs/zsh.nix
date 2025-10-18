@@ -25,6 +25,10 @@
       export XDG_STATE_HOME=~/.local/state
       export XDG_BIN_DIR=~/.local/bin
 
+      # setup postgres
+      export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+      export PGDATA="/opt/homebrew/var/postgresql@17"
+
       # go should go under ~/.local/lib/go
       mkdir -p ~/.local/lib/go
       export GOPATH=~/.local/lib/go
