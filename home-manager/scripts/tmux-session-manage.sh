@@ -83,8 +83,8 @@ CHOICE=$(printf '%s\n' "$SELECTION_LIST" | fzf --reverse || true)
 
 if [[ $CHOICE == \** ]]; then
   # Active session selected; strip leading *
-  target="${CHOICE#*}"
-  tmux switch-client -t "$target"
+  target="${CHOICE#\*}"
+  tmux switch-client -t "=$target"
   exit 0
 fi
 
@@ -103,10 +103,10 @@ if [[ ! -d $path ]]; then
 fi
 
 # Create detached session and switch
-if tmux has-session -t "$name" 2>/dev/null; then
+if tmux has-session -t "=$name" 2>/dev/null; then
   # Race: became active after list (rare)
-  tmux switch-client -t "$name"
+  tmux switch-client -t "=$name"
 else
   tmux new-session -d -s "$name" -c "$path"
-  tmux switch-client -t "$name"
+  tmux switch-client -t "=$name"
 fi
