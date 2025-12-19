@@ -98,7 +98,7 @@
 
     # disk tools
     duf
-    du-dust
+    dust
     ncdu # https://dev.yorhel.nl/ncdu
 
     # network tools
@@ -146,7 +146,7 @@
     lazygit
     git-cliff # https://git-cliff.org/
     tig # https://jonas.github.io/tig/
-    gitui # https://github.com/extrawurst/gitui
+    #gitui # https://github.com/extrawurst/gitui
     gitu # https://github.com/altsem/gitu
     gh # https://cli.github.com/
     gh-dash # https://github.com/dlvhdr/gh-dash
@@ -219,7 +219,7 @@
     # https://github.com/maraloon/timer-tui
 
     # global install of elixir 
-    beam.packages.erlang_27.erlang
-    beam.packages.erlang_27.elixir_1_18
+    beam28Packages.erlang
+    beam28Packages.elixir_1_19
   ];
 }
