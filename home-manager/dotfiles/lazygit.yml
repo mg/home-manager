@@ -1,0 +1,9 @@
+# https://www.reddit.com/r/ClaudeCode/comments/1ps6wk6/lazygit_claude_code_aigenerated_commit_messages/
+
+customCommands:
+    - key: "C"
+      context: "files"
+      description: "Generate commit message"
+      command: "git diff --staged | opencode run 'Generate a concise git com mit message for these staged changes. Output ONLY the raw commit message with no m arkdown, no code blocks, no backticks, no explanations. Use conventional commit format.' --model github-copilot/claude-haiku-4.5 > /tmp/commit_msg && GIT_EDITOR=hx git commit -e -F /tmp/commit_msg"
+      output: terminal
+
