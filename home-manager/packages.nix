@@ -123,9 +123,7 @@
     glow
 
     # log tools
-    # 2025-03-02 removed
-    # error fixed here https://github.com/NixOS/nixpkgs/pull/353457 but not out
-    # tailspin # https://github.com/bensadeh/tailspin
+    tailspin # https://github.com/bensadeh/tailspin
     #lnav # https://lnav.org/
     angle-grinder # https://github.com/rcoh/angle-grinder
     tabiew # https://github.com/shshemi/tabiew
@@ -170,6 +168,7 @@
     diffsitter # https://github.com/afnanenayet/diffsitter
     universal-ctags # https://ctags.io/
     atac # https://atac.julien-cpsn.com/
+    slumber # https://slumber.lucaspickering.me/introduction.html
     stylua # https://github.com/JohnnyMorganz/StyLua
 
     # database
