@@ -67,7 +67,7 @@
 
       export MANPAGER='nvim +Man!'
 
-      eval "$(intelli-shell init zsh)" # install with cargo install intelli-shell --locked
+      # eval "$(intelli-shell init zsh)" # install with cargo install intelli-shell --locked
 
       # https://github.com/n1ghtmare/tiny-dc
       dc() {
@@ -78,6 +78,11 @@
       # custom python packages go under ~./local/lib/system
       export PYTHONPATH=$HOME/.local/lib/system:$PYTHONPATH
       mkdir -p ~/.local/lib/system 
+
+      # work setup
+      [[ -f ~/Work/.env ]] && source ~/Work/.env
+      export OPENCODE_CONFIG_DIR=~/Work/opencode
+      export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 
       # worktree scripts
       wta() {
