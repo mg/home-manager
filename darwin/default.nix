@@ -49,6 +49,9 @@
   networking.computerName = machineConfig.hostname;
   networking.hostName = machineConfig.hostname;
   networking.localHostName = machineConfig.hostname;
+  # networking.dns = [ "1.1.1.1" "8.8.8.8" ];
+  # networking.knownNetworkServices = [ "Wi-Fi" ];
+  # networksetup -getdnsservers Wi-Fi
 
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;

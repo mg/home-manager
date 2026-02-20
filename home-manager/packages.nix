@@ -148,6 +148,7 @@
     gitu # https://github.com/altsem/gitu
     gh # https://cli.github.com/
     gh-dash # https://github.com/dlvhdr/gh-dash
+    # lazyworktree # https://github.com/chmouel/lazyworktree
     gmap # https://github.com/seeyebe/gmap
     act # https://nektosact.com/usage/index.html
     httpie
@@ -170,6 +171,9 @@
     atac # https://atac.julien-cpsn.com/
     slumber # https://slumber.lucaspickering.me/introduction.html
     stylua # https://github.com/JohnnyMorganz/StyLua
+
+    # tmux 
+    smug # https://github.com/ivaaaan/smug
 
     # database
     rainfrog # https://github.com/achristmascarl/rainfrog
@@ -198,9 +202,6 @@
     # ollama
     # opencode
     # claude-code
-    gemini-cli
-    codex
-    crush
     mcp-proxy
 
     # aider-chat-full
@@ -213,6 +214,8 @@
     uv
     cargo
 
+    # security 
+    mkcert # https://github.com/FiloSottile/mkcert
 
     # small terminal tools
     # https://github.com/maraloon/timer-tui

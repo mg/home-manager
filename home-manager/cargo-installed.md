@@ -47,3 +47,16 @@ cargo instann tiny-dc
 cargo install bcmr
 ```
 
+## netscanner: Network scanner with features like WiFi scanning, packetdump and more
+[https://github.com/Chleba/netscanner]
+
+```sh
+cargo install netscanner
+```
+
+## octorus: A GitHub CLI tool
+https://github.com/ushironoko/octorus
+
+```sh
+cargo install octorus
+```

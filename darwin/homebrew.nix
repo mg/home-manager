@@ -18,6 +18,7 @@
     "simtool" # https://github.com/azizuysal/simtool
     "postgresql@17"
     "pgvector" # https://github.com/pgvector/pgvector
+    "nicosuave/tap/memex" # https://github.com/nicosuave/memex
   ];
   casks = [
     "db-browser-for-sqlite"

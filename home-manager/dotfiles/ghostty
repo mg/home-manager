@@ -9,6 +9,4 @@ window-save-state = always
 window-padding-color = background
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
-
-keybind = alt+enter=text:"\n"
-# keybind = shift+enter=text:"\n"
+keybind = shift+enter=text:\x1b\r
