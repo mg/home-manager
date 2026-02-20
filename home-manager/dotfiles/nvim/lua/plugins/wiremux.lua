@@ -4,10 +4,10 @@ return {
   "MSmaili/wiremux.nvim",
   dependencies = {
     -- Optional: nicer picker UI
-    --- "ibhagwan/fzf-lua",
+    "ibhagwan/fzf-lua",
   },
   opts = {
-    picker = { adapter = "telescope" },
+    picker = { adapter = "fzf-lua" },
     targets = {
       definitions = {
         opencode = { cmd = "opencode", kind = "pane", split = "horizontal", shell = false },
