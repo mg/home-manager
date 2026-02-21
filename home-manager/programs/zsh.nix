@@ -54,10 +54,15 @@
       mkdir -p ~/.local/lib/node/bin
       export PATH=~/.local/lib/node/bin:$PATH
 
-      # uv python should go under ~./local/lib/python
+      # uv python should go under ~/.local/lib/python
       mkdir -p ~/.local/lib/python
       export PYTHONUSERBASE=$HOME/.local/lib/python/bin
       export PATH=$PYTHONUSERBASE:$PATH
+
+      # elixir should go under ~/.local/lib/elixir/bin
+      mkdir -p ~/.local/lib/elixir/bin
+      export MIX_ESCRIPTS=~/.local/lib/elixir/bin
+      export PATH=$MIX_ESCRIPTS:$PATH
       
       # add my scripts first 
       export PATH=~/.local/bin:$PATH
