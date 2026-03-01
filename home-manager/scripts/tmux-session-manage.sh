@@ -11,6 +11,7 @@ PROJECT_PREFIXES=("" "work/")
 # Collect active tmux sessions (may be empty if tmux not running)
 # We assume this script is run inside an existing tmux client popup/keybinding
 mapfile -t ACTIVE_SESSIONS < <(tmux list-sessions -F '#S' 2>/dev/null || true)
+CURRENT_SESSION=$(tmux display-message -p '#S' 2>/dev/null || true)
 
 # Build an associative set for fast membership tests
 declare -A ACTIVE_SET
@@ -65,6 +66,7 @@ done
 # Build selection list: active sessions first (prefixed with *), then future projects
 SELECTION_LIST=$( {
   for s in "${ACTIVE_SESSIONS[@]}"; do
+    [[ $s == "$CURRENT_SESSION" ]] && continue
     printf '*%s\n' "$s"
   done
   for name in "${ORDERED_PROJECT_NAMES[@]}"; do
