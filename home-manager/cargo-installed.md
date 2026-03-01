@@ -55,8 +55,28 @@ cargo install netscanner
 ```
 
 ## octorus: A GitHub CLI tool
-https://github.com/ushironoko/octorus
+[https://github.com/ushironoko/octorus]
 
 ```sh
 cargo install octorus
+```
+
+## autogitignore
+[https://github.com/Bilal-AKAG/autogitignore]
+
+```sh
+cargo install autogitignore
+```
+
+## jiq: Interactive JSON query tool using jq expressions
+[https://github.com/bellicose100xp/jiq]
+
+```sh
+cargo install jiq
+```
+
+## xfr: Network testing
+[https://github.com/lance0/xfr]
+```sh
+cargo install xfr
 ```
