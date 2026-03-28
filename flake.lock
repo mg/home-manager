@@ -122,6 +122,22 @@
         "type": "github"
       }
     },
+    "llmfit-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772781095,
+        "narHash": "sha256-AV/yNLcRHestVTrk3GAqJAWlZ06+DJJGvIK8wzERfYM=",
+        "owner": "AlexsJones",
+        "repo": "homebrew-llmfit",
+        "rev": "05690104c94faff4801f92c91b4020b560ebc02f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AlexsJones",
+        "repo": "homebrew-llmfit",
+        "type": "github"
+      }
+    },
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src"
@@ -164,6 +180,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "llmfit-tap": "llmfit-tap",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "simtool-tap": "simtool-tap"

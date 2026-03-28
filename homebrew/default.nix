@@ -15,6 +15,7 @@
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "dagger/tap" = inputs.dagger-tap;
       "azizuysal/simtool" = inputs.simtool-tap;
+      "AlexsJones/llmfit" = inputs.llmfit-tap;
     };
     mutableTaps = true; # do not allow installs outside of nix
     # autoMigrate = true; # remember this before first run

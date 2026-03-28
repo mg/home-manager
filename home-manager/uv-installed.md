@@ -5,3 +5,9 @@
 uv tool install showboat
 ```
 
+## FastResume
+[https://github.com/angristan/fast-resume]
+
+```sh
+uv tool install fast-resume
+```

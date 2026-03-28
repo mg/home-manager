@@ -19,6 +19,7 @@
     "postgresql@17"
     "pgvector" # https://github.com/pgvector/pgvector
     "nicosuave/tap/memex" # https://github.com/nicosuave/memex
+    "llmfit"
   ];
   casks = [
     "db-browser-for-sqlite"
@@ -47,10 +48,10 @@
   ];
   taps = [
     "azizuysal/simtool" 
+    "AlexsJones/llmfit"
   ];
 }
  # PostgreSQL is managed via Homebrew (see darwin/homebrew.nix)
  # Start with: brew services start postgresql@17
  # Stop with: brew services stop postgresql@17
  # Status: brew services list
-

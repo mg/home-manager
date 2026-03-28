@@ -42,6 +42,11 @@
       url = "github:azizuysal/simtool";
       flake = false;
     };
+
+    llmfit-tap = {
+      url = "github:AlexsJones/homebrew-llmfit";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, darwin, home-manager, nix-homebrew, ...}@inputs:

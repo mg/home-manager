@@ -80,3 +80,17 @@ cargo install jiq
 ```sh
 cargo install xfr
 ```
+
+## ghgrab: GitHub release assets downloader
+https://github.com/abhixdd/ghgrab
+
+```sh
+cargo install ghgrab
+```
+
+## Matchmaker
+https://github.com/Squirreljetpack/matchmaker
+
+```sh
+cargo install matchmaker-cli
+```
