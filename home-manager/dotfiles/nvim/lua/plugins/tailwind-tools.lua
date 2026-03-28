@@ -5,7 +5,9 @@ return {
     "luckasRanarison/tailwind-tools.nvim",
     lazy = true,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {}, -- your configuration
+    opts = {
+      server = { override = false }, -- tailwindcss LSP configured via vim.lsp.config
+    },
     ft = { "html", "svelte", "astro", "vue", "typescriptreact", "elixir" },
   },
   {
