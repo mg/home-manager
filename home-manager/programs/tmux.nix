@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.tmux.plugins
   # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/tmux-plugins/default.nix
   programs.tmux = {
@@ -15,16 +18,19 @@
       {
         plugin = tmuxPlugins.mode-indicator;
         # extraConfig = "set -g status-right '#{status-right} #{tmux_mode_indicator}'";
-      } 
+      }
       tmuxPlugins.fingers
     ];
-    extraConfig = '' 
+    extraConfig = ''
+      bind-key r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded"
       set -g allow-passthrough on
       set -ga update-environment TERM
       set -ga update-environment TERM_PROGRAM
       set-option -g focus-events on
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
 
-      # vim mode for copy mode 
+      # vim mode for copy mode
       setw -g mode-keys vi
       bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel 'pbcopy'
 
@@ -34,8 +40,8 @@
       bind-key W display-popup -E "tmux list-windows -F '#I: #W #{?window_active,(active),}' | fzf --reverse | cut -d: -f2 | xargs tmux select-window -t"
       bind-key O switch-client -l
       bind-key Q run-shell '
-        OLD_SESSION=$(tmux display-message -p '#S') 
-        tmux switch-client -l 
+        OLD_SESSION=$(tmux display-message -p '#S')
+        tmux switch-client -l
         tmux kill-session -t "$OLD_SESSION"
       '
 
@@ -46,9 +52,9 @@
 
       # start indexing from 1, not 0. Automatically renumber when closing/creating
       set -g renumber-windows on
-      
+
       set -g default-terminal "screen-256color"
-      
+
       # resize panes key bindings
       bind-key -r -T prefix H resize-pane -L
       bind-key -r -T prefix J resize-pane -D
@@ -60,27 +66,27 @@
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
-      
+
       # Use cmd + z (Mac) or alt/esc + z (Linux) to maximize pane size vertically
       bind -n M-z if -F '#{==:#{@pane_zoomed},1}' \
       'select-layout "#{@layout_save}"; set -u @layout_save; set -u @pane_zoomed' \
       'set -g @layout_save "#{window_layout}"; set -g @pane_zoomed 1; resize-pane -y 100%'
-      
+
       # Use cmd + x or alt/esc + x (Linux) to maximize pane size horizontally
       bind -n M-x if -F '#{@layout_save}' \
       {run 'tmux select-layout "#{@layout_save}" ; set -up @layout_save'} \
-      {set -Fp @layout_save "#{window_layout}" ; run 'tmux resize-pane -x 100%'} 
+      {set -Fp @layout_save "#{window_layout}" ; run 'tmux resize-pane -x 100%'}
 
-      # use zsh 
+      # use zsh
       set-option -g default-shell /bin/zsh
       set -g default-shell /bin/zsh
       set -g default-command /bin/zsh
 
       # break pane out of window
-      bind-key B break-pane -d 
+      bind-key B break-pane -d
       bind-key E command-prompt -p "join pane from: " "join-pane -h -s '%%'"
 
-      # tool windows 
+      # tool windows
       bind-key G display-menu -T "Select git tool" \
         "lazygit" l "new-window -n lazygit -c '#{pane_current_path}' lazygit" \
         "heatmap" m "new-window -n heatmap -c '#{pane_current_path}' gmap heat --tui" \
@@ -100,7 +106,7 @@
         "Crush" s "new-window -n Crush -c '#{pane_current_path}' crush" \
         "Aider" a "new-window -n Aider -c '#{pane_current_path}' aider --no-gitignore" \
         "Gemini" g "new-window -n Gemini -c '#{pane_current_path}' gemini" \
-        "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex" 
+        "Codex" x "new-window -n Codex -c '#{pane_current_path}' codex"
 
       bind-key D display-menu -T "Select db client" \
         "psql" p "new-window -n psql -c '#{pane_current_path}' open-psql" \
@@ -109,12 +115,11 @@
     '';
   };
 }
-
-    # Some plugins to check
-    # https://github.com/erikw/tmux-powerline
-    # https://github.com/wfxr/tmux-fzf-url
-    # https://github.com/sainnhe/tmux-fzf
-    # https://github.com/AngryMorrocoy/tmux-neolazygit?tab=readme-ov-file
-    # https://github.com/noscript/tmux-mighty-scroll
-    # https://github.com/jaclu/tmux-menus
+# Some plugins to check
+# https://github.com/erikw/tmux-powerline
+# https://github.com/wfxr/tmux-fzf-url
+# https://github.com/sainnhe/tmux-fzf
+# https://github.com/AngryMorrocoy/tmux-neolazygit?tab=readme-ov-file
+# https://github.com/noscript/tmux-mighty-scroll
+# https://github.com/jaclu/tmux-menus
 
