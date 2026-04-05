@@ -82,15 +82,29 @@ cargo install xfr
 ```
 
 ## ghgrab: GitHub release assets downloader
-https://github.com/abhixdd/ghgrab
+[https://github.com/abhixdd/ghgrab]
 
 ```sh
 cargo install ghgrab
 ```
 
 ## Matchmaker
-https://github.com/Squirreljetpack/matchmaker
+[https://github.com/Squirreljetpack/matchmaker]
 
 ```sh
 cargo install matchmaker-cli
+```
+
+## macpow
+[https://github.com/k06a/macpow]
+
+```sh
+cargo install macpow
+```
+
+## hexexplorer
+[https://github.com/lupodevelop/hexexplorer]
+
+```sh
+cargo install hexplorer
 ```
