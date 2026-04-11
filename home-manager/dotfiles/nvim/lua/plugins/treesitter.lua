@@ -1,9 +1,13 @@
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" },
   opts = {
-    ensure_installed = {
+    auto_install = true,
+  },
+  init = function()
+    local ensureInstalled = {
       "bash",
       "c",
       "diff",
@@ -24,50 +28,37 @@ return { -- Highlight, edit, and navigate code
       "elixir",
       "eex",
       "heex",
-    },
-    -- Autoinstall languages that are not installed
-    auto_install = true,
-    highlight = {
-      enable = true,
-      -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-      --  If you are experiencing weird indenting issues, add the language to
-      --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-      additional_vim_regex_highlighting = { "ruby" },
+    }
 
-      -- disable on large files for speed
-      disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-          return true
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function()
+        -- Enable treesitter highlighting and disable regex syntax
+        pcall(vim.treesitter.start)
+        -- Enable treesitter-based indentation
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
+    })
+
+    -- Install missing parsers on startup
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "LazyDone",
+      once = true,
+      callback = function()
+        local ok, config = pcall(require, "nvim-treesitter.config")
+        if not ok then return end
+        local installed = config.get_installed()
+        local to_install = vim.iter(ensureInstalled)
+          :filter(function(parser)
+            return not vim.tbl_contains(installed, parser)
+          end)
+          :totable()
+        if #to_install > 0 then
+          require("nvim-treesitter").install(to_install)
         end
       end,
-    },
-
-    indent = { enable = true, disable = { "ruby" } },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<A-o>",
-        node_incremental = "<A-o>",
-        scope_incremental = "<A-O>",
-        node_decremental = "<A-i>",
-      },
-    },
-  },
+    })
+  end,
   config = function(_, opts)
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-    -- Prefer git instead of curl in order to improve connectivity in some environments
-    require("nvim-treesitter.install").prefer_git = true
-    ---@diagnostic disable-next-line: missing-fields
-    require("nvim-treesitter.configs").setup(opts)
-
-    -- There are additional nvim-treesitter modules that you can use to interact
-    -- with nvim-treesitter. You should go explore a few and see what interests you:
-    --
-    --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    require("nvim-treesitter").setup(opts)
   end,
 }

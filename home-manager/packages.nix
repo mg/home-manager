@@ -107,6 +107,7 @@
 
     # text tools
     neovim # https://neovim.io/
+    tree-sitter # required by nvim-treesitter main branch
     neovim-remote # https://github.com/mhinz/neovim-remote
     # helix # https://helix-editor.com/
     evil-helix # https://github.com/usagi-flow/evil-helix
