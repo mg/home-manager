@@ -1,4 +1,5 @@
-vim.opt.completeopt = "menuone,noinsert,popup,fuzzy" -- Ensures the menu appears even for a single match and uses the native popup window.
+vim.opt.completeopt =
+"menuone,noinsert,popup,fuzzy"                       -- Ensures the menu appears even for a single match and uses the native popup window.
 -- vim.o.autocomplete = true                           -- Disabled: interferes with LSP completion autotrigger
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -21,8 +22,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, args.buf) then
       vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
-      vim.keymap.set("i", "<C-f>", vim.lsp.inline_completion.get, { buffer = args.buf, desc = "Trigger inline completion" })
-      vim.keymap.set("i", "<C-g>", function() vim.lsp.inline_completion.select({ count = 1 }) end, { buffer = args.buf, desc = "Next inline completion" })
+      vim.keymap.set("i", "<C-f>", vim.lsp.inline_completion.get,
+        { buffer = args.buf, desc = "Trigger inline completion" })
+      vim.keymap.set("i", "<C-g>", function() vim.lsp.inline_completion.select({ count = 1 }) end,
+        { buffer = args.buf, desc = "Next inline completion" })
     end
 
     if client and client:supports_method("textDocument/formatting") then
@@ -160,6 +163,7 @@ local lsp_servers = {
   'json',
   'just',
   'lua',
+  'markdown-oxide',
   'nixd',
   -- 'oxfmt',       -- requires lspconfig.util
   'oxlint',
