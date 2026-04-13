@@ -39,3 +39,23 @@ vim.keymap.set("", "<S-F10>", ":cnext<CR>", { desc = "Next Quickfix item" })
 
 -- copy current file path to clipboard (realative to PWD)
 vim.keymap.set("n", "<leader>fp", ":let @+ = expand('%:.')<CR>", { desc = "Copy current file [p]ath" })
+
+-- LSP format
+vim.keymap.set("n", "<leader>ff", function()
+  if vim.bo.filetype == "markdown" then
+    local buf = vim.api.nvim_get_current_buf()
+    local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+    local input = table.concat(lines, "\n") .. "\n"
+    vim.system({ "prettierd", vim.api.nvim_buf_get_name(buf) }, { stdin = input }, function(result)
+      if result.code == 0 then
+        vim.schedule(function()
+          local new_lines = vim.split(result.stdout, "\n")
+          if new_lines[#new_lines] == "" then table.remove(new_lines) end
+          vim.api.nvim_buf_set_lines(buf, 0, -1, false, new_lines)
+        end)
+      end
+    end)
+  else
+    vim.lsp.buf.format({ async = true })
+  end
+end, { desc = "[f]ormat buffer" })

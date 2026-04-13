@@ -217,6 +217,7 @@
 
     # security 
     mkcert # https://github.com/FiloSottile/mkcert
+    prettierd # markdown/web formatting
 
     # small terminal tools
     # https://github.com/maraloon/timer-tui
