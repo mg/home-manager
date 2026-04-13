@@ -1,11 +1,15 @@
 require("vim._core.ui2").enable({})
 require("opt")
-require("packages")
+if vim.go.loadplugins then
+  require("packages")
+end
 require("builtin")
 require("keymaps")
 require("autocommands")
 require("functions")
 require("lsp")
 
-vim.pack.add({ 'https://github.com/zuqini/zpack.nvim' })
-require('zpack').setup()
+if vim.go.loadplugins then
+  vim.pack.add({ 'https://github.com/zuqini/zpack.nvim' })
+  require('zpack').setup()
+end
