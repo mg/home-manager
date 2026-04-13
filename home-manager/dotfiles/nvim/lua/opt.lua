@@ -77,7 +77,8 @@ vim.opt.termguicolors = true -- enable true color support
 -- set LSP server path
 vim.opt.path:append("~/.local/share/nvim/mason/bin")
 
--- fold methods
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldlevel = 20
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- treesitter-based folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99 -- start with all folds open
+vim.opt.foldlevelstart = 99
