@@ -94,7 +94,7 @@
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yazi.nvim": {
-      "rev": "7d864fd3ccc3fc8fc88ad7765f5a7a1aca76c8ec",
+      "rev": "a4c292e0cb2647773e91ae29eeb87dd26f33c6b9",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     },
     "zpack.nvim": {
