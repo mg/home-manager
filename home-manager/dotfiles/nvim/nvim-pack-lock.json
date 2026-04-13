@@ -37,14 +37,6 @@
       "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
       "src": "https://github.com/rose-pine/neovim"
     },
-    "nord.nvim": {
-      "rev": "80c1e5321505aeb22b7a9f23eb82f1e193c12470",
-      "src": "https://github.com/shaunsingh/nord.nvim"
-    },
-    "nvim-lspconfig": {
-      "rev": "cb5bc0b2b35a6d513e3298d285db81453e791f4f",
-      "src": "https://github.com/neovim/nvim-lspconfig"
-    },
     "nvim-numbertoggle": {
       "rev": "c5c0d305aee8532b5515914a08396b9154394c55",
       "src": "https://github.com/sitiom/nvim-numbertoggle"
@@ -64,10 +56,6 @@
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "onedark.nvim": {
-      "rev": "213c23ae45a04797572242568d5d51937181792d",
-      "src": "https://github.com/navarasu/onedark.nvim"
     },
     "overseer.nvim": {
       "rev": "f818eefff81f4b12fb7cf236f1b6c16768a2fcbc",
