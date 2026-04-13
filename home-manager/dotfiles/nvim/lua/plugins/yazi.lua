@@ -4,6 +4,7 @@ return {
 	"mikavilpas/yazi.nvim",
 	event = "VeryLazy",
 	dependencies = {
+    -- TODO: plenary
 		{ "nvim-lua/plenary.nvim", lazy = true },
 	},
 	keys = {
@@ -16,13 +17,9 @@ return {
 		{
 			-- Open in the current working directory
 			"<leader>cw",
+			mode = { "n", "v" },
 			"<cmd>Yazi cwd<cr>",
 			desc = "Open the file manager in nvim's working directory",
-		},
-		{
-			"<c-up>",
-			"<cmd>Yazi toggle<cr>",
-			desc = "Resume the last yazi session",
 		},
 	},
 	opts = {
@@ -32,3 +29,4 @@ return {
 		},
 	},
 }
+

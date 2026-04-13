@@ -1,0 +1,16 @@
+{
+  "runtime": {
+    "version": "LuaJIT",
+    "path": ["lua/?.lua", "lua/?/init.lua"]
+  },
+  "diagnostics": {
+    "globals": ["vim", "Snacks"]
+  },
+  "workspace": {
+    "checkThirdParty": false,
+    "library": [
+      "${3rd}/luv/library",
+      "$VIMRUNTIME/lua"
+    ]
+  }
+}

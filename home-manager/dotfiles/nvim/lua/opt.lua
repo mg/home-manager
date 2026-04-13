@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.o.winbar = "%f %m"
+
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -76,6 +78,6 @@ vim.opt.termguicolors = true -- enable true color support
 vim.opt.path:append("~/.local/share/nvim/mason/bin")
 
 -- fold methods
-vim.opt.foldmethod = "expr"
-vim.opt.foldlevel = 20
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldlevel = 20
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
