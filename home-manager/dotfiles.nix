@@ -8,7 +8,9 @@
     #   ${builtins.readFile ./dotfiles/kitty/catppuccin-mocha.conf}
     # '';
     file."./.config/nvim" = {
-      source = ./dotfiles/nvim;
+      source = builtins.filterSource
+        (path: type: baseNameOf path != "nvim-pack-lock.json")
+        ./dotfiles/nvim;
       recursive = true;
     };
     file."./.config/stylua.toml".source = ./dotfiles/stylua.toml;
