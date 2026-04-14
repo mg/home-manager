@@ -32,7 +32,7 @@ return {
     { "<leader>:",       function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n",       function() Snacks.picker.notifications() end,   desc = "Notification History" },
     { "<leader>e",       function() vim.cmd("Oil") end,                  desc = "File Explorer" },
-    { "<leader>fg",      function() Snacks.picker.git_files() end,       desc = "Find Git Files" },
+    { "<leader>gf",      function() Snacks.picker.git_files() end,       desc = "Git Files" },
     {
       "<leader>fo",
       function()
@@ -61,12 +61,12 @@ return {
 
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end,           desc = "Git Branches" },
-    { "<leader>gl", function() Snacks.picker.git_log() end,                desc = "Git Log" },
-    { "<leader>gL", function() Snacks.picker.git_log_line() end,           desc = "Git Log Line" },
+    { "<leader>gll", function() Snacks.picker.git_log() end,               desc = "Git Log" },
+    { "<leader>glL", function() Snacks.picker.git_log_line() end,           desc = "Git Log Line" },
+    { "<leader>glf", function() Snacks.picker.git_log_file() end,           desc = "Git Log File" },
     { "<leader>gs", function() Snacks.picker.git_status() end,             desc = "Git Status" },
     { "<leader>gS", function() Snacks.picker.git_stash() end,              desc = "Git Stash" },
     { "<leader>gdh", function() Snacks.picker.git_diff() end,              desc = "Git Diff (Hunks)" },
-    { "<leader>gf", function() Snacks.picker.git_log_file() end,           desc = "Git Log File" },
 
     -- gh
     { "<leader>gp", function() Snacks.picker.gh_pr() end,                  desc = "GitHub Pull Requests (open)" },
