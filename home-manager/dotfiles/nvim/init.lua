@@ -8,6 +8,7 @@ require("keymaps")
 require("autocommands")
 require("functions")
 require("lsp")
+require("package-manager")
 
 if vim.go.loadplugins then
   vim.pack.add({ 'https://github.com/zuqini/zpack.nvim' })

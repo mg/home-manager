@@ -17,6 +17,14 @@
       "rev": "7211b1f6ee61c972be5291e3a9cca1516b790439",
       "src": "https://github.com/dmtrKovalenko/fold-imports.nvim"
     },
+    "fzf-lua": {
+      "rev": "1e866cce085cc6df3d3e4fb59f00105fa84cef6c",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "grug-far.nvim": {
+      "rev": "21604255d0e8f9968322f61f2b6c09e5efe1285a",
+      "src": "https://github.com/MagicDuck/grug-far.nvim"
+    },
     "kanagawa.nvim": {
       "rev": "aef7f5cec0a40dbe7f3304214850c472e2264b10",
       "src": "https://github.com/rebelot/kanagawa.nvim"

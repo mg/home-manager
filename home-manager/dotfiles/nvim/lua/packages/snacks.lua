@@ -87,6 +87,7 @@ return {
     { "<leader>sq",      function() Snacks.picker.qflist() end,                 desc = "Quickfix List" },
     { "<leader>sR",      function() Snacks.picker.resume() end,                 desc = "Resume" },
     { "<leader>su",      function() Snacks.picker.undo() end,                   desc = "Undo History" },
+    { "<leader>sw",      function() Snacks.picker.grep_word() end,              desc = "Search Word under cursor" },
 
     -- LSP
     { "gd",              function() Snacks.picker.lsp_definitions() end,        desc = "Goto Definition" },
