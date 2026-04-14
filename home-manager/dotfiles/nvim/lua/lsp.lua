@@ -1,5 +1,5 @@
 vim.opt.completeopt =
-"menuone,noinsert,popup,fuzzy"                       -- Ensures the menu appears even for a single match and uses the native popup window.
+"menuone,noinsert,popup,fuzzy" -- Ensures the menu appears even for a single match and uses the native popup window.
 -- vim.o.autocomplete = true                           -- Disabled: interferes with LSP completion autotrigger
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -165,7 +165,7 @@ local lsp_servers = {
   'lua',
   'markdown-oxide',
   'nixd',
-  -- 'oxfmt',       -- requires lspconfig.util
+  'oxfmt', -- requires lspconfig.util
   'oxlint',
   'postgres',
   'ruff',
