@@ -19,7 +19,7 @@ return {
 	-- order to load the plugin when the command is run for the first time
 	keys = {
 		{
-			"<leader>hB",
+			"<leader>gdB",
 			function()
 				if vim.bo.filetype == "oil" then
 					vim.notify("LazyGitFilterCurrentFile: switch to a file buffer first (oil:// paths not supported)", vim.log.levels.WARN)

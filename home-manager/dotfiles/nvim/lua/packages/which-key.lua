@@ -8,6 +8,7 @@ return {
       { "<leader>r", group = "[R]ename" },
       { "<leader>s", group = "[S]earch" },
       { "<leader>sg", group = "[G]rug" },
+      { "<leader>gd", group = "[D]iff" },
       { "<leader>w", group = "[W]orkspace" },
       { "<leader>t", group = "[T]oggle" },
       { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
