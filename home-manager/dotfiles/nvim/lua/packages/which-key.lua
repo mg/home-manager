@@ -10,10 +10,11 @@ return {
       { "<leader>sg", group = "[G]rug" },
       { "<leader>g", group = "[G]it" },
       { "<leader>gd", group = "[D]iff" },
+      { "<leader>gh", group = "[H]unk", mode = { "n", "v" } },
       { "<leader>gl", group = "[L]og" },
+      { "<leader>gt", group = "[T]oggle" },
       { "<leader>w", group = "[W]orkspace" },
       { "<leader>t", group = "[T]oggle" },
-      { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
     })
   end,
 }
