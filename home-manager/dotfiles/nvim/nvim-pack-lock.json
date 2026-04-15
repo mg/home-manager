@@ -8,10 +8,18 @@
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
     },
+    "dressing.nvim": {
+      "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",
+      "src": "https://github.com/stevearc/dressing.nvim"
+    },
     "fff.nvim": {
       "rev": "29e6480ea011351fe468fdec3ee01a4ff1d760cf",
       "src": "https://github.com/dmtrKovalenko/fff.nvim",
       "version": "'v0.5.2'"
+    },
+    "flutter-tools.nvim": {
+      "rev": "677cc07c16e8b89999108d2ebeefcfc5f539b73c",
+      "src": "https://github.com/akinsho/flutter-tools.nvim"
     },
     "fold-imports.nvim": {
       "rev": "7211b1f6ee61c972be5291e3a9cca1516b790439",
