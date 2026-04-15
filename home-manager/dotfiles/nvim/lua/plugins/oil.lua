@@ -26,5 +26,9 @@ return {
       },
     })
     vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+    if require("lib").is_git_project() then
+      require("oil-git-status").setup()
+    end
   end,
 }

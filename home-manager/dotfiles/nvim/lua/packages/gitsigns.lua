@@ -1,12 +1,9 @@
 -- Adds git related signs to the gutter, as well as utilities for managing changes
 
-if not require("lib").is_git_project() then
-  return {}
-end
-
 return {
   src = "https://github.com/lewis6991/gitsigns.nvim",
   config = function()
+    if not require("lib").is_git_project() then return end
     require("gitsigns").setup({
       signs = {
         add = { text = "+" },
