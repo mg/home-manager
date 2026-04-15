@@ -1,7 +1,7 @@
 -- https://github.com/sindrets/diffview.nvim
 
 return {
-  "sindrets/diffview.nvim",
+  "dlyongemallo/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   keys = {
     { "<leader>gdv", "<cmd>DiffviewOpen<cr>",          desc = "Open diff[v]iew" },
