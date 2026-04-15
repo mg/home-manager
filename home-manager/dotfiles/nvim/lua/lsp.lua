@@ -143,12 +143,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-local function is_work_project()
-  local cwd = vim.fn.getcwd()
-  local work_dir = vim.fn.expand("~/Work")
-  return cwd:sub(1, #work_dir) == work_dir
-end
-
 local lsp_servers = {
   'ast_grep',
   'awk',
@@ -176,7 +170,7 @@ local lsp_servers = {
   'zls',
 }
 
-if is_work_project() then
+if require("lib").is_work_dir() then
   table.insert(lsp_servers, 'copilot')
 end
 

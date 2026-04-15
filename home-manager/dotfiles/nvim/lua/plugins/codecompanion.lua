@@ -1,12 +1,6 @@
-local function is_work_project()
-  local cwd = vim.fn.getcwd()
-  local work_dir = vim.fn.expand("~/Work")
-  return cwd:sub(1, #work_dir) == work_dir
-end
-
 return {
   "olimorris/codecompanion.nvim",
-  cond = is_work_project,
+  cond = require("lib").is_work_dir,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
