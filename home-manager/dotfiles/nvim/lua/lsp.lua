@@ -1,9 +1,5 @@
-vim.opt.completeopt =
-"menuone,noinsert,popup,fuzzy" -- Ensures the menu appears even for a single match and uses the native popup window.
--- vim.o.autocomplete = true                           -- Disabled: interferes with LSP completion autotrigger
-
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
+  group = vim.api.nvim_create_augroup("lsp_attach", { clear = true }),
   callback = function(args)
     local client_id = args.data.client_id
     if not client_id then
@@ -11,15 +7,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     local client = vim.lsp.get_client_by_id(client_id)
-    if client and client:supports_method("textDocument/completion") then
-      -- Enable native LSP completion for this client + buffer
-      vim.schedule(function()
-        vim.lsp.completion.enable(true, client_id, args.buf, {
-          autotrigger = true,
-        })
-      end)
-    end
-
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, args.buf) then
       vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
       vim.keymap.set("i", "<C-f>", vim.lsp.inline_completion.get,
@@ -173,5 +160,9 @@ local lsp_servers = {
 if require("lib").is_work_dir() then
   table.insert(lsp_servers, 'copilot')
 end
+
+vim.lsp.config('*', {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
 vim.lsp.enable(lsp_servers)

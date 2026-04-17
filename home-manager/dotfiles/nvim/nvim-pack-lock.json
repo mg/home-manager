@@ -1,5 +1,10 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/Saghen/blink.cmp",
+      "version": "'v1'"
+    },
     "codecompanion.nvim": {
       "rev": "680c445eb357c72129d175ea5d481aa9e92ae6a5",
       "src": "https://github.com/olimorris/codecompanion.nvim"
@@ -11,6 +16,10 @@
     "dressing.nvim": {
       "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",
       "src": "https://github.com/stevearc/dressing.nvim"
+    },
+    "elixir-extras.nvim": {
+      "rev": "c792919fcf1048ede9e32be84f6cdf56f1916d0a",
+      "src": "https://github.com/emmanueltouzery/elixir-extras.nvim"
     },
     "fff.nvim": {
       "rev": "29e6480ea011351fe468fdec3ee01a4ff1d760cf",
@@ -65,6 +74,10 @@
       "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
+    "nvim-lspconfig": {
+      "rev": "cb5bc0b2b35a6d513e3298d285db81453e791f4f",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
     "nvim-numbertoggle": {
       "rev": "c5c0d305aee8532b5515914a08396b9154394c55",
       "src": "https://github.com/sitiom/nvim-numbertoggle"
@@ -88,6 +101,10 @@
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "onedark.nvim": {
+      "rev": "213c23ae45a04797572242568d5d51937181792d",
+      "src": "https://github.com/navarasu/onedark.nvim"
     },
     "overseer.nvim": {
       "rev": "f818eefff81f4b12fb7cf236f1b6c16768a2fcbc",
