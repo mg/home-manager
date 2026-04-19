@@ -1,8 +1,9 @@
 return {
   "akinsho/flutter-tools.nvim",
-  cond = require("lib").is_flutter_project,
   lazy = true,
+  ft = { "dart" },
   dependencies = {
+    "mfussenegger/nvim-dap",
     "nvim-lua/plenary.nvim",
     "stevearc/dressing.nvim",
   },
@@ -52,6 +53,9 @@ return {
   },
   config = function()
     require("flutter-tools").setup({
+      debugger = {
+        enabled = true,
+      },
       lsp = {
         color = {
           enabled = true,
