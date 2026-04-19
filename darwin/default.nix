@@ -211,6 +211,14 @@
     sudo -u mg /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
+  system.activationScripts.postActivation.text = ''
+    sudo -u ${machineConfig.username} ${pkgs.duti}/bin/duti -s abnerworks.Typora net.daringfireball.markdown all
+
+    for ext in json jsonl ndjson geojson json5 jsonc har; do
+      sudo -u ${machineConfig.username} ${pkgs.duti}/bin/duti -s dev.zed.Zed ".$ext" all
+    done
+  '';
+
   # system.activationScripts.postUserActivation.text = ''
   #   # Following line should allow us to avoid a logout/login cycle
   #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
