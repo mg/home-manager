@@ -36,6 +36,7 @@
     # home.file."./.config/lsd/config.yaml".source = ./dotfiles/lsd.yaml;
     file."./.config/mc/mc.ini".source = ./dotfiles/mc/ini;
     file."./.local/share/mc/skins/catpuccin.ini".source = ./dotfiles/mc/catpuccin.ini;
+    file."./.config/tuicr/config.toml".source = ./dotfiles/tuicr/config.toml;
     file."./.config/zed/settings.json".source = ./dotfiles/zed/settings.json;
 
     # ssh setup
