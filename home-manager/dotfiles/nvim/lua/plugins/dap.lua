@@ -12,13 +12,13 @@
 --   - Python
 --   - Lua running inside Neovim (config/plugins)
 --   - Dart / Flutter
+--   - Zig via LLDB
 --
 -- Project-specific configs via .vscode/launch.json
---   - nvim-dap reads .vscode/launch.json automatically when you start a debug session
---     with <leader>dc / <F6> / :DapContinue / :DapNew
---   - Project launch.json configs are shown alongside the global configs defined below
+--   - nvim-dap loads .vscode/launch.json automatically so project configs are shown
+--     alongside the global configs defined below
 --   - Use :DapOpenLaunchJson to open/create the project file
---   - Use adapter types that match this config: pwa-node, pwa-chrome, python, dart
+--   - Use adapter types that match this config: pwa-node, pwa-chrome, python, dart, lldb
 --   - Keep launch.json as strict JSON here (no trailing commas)
 --
 -- Example launch.json:
@@ -158,6 +158,29 @@ local function chrome_url()
   end
 
   return url
+end
+
+local function lldb_dap_path()
+  local from_env = vim.env.LLDB_DAP_PATH
+  if from_env and from_env ~= "" and vim.fn.executable(from_env) == 1 then
+    return from_env
+  end
+
+  local from_path = vim.fn.exepath("lldb-dap")
+  if from_path ~= "" then
+    return from_path
+  end
+
+  for _, path in ipairs({
+    "/Library/Developer/CommandLineTools/usr/bin/lldb-dap",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/lldb-dap",
+  }) do
+    if vim.fn.executable(path) == 1 then
+      return path
+    end
+  end
+
+  return nil
 end
 
 return {
@@ -433,6 +456,42 @@ return {
       },
     }
 
+    -- Zig / LLDB
+    -- - "Launch Zig executable": prompts for the compiled binary, defaulting to zig-out/bin/<file>
+    --   when build.zig exists, otherwise ./<file>
+    -- Usage: build with zig build -Doptimize=Debug (or :ZigBuild), set breakpoints, then run <leader>dc.
+    local lldb_dap = lldb_dap_path()
+    if lldb_dap then
+      dap.adapters.lldb = {
+        type = "executable",
+        command = lldb_dap,
+        name = "lldb",
+      }
+
+      dap.configurations.zig = {
+        {
+          type = "lldb",
+          request = "launch",
+          name = "Launch Zig executable",
+          program = function()
+            local root = vim.fs.root(0, "build.zig") or vim.fn.getcwd()
+            local file = vim.api.nvim_buf_get_name(0)
+            local basename = file ~= "" and vim.fn.fnamemodify(file, ":t:r") or "main"
+            local default_program = vim.fs.joinpath(root, basename)
+
+            if vim.fn.filereadable(vim.fs.joinpath(root, "build.zig")) == 1 then
+              default_program = vim.fs.joinpath(root, "zig-out", "bin", basename)
+            end
+
+            return vim.fn.input("Path to executable: ", default_program, "file")
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = false,
+          args = {},
+        },
+      }
+    end
+
     -- Dart / Flutter
     -- - "Launch Flutter": uses lib/main.dart when a Flutter project/SDK is available
     -- - "Launch Dart": uses bin/<project>.dart when present, otherwise the current buffer
@@ -479,5 +538,13 @@ return {
 
       dap.configurations.dart = dart_configurations
     end
+
+    require("dap.ext.vscode").load_launchjs(nil, {
+      ["pwa-node"] = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      ["pwa-chrome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      python = { "python" },
+      dart = { "dart" },
+      lldb = { "zig" },
+    })
   end,
 }
