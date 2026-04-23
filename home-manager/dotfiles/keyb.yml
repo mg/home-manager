@@ -70,3 +70,33 @@
     - name: "Rotate the kill-ring and yank the new top"
       key: "M-y"
 
+- name: neovim dap function keys
+  prefix: ""
+  keybinds:
+    - name: "Continue / start"
+      key: "F6"
+    - name: "Toggle breakpoint"
+      key: "F9"
+    - name: "Step over"
+      key: "F10"
+    - name: "Step into"
+      key: "F11"
+    - name: "Step out"
+      key: "F12"
+
+- name: neovim run / build
+  prefix: ""
+  keybinds:
+    - name: "Run current file / project"
+      key: "F4"
+    - name: "Build current file / project"
+      key: "S-F4"
+
+- name: neovim quickfix
+  prefix: ""
+  keybinds:
+    - name: "Previous quickfix item"
+      key: "S-F9"
+    - name: "Next quickfix item"
+      key: "S-F10"
+
