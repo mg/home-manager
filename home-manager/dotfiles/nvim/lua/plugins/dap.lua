@@ -539,12 +539,5 @@ return {
       dap.configurations.dart = dart_configurations
     end
 
-    require("dap.ext.vscode").load_launchjs(nil, {
-      ["pwa-node"] = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-      ["pwa-chrome"] = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-      python = { "python" },
-      dart = { "dart" },
-      lldb = { "zig" },
-    })
   end,
 }
