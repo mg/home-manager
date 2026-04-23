@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Common Commands
 
 ### Development Commands
-- `just switch` - Rebuild and switch to new configuration (requires sudo)
+- `just switch` - Rebuild and switch to new configuration (requires sudo). Never run this, I will always do it.
 - `just update` - Update flake inputs
 - `just clean` - Run garbage collection
 - `just inspect` - Inspect system configuration dependencies using nix-tree
