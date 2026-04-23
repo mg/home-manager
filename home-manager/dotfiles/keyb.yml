@@ -1,9 +1,9 @@
-- name: tmux 
+- name: tmux
   prefix: "[Ctrl] [a]"
   keybinds:
     - name: "Enter copy mode"
       key: "["
-      
+
 - name: tmux session management
   prefix: "[Ctrl] [a]"
   keybinds:
@@ -23,8 +23,50 @@
       key: "B"
     - name: "Join pane into window"
       key: "E"
-      
-- name: neovim 
+
+- name: readline bare essentials
+  prefix: ""
   keybinds:
-    - name: "Run tools"
-      key: "[Space] t r"
+    - name: "Move back one character"
+      key: "C-b"
+    - name: "Move forward one character"
+      key: "C-f"
+    - name: "Delete character to the left of the cursor"
+      key: "DEL / Backspace"
+    - name: "Delete character under the cursor"
+      key: "C-d"
+    - name: "Insert character at the cursor"
+      key: "Printable character"
+    - name: "Undo the last editing command"
+      key: "C-_ / C-x C-u"
+
+- name: readline movement
+  prefix: ""
+  keybinds:
+    - name: "Move to the start of the line"
+      key: "C-a"
+    - name: "Move to the end of the line"
+      key: "C-e"
+    - name: "Move forward a word"
+      key: "M-f"
+    - name: "Move backward a word"
+      key: "M-b"
+    - name: "Clear the screen and redraw the current line"
+      key: "C-l"
+
+- name: readline killing & yanking
+  prefix: ""
+  keybinds:
+    - name: "Kill from the cursor to the end of the line"
+      key: "C-k"
+    - name: "Kill from the cursor to the end of the current word"
+      key: "M-d"
+    - name: "Kill from the cursor to the start of the current word"
+      key: "M-DEL"
+    - name: "Kill from the cursor to the previous whitespace"
+      key: "C-w"
+    - name: "Yank the most recently killed text"
+      key: "C-y"
+    - name: "Rotate the kill-ring and yank the new top"
+      key: "M-y"
+
