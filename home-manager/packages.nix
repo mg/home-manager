@@ -203,6 +203,7 @@
     # ollama
     # opencode
     # claude-code
+    copilot-language-server
     mcp-proxy
 
     # aider-chat-full

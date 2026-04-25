@@ -146,6 +146,10 @@
       "rev": "26de78d8324f7ac6a3e478319d1eb1f17123eb5b",
       "src": "https://github.com/cameron-wags/rainbow_csv.nvim"
     },
+    "sidekick.nvim": {
+      "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
+      "src": "https://github.com/folke/sidekick.nvim"
+    },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"

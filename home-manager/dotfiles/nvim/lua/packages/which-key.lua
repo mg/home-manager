@@ -3,6 +3,7 @@ return {
   config = function()
     require("which-key").setup({ preset = "classic" })
     require("which-key").add({
+      { "<leader>a", group = "[A]I" },
       { "<leader>c", group = "[C]ode" },
       { "<leader>d", group = "[D]ebug" },
       { "<leader>r", group = "[R]ename" },
