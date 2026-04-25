@@ -89,7 +89,7 @@
       # tool windows
       bind-key G display-menu -T "Select git tool" \
         "lazygit" l "new-window -n lazygit -c '#{pane_current_path}' lazygit" \
-        "heatmap" m "new-window -n heatmap -c '#{pane_current_path}' gmap heat --tui" \
+        "review" r "new-window -n tuicr -c '#{pane_current_path}' tuicr" \
         "tig" t "new-window -n tig -c '#{pane_current_path}' tig" \
         "gitui" i "new-window -n gitui -c '#{pane_current_path}' gitui" \
         "gitu" u "new-window -n gitu -c '#{pane_current_path}' gitu" \
