@@ -57,6 +57,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         [26] = " ", -- TypeParameter
       }
       local sep = " %#WinBarSep#>%* "
+      local function winbar_escape(text)
+        return tostring(text):gsub("%%", "%%%%")
+      end
 
       -- Define winbar highlight groups
       vim.api.nvim_set_hl(0, "WinBarPath", { link = "Comment" })
@@ -97,14 +100,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
           local dir = vim.fn.fnamemodify(path, ":h")
           local fname = vim.fn.fnamemodify(path, ":t")
           local icon, icon_hl = require("nvim-web-devicons").get_icon(fname, nil, { default = true })
-          local bar = "%#" .. (icon_hl or "WinBarIcon") .. "#" .. icon .. "%* "
+          local bar = "%#" .. (icon_hl or "WinBarIcon") .. "#" .. winbar_escape(icon) .. "%* "
           if dir ~= "." then
-            bar = bar .. "%#WinBarPath#" .. dir .. "/%*"
+            bar = bar .. "%#WinBarPath#" .. winbar_escape(dir) .. "/%*"
           end
-          bar = bar .. "%#WinBarFile#" .. fname .. "%*"
+          bar = bar .. "%#WinBarFile#" .. winbar_escape(fname) .. "%*"
           if #breadcrumbs > 0 then
             for _, crumb in ipairs(breadcrumbs) do
-              bar = bar .. sep .. "%#WinBarIcon#" .. crumb.icon .. "%*%#WinBarContext#" .. crumb.name .. "%*"
+              bar = bar .. sep .. "%#WinBarIcon#" .. winbar_escape(crumb.icon) .. "%*%#WinBarContext#" .. winbar_escape(crumb.name) .. "%*"
             end
           end
           if vim.api.nvim_win_is_valid(win) then
