@@ -98,7 +98,7 @@ end
 
 local function zig_build_command(root, file)
   if vim.fn.filereadable(vim.fs.joinpath(root, "build.zig")) == 1 then
-    return { "zig", "build", "-Doptimize=Debug" }, "Built project with zig build"
+    return { "zig", "build" }, "Built project with zig build"
   end
 
   local executable = vim.fs.joinpath(root, vim.fn.fnamemodify(file, ":t:r"))
@@ -114,7 +114,7 @@ end
 
 local function zig_run_command(root, file)
   if vim.fn.filereadable(vim.fs.joinpath(root, "build.zig")) == 1 then
-    return { "zig", "build", "run", "-Doptimize=Debug" }, "Ran project with zig build run"
+    return { "zig", "build", "run" }, "Ran project with zig build run"
   end
 
   return { "zig", "run", file }, "Ran " .. vim.fn.fnamemodify(file, ":~:.")
