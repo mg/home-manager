@@ -13,7 +13,6 @@
       gfd = "git-forgit diff";
       gfs = "git-forgit stash_show";
       gfb = "git-forgit blame";
-      tokei = "tokei -n dots";
     };
 
     initContent = ''
