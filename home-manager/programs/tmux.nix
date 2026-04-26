@@ -54,6 +54,9 @@
       set -g renumber-windows on
 
       set -g default-terminal "screen-256color"
+      set -g pane-border-style "fg=#3b4252"
+      set -g pane-active-border-style "fg=#ffb000"
+      set -g pane-border-status off
 
       # resize panes key bindings
       bind-key -r -T prefix H resize-pane -L
