@@ -1,4 +1,4 @@
 theme = "catppuccin-mocha"
-diff_view = "side-by-side"
+diff_view = "unified"
 wrap = true
 show_file_list = true
