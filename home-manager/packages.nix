@@ -28,7 +28,7 @@
     # xonsh # https://xon.sh/
 
     # task runners
-    just 
+    just
     mask # https://github.com/jacobdeichert/mask
 
     # terminal
@@ -54,7 +54,7 @@
     (superfile.overrideAttrs (oldAttrs: {
       doCheck = false;
     }))
-    # v1.3.2 
+    # v1.3.2
     serpl # https://github.com/yassinebridi/serpl
 
     # search
@@ -75,7 +75,7 @@
 
     # monitoring
     iftop # network monitoring
-    bandwhich 
+    bandwhich
     gping
     # nping # https://github.com/hanshuaikang/Nping
     bottom
@@ -173,14 +173,14 @@
     slumber # https://slumber.lucaspickering.me/introduction.html
     stylua # https://github.com/JohnnyMorganz/StyLua
 
-    # tmux 
+    # tmux
     smug # https://github.com/ivaaaan/smug
 
     # database
     rainfrog # https://github.com/achristmascarl/rainfrog
     duckdb
 
-    # disable because it is pulling in a borken python package (trouble-log.md#2025-07-17) 
+    # disable because it is pulling in a borken python package (trouble-log.md#2025-07-17)
     # harlequin # https://harlequin.sh/docs/getting-started/usage
 
     # pdf
@@ -198,7 +198,7 @@
     nix-tree
     mcp-nixos # https://github.com/utensils/mcp-nixos
     # claude mcp add nixos --scope project mcp-nixos -> ~/.claude.json
-    
+
     # llms
     # ollama
     # opencode
@@ -209,22 +209,23 @@
     # aider-chat-full
     # tmuxai # https://tmuxai.dev/
 
-    # system wide runtimes and compilers 
+    # system wide runtimes and compilers
     go
     nodejs_22
     bun
     uv
     cargo
 
-    # security 
+    # security
     mkcert # https://github.com/FiloSottile/mkcert
     prettierd # markdown/web formatting
     markdown-oxide # markdown LSP
+    marp-cli # https://github.com/marp-team/marp-cli
 
     # small terminal tools
     # https://github.com/maraloon/timer-tui
 
-    # global install of elixir 
+    # global install of elixir
     beam28Packages.erlang
     beam28Packages.elixir_1_19
   ];
