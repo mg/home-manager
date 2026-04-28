@@ -178,6 +178,10 @@
       "rev": "813736e6891b8dccca58aa3baaeabef032f44525",
       "src": "https://github.com/axieax/urlview.nvim"
     },
+    "wayfinder.nvim": {
+      "rev": "b4a1baa078c7815f23d3a403321fdf778adfbc25",
+      "src": "https://github.com/error311/wayfinder.nvim"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"

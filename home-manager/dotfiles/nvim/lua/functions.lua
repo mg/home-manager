@@ -32,6 +32,10 @@ vim.api.nvim_create_user_command('CopyFileName', function()
   copy_to_clipboard(path, 'Copied "' .. path .. '" to the clipboard!')
 end, {})
 
+vim.api.nvim_create_user_command('Scratch', function()
+  vim.cmd('new | setlocal buftype=nofile bufhidden=hide noswapfile')
+end, { desc = 'Open a scratch buffer' })
+
 -- Keep :Open generic and route to an app based on the current buffer.
 --
 -- Structure notes:
