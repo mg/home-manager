@@ -39,5 +39,9 @@
        source = ./scripts/tmux-session-manage.sh;
        executable = true;
     };
+    file."./.local/bin/tmux-pane-vertical-maximize" = {
+       source = ./scripts/tmux-pane-vertical-maximize.sh;
+       executable = true;
+    };
   };
 }

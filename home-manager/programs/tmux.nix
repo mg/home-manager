@@ -70,10 +70,9 @@
       bind k select-pane -U
       bind l select-pane -R
 
-      # Use cmd + z (Mac) or alt/esc + z (Linux) to maximize pane size vertically
-      bind -n M-z if -F '#{==:#{@pane_zoomed},1}' \
-      'select-layout "#{@layout_save}"; set -u @layout_save; set -u @pane_zoomed' \
-      'set -g @layout_save "#{window_layout}"; set -g @pane_zoomed 1; resize-pane -y 100%'
+      # Maximize pane size vertically, leaving panes above/below at tmux's minimum height
+      bind-key Z run-shell "tmux-pane-vertical-maximize '#{pane_id}'"
+      bind -n M-z run-shell "tmux-pane-vertical-maximize '#{pane_id}'"
 
       # Use cmd + x or alt/esc + x (Linux) to maximize pane size horizontally
       bind -n M-x if -F '#{@layout_save}' \

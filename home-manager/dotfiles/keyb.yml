@@ -19,6 +19,8 @@
 - name: tmux window management
   prefix: "[Ctrl] [a]"
   keybinds:
+    - name: "Vertically maximize pane"
+      key: "Z"
     - name: "Break pane from window"
       key: "B"
     - name: "Join pane into window"
