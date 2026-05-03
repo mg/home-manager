@@ -18,7 +18,18 @@ return {
           },
         },
       },
-      indent = { enabled = true, animate = { enabled = false }, },
+      indent = {
+        enabled = true,
+        animate = { enabled = false },
+        filter = function(buf)
+          local filetype = vim.bo[buf].filetype
+
+          return vim.g.snacks_indent ~= false
+            and vim.b[buf].snacks_indent ~= false
+            and vim.bo[buf].buftype == ""
+            and not filetype:match("^pi%-session")
+        end,
+      },
       image = { enabled = true },
       explorer = { enabled = false },
       bigfile = { enabled = true },
