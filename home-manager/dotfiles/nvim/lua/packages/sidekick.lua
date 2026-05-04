@@ -3,8 +3,22 @@
 return {
   src = "https://github.com/folke/sidekick.nvim",
   config = function()
+    local function send_file_context(ctx)
+      local loc = require("sidekick.cli.context.location")
+      local ok, source_path = pcall(vim.api.nvim_buf_get_var, ctx.buf, "pi_session_path")
+
+      if ok and type(source_path) == "string" and vim.fn.filereadable(source_path) == 1 then
+        return loc.get(vim.tbl_extend("force", ctx, { name = source_path }), { kind = "file" })
+      end
+
+      return loc.is_file(ctx.buf) and loc.get(ctx, { kind = "file" })
+    end
+
     require("sidekick").setup({
       cli = {
+        context = {
+          file = send_file_context,
+        },
         mux = {
           enabled = true,
           create = "split",
