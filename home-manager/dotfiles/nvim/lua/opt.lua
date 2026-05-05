@@ -28,6 +28,12 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Neovim 0.12 may default to `rg --vimgrep -uu`, which ignores .gitignore and
+-- searches hidden/ignored directories. A plain `:grep test` can then scan huge
+-- trees like node_modules and freeze the machine.
+vim.opt.grepprg = "rg --vimgrep --smart-case"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
