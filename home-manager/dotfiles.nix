@@ -20,7 +20,7 @@
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     # file."./.config/gh-dash/config.yml".source = ./dotfiles/gh-dash.yml;
-    
+
     # keyb not available in nix yet
     # https://github.com/NixOS/nixpkgs/blob/master/CONTRIBUTING.md
     # install via go to GOPATH
@@ -38,6 +38,9 @@
     file."./.local/share/mc/skins/catpuccin.ini".source = ./dotfiles/mc/catpuccin.ini;
     file."./.config/tuicr/config.toml".source = ./dotfiles/tuicr/config.toml;
     file."./.config/zed/settings.json".source = ./dotfiles/zed/settings.json;
+
+    # tv channels
+    file."./.config/television/cable/obs-files.toml".source = ./dotfiles/tv/obs-files.toml;
 
     # ssh setup
     file.".ssh/config".source = ./dotfiles/ssh/config;

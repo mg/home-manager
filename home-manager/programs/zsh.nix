@@ -48,7 +48,7 @@
       mkdir -p ~/.local/lib/bun
       export BUN_INSTALL=$HOME/.local/lib/bun
       export PATH=~/.local/lib/bun/bin:$PATH
-      
+
       # node js should go under ~/.local/lib/node
       mkdir -p ~/.local/lib/node/bin
       export PATH=~/.local/lib/node/bin:$PATH
@@ -62,8 +62,8 @@
       mkdir -p ~/.local/lib/elixir/bin
       export MIX_ESCRIPTS=~/.local/lib/elixir/bin
       export PATH=$MIX_ESCRIPTS:$PATH
-      
-      # add my scripts first 
+
+      # add my scripts first
       export PATH=~/.local/bin:$PATH
 
       export OBSIDIAN_PATH="/Users/mg/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsidian"
@@ -73,6 +73,9 @@
 
       # eval "$(intelli-shell init zsh)" # install with cargo install intelli-shell --locked
 
+      # tv
+      eval "$(tv init zsh)"
+
       # https://github.com/n1ghtmare/tiny-dc
       dc() {
         local result=$(command tiny-dc "$@")
@@ -81,7 +84,7 @@
 
       # custom python packages go under ~./local/lib/system
       export PYTHONPATH=$HOME/.local/lib/system:$PYTHONPATH
-      mkdir -p ~/.local/lib/system 
+      mkdir -p ~/.local/lib/system
 
       # work setup
       [[ -f ~/Work/.env ]] && source ~/Work/.env
@@ -97,15 +100,15 @@
         if [[ -n "$cd_cmd" ]]; then
           eval "$cd_cmd"
         fi
-      } 
+      }
 
       wtr() {
         worktree remove "$@"
-      } 
+      }
 
       wtl() {
         worktree list
-      } 
+      }
 
       wts() {
         # Fuzzy switch to another worktree
@@ -115,10 +118,10 @@
         if [[ -n "$cd_cmd" ]]; then
           eval "$cd_cmd"
         fi
-      } 
+      }
 
       rndpwd() {
-        openssl rand -base64 32 | pbcopy 
+        openssl rand -base64 32 | pbcopy
       }
     '';
   };

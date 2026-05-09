@@ -1,0 +1,20 @@
+[metadata]
+name = "obs"
+description = "Browse Obsidian notse from `obs.files` and open the selected note in Neovim"
+requirements = ["obs", "nvim", "bat"]
+
+[source]
+command = "obsidian files"
+
+[preview]
+command = "bat -n --color=always '{}'"
+env = { BAT_THEME = "ansi" }
+
+[keybindings]
+enter = "actions:edit"
+
+[actions.edit]
+description = "Open the selected note in Neovim"
+command = "nvim {}"
+shell = "bash"
+mode = "execute"
