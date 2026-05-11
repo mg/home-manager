@@ -23,7 +23,7 @@ cargo install --git https://github.com/Adarsh-Roy/gthr --locked
 [https://github.com/htin1/toktop]
 
 ```sh
-cargo install toktop --locked 
+cargo install toktop --locked
 ```
 
 ## envx: Environment variable manager
@@ -107,4 +107,11 @@ cargo install macpow
 
 ```sh
 cargo install hexplorer
+```
+
+## ast-outline
+[https://github.com/aeroxy/ast-outline]
+
+```sh
+cargo install ast-outline
 ```
