@@ -43,5 +43,9 @@
        source = ./scripts/tmux-pane-vertical-maximize.sh;
        executable = true;
     };
+    file."./.local/bin/tmux-pane-cycle-vertical-maximize" = {
+       source = ./scripts/tmux-pane-cycle-vertical-maximize.sh;
+       executable = true;
+    };
   };
 }

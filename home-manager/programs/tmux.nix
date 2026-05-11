@@ -74,6 +74,9 @@
       bind-key Z run-shell "tmux-pane-vertical-maximize '#{pane_id}'"
       bind -n M-z run-shell "tmux-pane-vertical-maximize '#{pane_id}'"
 
+      # Cycle down through vertical panes, wrapping to the top, and vertically maximize the selected pane
+      bind -n M-j run-shell "tmux-pane-cycle-vertical-maximize '#{pane_id}'"
+
       # Use cmd + x or alt/esc + x (Linux) to maximize pane size horizontally
       bind -n M-x if -F '#{@layout_save}' \
       {run 'tmux select-layout "#{@layout_save}" ; set -up @layout_save'} \
