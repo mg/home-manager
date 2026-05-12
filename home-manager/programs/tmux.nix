@@ -117,6 +117,9 @@
         "psql" p "new-window -n psql -c '#{pane_current_path}' open-psql" \
         "DuckDB" d "new-window -n DuckDB -c '#{pane_current_path}' open-duckdb" \
         "Rainfrog" r "new-window -n Rainfrog -c '#{pane_current_path}' open-rainfrog"
+
+      # floating home terminal
+      bind-key H display-popup -d "~/" -E "fish"
     '';
   };
 }

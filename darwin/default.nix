@@ -21,7 +21,7 @@
   programs.zsh.enable = true;
 
   environment = {
-    shells = with pkgs; [ nushell ];
+    shells = with pkgs; [ fish nushell ];
 
     systemPackages = [
       pkgs.coreutils-full

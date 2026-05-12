@@ -3,11 +3,14 @@
 { pkgs, ... }:
 {
   programs = {
+    fish.enable = true;
+
     bat.enable = true;
     bat.config.theme = "TwoDark"; # batextras?
 
     fzf = {
       enable = true;
+      enableFishIntegration = true;
       enableZshIntegration = true;
     };
    
@@ -15,6 +18,7 @@
     # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.atuin.enable
     atuin = {
       enable = true;
+      enableFishIntegration = true;
       enableZshIntegration = true;
       flags = [
         "--disable-ctrl-r"            
@@ -38,6 +42,7 @@
 
     zoxide = {
       enable = true;
+      enableFishIntegration = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
       options = ["--cmd cd"];
@@ -46,6 +51,7 @@
     # https://starship.rs
     starship = {
       enable = true;
+      enableFishIntegration = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
     };
@@ -78,6 +84,7 @@
     # https://yazi-rs.github.io/
     yazi = {
       enable = true;
+      enableFishIntegration = true;
       enableZshIntegration = true;
     };
 
