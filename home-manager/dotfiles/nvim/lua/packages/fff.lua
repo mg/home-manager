@@ -16,10 +16,10 @@ return {
     end
 
     require("fff").setup({
-      debug = {
-        enabled = true,
-        show_scores = true,
-      },
+      layout = {
+        height = 1.0,
+        width = 1.0,
+      }
     })
 
     vim.keymap.set("n", "ff", function() require("fff").find_files() end, { desc = "FFFind files" })
@@ -27,5 +27,7 @@ return {
     vim.keymap.set("n", "fz", function()
       require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } })
     end, { desc = "Live fffuzy grep" })
+    vim.keymap.set("n", "fw", function() require("fff").live_grep({ query = vim.fn.expand("<cword>") }) end,
+      { desc = "Search current word" })
   end,
 }
