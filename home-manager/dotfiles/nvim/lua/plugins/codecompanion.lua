@@ -1,6 +1,5 @@
 return {
   "olimorris/codecompanion.nvim",
-  cond = require("lib").is_work_dir,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },

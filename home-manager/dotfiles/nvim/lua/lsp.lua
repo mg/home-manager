@@ -137,6 +137,7 @@ local lsp_servers = {
   'ast_grep',
   'awk',
   'bashls',
+  'copilot',
   'dartls',
   'docker_language_server',
   -- 'eslint',      -- requires lspconfig.util
@@ -159,10 +160,6 @@ local lsp_servers = {
   'ty',
   'zls',
 }
-
-if require("lib").is_work_dir() then
-  table.insert(lsp_servers, 'copilot')
-end
 
 vim.lsp.config('*', {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
