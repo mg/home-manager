@@ -203,6 +203,7 @@
     # ollama
     # opencode
     # claude-code
+    llama-cpp
     copilot-language-server
     mcp-proxy
 
