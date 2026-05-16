@@ -137,6 +137,7 @@ local lsp_servers = {
   'ast_grep',
   'awk',
   'bashls',
+  'clangd',
   'copilot',
   'dartls',
   'docker_language_server',
