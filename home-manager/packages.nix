@@ -173,6 +173,7 @@
     atac # https://atac.julien-cpsn.com/
     slumber # https://slumber.lucaspickering.me/introduction.html
     stylua # https://github.com/JohnnyMorganz/StyLua
+    wrkflw # https://github.com/bahdotsh/wrkflw
 
     # tmux
     smug # https://github.com/ivaaaan/smug
