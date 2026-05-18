@@ -25,7 +25,13 @@ return {
         enabled = true,
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { "filemention", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          filemention = {
+            name = "filemention",
+            module = "filemention.sources.blink",
+          },
+        },
       },
       fuzzy = {
         implementation = "lua",
