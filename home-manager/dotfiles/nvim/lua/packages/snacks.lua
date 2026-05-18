@@ -1,3 +1,20 @@
+local function format_lsp_workspace_symbol(item, picker)
+  local ret = {}
+  local kind = item.lsp_kind or item.kind or "Unknown"
+  kind = picker.opts.icons.kinds[kind] and kind or "Unknown"
+
+  ret[#ret + 1] = { picker.opts.icons.kinds[kind] or "", "SnacksPickerIcon" .. kind }
+  ret[#ret + 1] = { " " }
+  ret[#ret + 1] = { vim.trim((item.name or item.detail or ""):gsub("\r?\n", " ")) }
+
+  if item.file then
+    ret[#ret + 1] = { " " }
+    ret[#ret + 1] = { item.file, "SnacksPickerFile" }
+  end
+
+  return ret
+end
+
 return {
   src = "https://github.com/folke/snacks.nvim",
   config = function()
@@ -111,8 +128,8 @@ return {
     { "gy",          function() Snacks.picker.lsp_type_definitions() end,   desc = "Goto T[y]pe Definition" },
     { "gai",         function() Snacks.picker.lsp_incoming_calls() end,     desc = "C[a]lls Incoming" },
     { "gao",         function() Snacks.picker.lsp_outgoing_calls() end,     desc = "C[a]lls Outgoing" },
-    { "<leader>ss",  function() Snacks.picker.lsp_symbols() end,            desc = "LSP Symbols" },
-    { "<leader>sS",  function() Snacks.picker.lsp_workspace_symbols() end,  desc = "LSP Workspace Symbols" },
+    { "<leader>ss",  function() Snacks.picker.lsp_symbols() end,                                      desc = "LSP Symbols" },
+    { "<leader>sS",  function() Snacks.picker.lsp_workspace_symbols({ format = format_lsp_workspace_symbol }) end, desc = "LSP Workspace Symbols" },
 
   }
 }
