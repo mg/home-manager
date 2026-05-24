@@ -154,6 +154,7 @@
     gmap # https://github.com/seeyebe/gmap
     act # https://nektosact.com/usage/index.html
     httpie
+    resterm # https://github.com/unkn0wn-root/resterm
     xh # https://github.com/ducaale/xh
     jq # https://jqlang.github.io/jq/
     jqp # https://github.com/noahgorstein/jqp

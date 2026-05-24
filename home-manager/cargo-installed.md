@@ -115,3 +115,17 @@ cargo install hexplorer
 ```sh
 cargo install ast-outline
 ```
+
+## slumber
+[https://slumber.lucaspickering.me]
+
+```sh
+cargo install slumber --locked
+```
+
+### rmux
+[https://rmux.io/]
+
+```sh
+cargo install rmux --locked
+```
