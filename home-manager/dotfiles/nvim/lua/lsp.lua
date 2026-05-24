@@ -137,6 +137,7 @@ local lsp_servers = {
   'ast_grep',
   'awk',
   'bashls',
+  'behave_lsp',
   'clangd',
   'copilot',
   'dartls',
