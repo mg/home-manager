@@ -1,7 +1,3 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Common Commands
 
 ### Development Commands
@@ -65,3 +61,6 @@ This is a **Nix Darwin + Home Manager configuration** for macOS system managemen
 
 ### Testing Changes
 After making configuration changes, always run `just switch` to apply them. For neovim config testing, use `just test-nvim` to test in isolation.
+
+## Importa Neovim information
+Whenever installing a new Neovim plugin, ALWAYS ensure we are not installing something on this list: https://github.com/phanen/nvim-suspicious-plugin-scanner
