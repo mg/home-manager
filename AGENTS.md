@@ -11,8 +11,8 @@
 
 ### Nix Commands
 - `nix flake update` - Update all flake inputs
-- `sudo darwin-rebuild switch --flake .` - Manual rebuild (same as `just switch`)
-- `nix-tree .#darwinConfigurations.L45024.system` - Inspect dependencies
+- `sudo darwin-rebuild switch --flake .#mg-m4` - Manual rebuild (same as `just switch`)
+- `nix-tree .#darwinConfigurations.mg-m4.system` - Inspect dependencies
 - `nix-collect-garbage -d` - Clean up old generations
 
 ## Architecture
@@ -41,7 +41,7 @@ This is a **Nix Darwin + Home Manager configuration** for macOS system managemen
 - **session-variables.nix** - Environment variables
 
 #### Machine Configuration
-- Target hostname: `L45024`
+- Target hostname: `mg-m4`
 - User: `mg`
 - System: `aarch64-darwin` (Apple Silicon)
 

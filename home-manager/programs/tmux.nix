@@ -83,9 +83,7 @@
       {set -Fp @layout_save "#{window_layout}" ; run 'tmux resize-pane -x 100%'}
 
       # use zsh
-      set-option -g default-shell /bin/zsh
       set -g default-shell /bin/zsh
-      set -g default-command /bin/zsh
 
       # break pane out of window
       bind-key B break-pane -d

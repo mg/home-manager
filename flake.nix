@@ -53,13 +53,13 @@
     let
       machineConfig = {
         system =  "aarch64-darwin";
-        hostname = "L45024";
+        hostname = "mg-m5";
         username = "mg";
         home = "/Users/mg";
-        homeManager.stateVersion = "23.05";
+        homeManager.stateVersion = "26.05";
       };
       pkgs = import nixpkgs { system = machineConfig.system; config.allowUnfree = true; };
-    in 
+    in
       {
         darwinConfigurations.${machineConfig.hostname}= darwin.lib.darwinSystem {
           system = machineConfig.system;

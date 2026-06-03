@@ -6,7 +6,7 @@ default:
 
 # Rebuild and switch to new configuration
 switch:
-  sudo darwin-rebuild switch --flake .
+  sudo darwin-rebuild switch --flake .#mg-m5
 
 # Update flake inputs
 update:
@@ -27,11 +27,11 @@ clean:
 # Run package in temporary shell
 run package:
   -nix-shell -p "{{package}}"
-	
+
 # Inspect system configuration dependencies
 inspect:
-  nix-tree .#darwinConfigurations.L45024.system
+  nix-tree .#darwinConfigurations.mg-m5.system
 
-# Test neovim configuration 
+# Test neovim configuration
 test-nvim:
   pushd ./home-manager/dotfiles/nvim; export NVIM_APPNAME=nvim-homemanager && nvim; popd

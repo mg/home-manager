@@ -1,7 +1,7 @@
 {
   enable = true;
-  caskArgs.no_quarantine = true;
   global.brewfile = true;
+  onActivation.autoUpdate = true;
   masApps = {
     # "Gifski" = 1351639930;
     /* "LimeChat" = 414030210;
@@ -16,35 +16,35 @@
     "mas"
     "cocoapods"
     "simtool" # https://github.com/azizuysal/simtool
-    "postgresql@17"
-    "pgvector" # https://github.com/pgvector/pgvector
-    "nicosuave/tap/memex" # https://github.com/nicosuave/memex
+    # "postgresql@17"
+    # "pgvector" # https://github.com/pgvector/pgvector
+    # "nicosuave/tap/memex" # https://github.com/nicosuave/memex
     "llmfit"
   ];
   casks = [
     "db-browser-for-sqlite"
     # "xcodes"
-    "hammerspoon"
-    "element"
-    "bruno" # https://www.usebruno.com
+    # "hammerspoon"
+    # "element"
+    # "bruno" # https://www.usebruno.com
     "devtoys" # https://github.com/ObuchiYuki/DevToysMac
-    "lapce" # https://lapce.dev/
-    "zed" # https://zed.dev/
-    "obs" # https://obsproject.com/
-    "rio" # https://raphamorim.io/rio/
-    "karabiner-elements" # https://karabiner-elements.pqrs.org/
+    # "lapce" # https://lapce.dev/
+     "zed" # https://zed.dev/
+    # "obs" # https://obsproject.com/
+    # "rio" # https://raphamorim.io/rio/
+    # "karabiner-elements" # https://karabiner-elements.pqrs.org/
     "yaak" # https://yaak.app/
-    "container-use"
-    "steipete/tap/codexbar"
+    # "container-use"
+    # "steipete/tap/codexbar"
     # "simtool" # https://github.com/azizuysal/simtool
     #"lume" # https://github.com/trycua/lume, vm on macos
     #"google-chrome"
     #"firefox"
-    #"obsidian"
-    #"netnewswire"
-    #"vlc"
+    "obsidian"
+    "netnewswire"
+    "vlc"
     #"lastpass"
-    #"discord"
+    "discord"
   ];
   taps = [
     "azizuysal/simtool" 

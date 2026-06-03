@@ -6,7 +6,7 @@
 {
   system.primaryUser = "mg"; 
   system.stateVersion = 5;
-  ids.gids.nixbld = 30000; # TODO: remove this when changing to next Mac and reinstalling
+  ids.gids.nixbld = 350;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -214,8 +214,10 @@
   system.activationScripts.postActivation.text = ''
     sudo -u ${machineConfig.username} ${pkgs.duti}/bin/duti -s abnerworks.Typora net.daringfireball.markdown all
 
-    for ext in json jsonl ndjson geojson json5 jsonc har; do
-      sudo -u ${machineConfig.username} ${pkgs.duti}/bin/duti -s dev.zed.Zed ".$ext" all
+    # Use UTIs that LaunchServices knows about. Some extensions like jsonl/json5/jsonc/har
+    # resolve to dynamic UTIs and `duti` fails with error -50 during activation.
+    for uti in public.json public.ndjson public.geojson; do
+      sudo -u ${machineConfig.username} ${pkgs.duti}/bin/duti -s dev.zed.Zed "$uti" all
     done
   '';
 
