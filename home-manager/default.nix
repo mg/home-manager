@@ -13,7 +13,7 @@
       imports = [
         ./packages.nix
         ./programs.nix
-        ./programs/zsh.nix
+        ./programs/fish.nix
         ./programs/tmux.nix
         ./programs/zellij.nix
         ./session-variables.nix

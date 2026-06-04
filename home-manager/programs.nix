@@ -3,15 +3,13 @@
 { pkgs, ... }:
 {
   programs = {
-    fish.enable = true;
-
     bat.enable = true;
     bat.config.theme = "TwoDark"; # batextras?
 
     fzf = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
     };
    
     # https://github.com/atuinsh/atuin
@@ -19,7 +17,7 @@
     atuin = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       flags = [
         "--disable-ctrl-r"            
       ];
@@ -43,7 +41,7 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       enableNushellIntegration = true;
       options = ["--cmd cd"];
     };
@@ -52,14 +50,14 @@
     starship = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       enableNushellIntegration = true;
     };
 
     # https://direnv.net/
     direnv = {
       enable = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       enableNushellIntegration = true;
       nix-direnv.enable = true;
       config.source = dotfiles/direnv.toml;
@@ -85,7 +83,7 @@
     yazi = {
       enable = true;
       enableFishIntegration = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
     };
 
     #carapace = {

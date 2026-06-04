@@ -16,9 +16,10 @@
   users.users.${machineConfig.username} = {
     name = machineConfig.username;
     home = machineConfig.home;
+    shell = pkgs.fish;
   };
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   environment = {
     shells = with pkgs; [ fish nushell ];

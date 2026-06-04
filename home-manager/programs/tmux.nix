@@ -82,8 +82,10 @@
       {run 'tmux select-layout "#{@layout_save}" ; set -up @layout_save'} \
       {set -Fp @layout_save "#{window_layout}" ; run 'tmux resize-pane -x 100%'}
 
-      # use zsh
-      set -g default-shell /bin/zsh
+      # use fish
+      set -g default-shell ${pkgs.fish}/bin/fish
+      set -g default-command "${pkgs.reattach-to-user-namespace}/bin/reattach-to-user-namespace -l ${pkgs.fish}/bin/fish"
+      set-environment -g SHELL ${pkgs.fish}/bin/fish
 
       # break pane out of window
       bind-key B break-pane -d
