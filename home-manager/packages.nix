@@ -142,6 +142,7 @@
     presenterm # https://github.com/mfontanini/presenterm
 
     # software development
+    devenv # https://devenv.sh
     clang-tools
     lazygit
     git-cliff # https://git-cliff.org/

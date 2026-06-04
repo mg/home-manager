@@ -60,6 +60,10 @@
       enableZshIntegration = false;
       enableNushellIntegration = true;
       nix-direnv.enable = true;
+      # Make `use devenv` available in .envrc files.
+      stdlib = ''
+        eval "$(${pkgs.devenv}/bin/devenv direnvrc)"
+      '';
       config.source = dotfiles/direnv.toml;
     };
 
