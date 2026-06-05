@@ -192,6 +192,73 @@
     "com.apple.commerce".AutoUpdate = true;
   };
 
+  # Local PostgreSQL server for development.
+  # `enableTCPIP = false` keeps it bound to localhost only (no external access).
+  services.postgresql = {
+    enable = true;
+    # Use withPackages even with no extra plugins so PostgreSQL's bundled
+    # modules (for example dict_snowball) are available from $libdir on Darwin.
+    package = pkgs.postgresql_17.withPackages (_: []);
+    dataDir = "${machineConfig.home}/.local/state/postgresql/${pkgs.postgresql_17.psqlSchema}";
+    # New development clusters should default to UTF-8 so Mix/Ecto/Ash can
+    # create databases without needing `TEMPLATE template0` workarounds.
+    # Note: initdbArgs only applies when the dataDir is initialized for the first time.
+    initdbArgs = [
+      "--encoding=UTF8"
+      "--locale=C"
+    ];
+    enableTCPIP = false;
+    authentication = ''
+      # Local development only; PostgreSQL listens on localhost and the Unix socket.
+      local all all trust
+      host  all all 127.0.0.1/32 trust
+      host  all all ::1/128      trust
+    '';
+  };
+
+  # PostgreSQL server logs are written by launchd here:
+  #   stdout: /tmp/postgresql.log
+  #   stderr: /tmp/postgresql.error.log
+  launchd.user.agents.postgresql.serviceConfig = {
+    StandardOutPath = "/tmp/postgresql.log";
+    StandardErrorPath = "/tmp/postgresql.error.log";
+  };
+
+  system.activationScripts.postgresqlDataDir.text = ''
+    mkdir -p "${machineConfig.home}/.local/state/postgresql"
+    chown ${machineConfig.username}:staff "${machineConfig.home}/.local/state/postgresql"
+  '';
+
+  # nix-darwin does not currently support services.postgresql.ensureUsers,
+  # so ensure the local development role/database with an idempotent launchd job.
+  launchd.user.agents.postgresql-init-dev-user = {
+    script = ''
+      set -euo pipefail
+
+      for i in $(${pkgs.coreutils}/bin/seq 1 30); do
+        if ${pkgs.postgresql_17}/bin/pg_isready -h localhost -p 5432 -U postgres >/dev/null 2>&1; then
+          break
+        fi
+        ${pkgs.coreutils}/bin/sleep 1
+      done
+
+      if ! ${pkgs.postgresql_17}/bin/psql -h localhost -U postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname = '${machineConfig.username}'" | ${pkgs.gnugrep}/bin/grep -q 1; then
+        ${pkgs.postgresql_17}/bin/createuser -h localhost -U postgres --superuser ${machineConfig.username}
+      fi
+
+      if ! ${pkgs.postgresql_17}/bin/psql -h localhost -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname = '${machineConfig.username}'" | ${pkgs.gnugrep}/bin/grep -q 1; then
+        ${pkgs.postgresql_17}/bin/createdb -h localhost -U postgres -O ${machineConfig.username} ${machineConfig.username}
+      fi
+    '';
+    serviceConfig = {
+      Label = "org.nixos.postgresql-init-dev-user";
+      RunAtLoad = true;
+      # PostgreSQL role/database init job logs:
+      StandardOutPath = "/tmp/postgresql-init-dev-user.log";
+      StandardErrorPath = "/tmp/postgresql-init-dev-user.error.log";
+    };
+  };
+
   # services.skhd.enable = true;
   /*
     services.yabai.enable = true;

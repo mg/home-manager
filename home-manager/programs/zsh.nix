@@ -25,8 +25,8 @@
       export XDG_BIN_DIR=~/.local/bin
 
       # setup postgres
-      export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
-      export PGDATA="/opt/homebrew/var/postgresql@17"
+      export PATH="${pkgs.postgresql_17}/bin:$PATH"
+      export PGDATA="$HOME/.local/state/postgresql/17"
 
       # go should go under ~/.local/lib/go
       mkdir -p ~/.local/lib/go

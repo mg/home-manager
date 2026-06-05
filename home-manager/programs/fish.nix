@@ -22,8 +22,8 @@
       set -gx XDG_BIN_DIR "$HOME/.local/bin"
 
       # setup postgres
-      fish_add_path -g /opt/homebrew/opt/postgresql@17/bin
-      set -gx PGDATA /opt/homebrew/var/postgresql@17
+      fish_add_path -g ${pkgs.postgresql_17}/bin
+      set -gx PGDATA "$HOME/.local/state/postgresql/17"
 
       # go should go under ~/.local/lib/go
       mkdir -p "$HOME/.local/lib/go"
