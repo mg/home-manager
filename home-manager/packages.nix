@@ -90,7 +90,6 @@
     dive # https://github.com/wagoodman/dive
     lazydocker # https://github.com/jesseduffield/lazydocker
     # dry # https://github.com/moncho/dry
-    container # https://github.com/apple/container
 
     # process management
     pueue # https://github.com/Nukesor/pueue
