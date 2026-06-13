@@ -12,7 +12,8 @@
 ---@type vim.lsp.Config
 return {
   filetypes = { 'elixir', 'eelixir', 'heex', 'surface' },
-  cmd = { 'expert', '--stdio' },
+  cmd = { 'fish', '-c', 'devc run expert --stdio' },
+  -- cmd = { 'expert', '--stdio' },
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
     --- Elixir workspaces may have multiple `mix.exs` files, for an "umbrella" layout or monorepo.

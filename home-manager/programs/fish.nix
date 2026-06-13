@@ -21,9 +21,9 @@
       set -gx XDG_STATE_HOME "$HOME/.local/state"
       set -gx XDG_BIN_DIR "$HOME/.local/bin"
 
-      # setup postgres
-      fish_add_path -g ${pkgs.postgresql_17}/bin
-      set -gx PGDATA "$HOME/.local/state/postgresql/17"
+      # postgres client tools (psql, pg_dump, pg_isready) — the server runs in
+      # per-project containers (see ~/Projects/devcontainers), not on the host
+      fish_add_path -g ${pkgs.postgresql_18}/bin
 
       # go should go under ~/.local/lib/go
       mkdir -p "$HOME/.local/lib/go"

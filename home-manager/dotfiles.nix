@@ -1,6 +1,13 @@
-{...}: {
+{config, ...}: {
   home = {
     file.".inputrc".source = ./dotfiles/inputrc;
+
+    # dev containers tooling — source of truth lives in ~/Projects/devcontainers,
+    # symlinked out-of-store so edits there apply without a rebuild
+    file."./.config/fish/functions/devc.fish".source =
+      config.lib.file.mkOutOfStoreSymlink "/Users/mg/Projects/devcontainers/fish/devc.fish";
+    file."./.config/direnv/lib/devcontainer.sh".source =
+      config.lib.file.mkOutOfStoreSymlink "/Users/mg/Projects/devcontainers/direnv/devcontainer.sh";
     file."./.config/git/config".source = ./dotfiles/gitconfig;
     file."./.config/lazygit/config.yml".source = ./dotfiles/lazygit.yml;
     # file."./.config/kitty/kitty.conf".text = ''
