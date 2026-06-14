@@ -2,6 +2,26 @@ local function find_root(path)
   return vim.fs.root(path, { "build.zig", "zls.json", ".git" }) or vim.fs.dirname(path)
 end
 
+-- Run a zig command inside the project's dev container. `command` is a list
+-- like { "zig", "build" }; it is executed via `devc run` (zig lives in the
+-- container, not on the host). The same-path mount means absolute file paths in
+-- the command resolve identically inside the container. Requires $DEVC_LANG
+-- (neovim launched from the zig project's direnv shell). Set $ZIG_PATH to run a
+-- local zig binary instead.
+local function in_container(command)
+  if vim.env.ZIG_PATH then
+    local cmd = { vim.env.ZIG_PATH }
+    vim.list_extend(cmd, { unpack(command, 2) })
+    return cmd
+  end
+
+  local escaped = {}
+  for _, a in ipairs(command) do
+    table.insert(escaped, vim.fn.shellescape(a))
+  end
+  return { "fish", "-c", "devc run " .. table.concat(escaped, " ") }
+end
+
 local zig_errorformat = table.concat({
   "%E%f:%l:%c: error: %m",
   "%W%f:%l:%c: warning: %m",
@@ -134,7 +154,7 @@ vim.api.nvim_buf_create_user_command(0, "ZigBuild", function()
   local root = find_root(file)
   local command, success_message = zig_build_command(root, file)
 
-  vim.system(command, { cwd = root, text = true }, function(result)
+  vim.system(in_container(command), { cwd = root, text = true }, function(result)
     vim.schedule(function()
       local lines = command_output_lines(result)
 
@@ -172,7 +192,7 @@ vim.api.nvim_buf_create_user_command(0, "ZigRun", function()
   local root = find_root(file)
   local command, success_message = zig_run_command(root, file)
 
-  vim.system(command, { cwd = root, text = true }, function(result)
+  vim.system(in_container(command), { cwd = root, text = true }, function(result)
     vim.schedule(function()
       local lines = command_output_lines(result)
 
@@ -219,7 +239,7 @@ vim.api.nvim_buf_create_user_command(0, "ZigTestNearest", function()
   local root = find_root(file)
   local command = { "zig", "test", "-O", "Debug", "--test-filter", test_name, file }
 
-  vim.system(command, { cwd = root, text = true }, function(result)
+  vim.system(in_container(command), { cwd = root, text = true }, function(result)
     vim.schedule(function()
       local lines = command_output_lines(result)
 
@@ -255,7 +275,7 @@ vim.api.nvim_buf_create_user_command(0, "ZigTestFile", function()
   local root = find_root(file)
   local command = { "zig", "test", "-O", "Debug", file }
 
-  vim.system(command, { cwd = root, text = true }, function(result)
+  vim.system(in_container(command), { cwd = root, text = true }, function(result)
     vim.schedule(function()
       local lines = command_output_lines(result)
 

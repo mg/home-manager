@@ -39,7 +39,13 @@ if rel_path and rel_path:match("^test/") then
 
     vim.cmd("botright 15new")
     vim.bo.bufhidden = "wipe"
-    vim.fn.termopen({ "mix", "test", spec }, { cwd = root })
+    -- Run in the project's dev container: mix/elixir and the test DB live there,
+    -- and devc forwards DATABASE_URL/PG*/MIX_HOME so the test DB is reachable.
+    -- Requires $DEVC_LANG (neovim launched from the project's direnv shell).
+    vim.fn.termopen(
+      { "fish", "-c", "devc run mix test " .. vim.fn.shellescape(spec) },
+      { cwd = root }
+    )
     vim.cmd("startinsert")
   end, {
     desc = "Run mix test for the current file and line",
