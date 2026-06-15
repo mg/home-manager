@@ -1,7 +1,5 @@
 # https://nix-community.github.io/home-manager/options.xhtml
-
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs = {
     bat.enable = true;
     bat.config.theme = "TwoDark"; # batextras?
@@ -11,7 +9,7 @@
       enableFishIntegration = true;
       enableZshIntegration = false;
     };
-   
+
     # https://github.com/atuinsh/atuin
     # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.atuin.enable
     atuin = {
@@ -19,7 +17,7 @@
       enableFishIntegration = true;
       enableZshIntegration = false;
       flags = [
-        "--disable-ctrl-r"            
+        "--disable-ctrl-r"
       ];
     };
 
@@ -60,14 +58,20 @@
       enableZshIntegration = false;
       enableNushellIntegration = true;
       nix-direnv.enable = true;
-      # Make `use devenv` available in .envrc files.
+      # Make `use devenv` available in .envrc files without globally loading
+      # devenv's direnvrc. Loading it globally clashes with nix-direnv because
+      # both define helpers with the same names, which breaks `use nix` shells.
       stdlib = ''
-        eval "$(${pkgs.devenv}/bin/devenv direnvrc)"
+        use_devenv() {
+          eval "$(${pkgs.devenv}/bin/devenv direnvrc)"
+          use_devenv "$@"
+        }
       '';
       config.source = dotfiles/direnv.toml;
     };
 
-/*     neovim = {
+    /*
+       neovim = {
       enable = true;
       extraLuaPackages = ps: [ ps.magick ];
       extraPackages = ps: [ ps.imagemagick ];
@@ -77,7 +81,7 @@
       withPython3 = true;
       withRuby = true;
     };
- */
+    */
     #mise = {
     #  enable = true;
     #  enableZshIntegration = true;
