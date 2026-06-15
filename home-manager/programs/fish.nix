@@ -38,6 +38,7 @@
       # dart should go under ~/.local/lib/dart
       # flutter should go under ~/.local/lib/flutter
       mkdir -p "$HOME/.local/lib/dart"
+      mkdir -p "$HOME/.local/lib/flutter/bin"
       set -gx PUB_CACHE "$HOME/.local/lib/dart"
       fish_add_path -g "$HOME/.local/lib/flutter/bin"
       fish_add_path -g "$HOME/.local/lib/dart/bin"
