@@ -48,7 +48,29 @@ end
 
 	vim.notify("DBUIElixir: reading " .. mix_env .. " database config...", vim.log.levels.INFO)
 
-	vim.system({ "mix", "eval", code }, {
+	-- Elixir/mix live in the dev container, not on the host. When direnv has
+	-- started one (DEVC_NAME set), run `mix eval` inside it via `container
+	-- exec`, forwarding MIX_ENV + the project-local mix state and the postgres
+	-- vars the Repo config reads. Running host mix instead recompiles the
+	-- whole project (host vs container Elixir differ) and blows the timeout.
+	-- Fall back to bare `mix` for non-container Elixir projects.
+	local mix_cmd
+	if vim.env.DEVC_NAME and vim.env.DEVC_NAME ~= "" then
+		mix_cmd = {
+			"container", "exec",
+			"-w", root,
+			"-e", "MIX_ENV=" .. mix_env,
+			"-e", "MIX_HOME", "-e", "HEX_HOME",
+			"-e", "PGHOST", "-e", "PGPORT", "-e", "PGUSER", "-e", "PGPASSWORD",
+			"-e", "PGDATABASE", "-e", "DATABASE_URL",
+			"-i", vim.env.DEVC_NAME,
+			"mix", "eval", code,
+		}
+	else
+		mix_cmd = { "mix", "eval", code }
+	end
+
+	vim.system(mix_cmd, {
 		cwd = root,
 		env = { MIX_ENV = mix_env },
 		text = true,
