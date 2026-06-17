@@ -168,3 +168,52 @@ vim.lsp.config('*', {
 })
 
 vim.lsp.enable(lsp_servers)
+
+-- Open files that live only inside the dev container. The per-project devc
+-- container mounts the project tree at the host path, so project + deps files
+-- open natively on `gd`. But the language stdlib the LSP jumps to lives under
+-- the container's library roots (e.g. zig: /usr/local/lib/zig/lib/std/...,
+-- erlang: /usr/local/lib/erlang/...) and does not exist on the host, so
+-- Neovim would open an empty buffer. Fetch those via `container exec` instead.
+-- Read-only: there is no write-back path for them.
+vim.api.nvim_create_autocmd("BufReadCmd", {
+  group = vim.api.nvim_create_augroup("devc_container_files", { clear = true }),
+  pattern = { "/usr/local/*", "/usr/lib/*", "/opt/*" },
+  callback = function(args)
+    local path, buf = args.match, args.buf
+    local from_container = false
+    local lines
+
+    if vim.uv.fs_stat(path) then
+      -- Present on the host (e.g. running Neovim natively) — read normally.
+      lines = vim.fn.readfile(path)
+    elseif vim.env.DEVC_NAME and vim.env.DEVC_NAME ~= "" then
+      local res = vim.system(
+        { "container", "exec", "-i", vim.env.DEVC_NAME, "cat", path },
+        { text = true }
+      ):wait()
+      if res.code ~= 0 then
+        vim.notify(
+          ("devc: could not read %s from %s\n%s"):format(path, vim.env.DEVC_NAME, res.stderr or ""),
+          vim.log.levels.ERROR
+        )
+        return
+      end
+      lines = vim.split((res.stdout or ""):gsub("\n$", ""), "\n", { plain = true })
+      from_container = true
+    else
+      return
+    end
+
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+    vim.bo[buf].modified = false
+    vim.bo[buf].swapfile = false
+    local ft = vim.filetype.match({ filename = path, buf = buf })
+    if ft then vim.bo[buf].filetype = ft end
+    vim.api.nvim_exec_autocmds("BufReadPost", { buffer = buf })
+    if from_container then
+      vim.bo[buf].readonly = true
+      vim.bo[buf].modifiable = false
+    end
+  end,
+})
