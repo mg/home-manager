@@ -24,7 +24,7 @@ Offline / fallback modes:
 Auth & tooling requirements:
   - Git installed (obvious inside a git repo).
   - gh CLI configured for the repository host (auto-detected from origin).
-   - Jira auth provided via .env (PAT=...) or env vars PAT/JIRA_PAT + optional JIRA_USER
+   - Jira auth provided via .env (JIRA_TOKEN=...) or env vars JIRA_TOKEN + optional JIRA_USER
 
 Examples:
   python release-log.py
@@ -58,7 +58,7 @@ RESOLVES_HEADER_REGEX = re.compile(r"^#+\s*Resolves\b", re.IGNORECASE)
 VERSION_TAG_REGEX = re.compile(r"^v?\d+\.\d+\.\d+(?:[\.-][A-Za-z0-9]+)*$")
 JIRA_BASE_BROWSE = "https://jira.lais.net/browse/"
 JIRA_API_ISSUE = "https://jira.lais.net/rest/api/2/issue/{issue}?fields=summary"
-# Jira auth normally supplied via .env PAT or environment variable PAT/JIRA_PAT.
+# Jira auth normally supplied via .env JIRA_TOKEN or environment variable JIRA_TOKEN.
 # WARNING: Do not commit real secrets; this script reads them at runtime.
 JIRA_DEFAULT_USER = "LAFMOG"
 
@@ -414,7 +414,7 @@ def main():
     summaries: Dict[str, str] = {}
     jira_auth: Optional[Tuple[str, str]] = None
     if not (args.skip_jira or args.offline):
-        # Load from .env in current directory if present; expect line PAT=...
+        # Load from .env in current directory if present; expect line JIRA_TOKEN=...
         env_pat = None
         env_user = None
         try:
@@ -429,13 +429,13 @@ def main():
                         k, v = line.split('=', 1)
                         k = k.strip()
                         v = v.strip()
-                        if k == 'PAT' and v:
+                        if k == 'JIRA_TOKEN' and v:
                             env_pat = v
                         elif k in ('JIRA_USER', 'USER') and v:
                             env_user = v
             # Fallback to environment variables if not in file
             if not env_pat:
-                env_pat = os.environ.get('PAT') or os.environ.get('JIRA_PAT')
+                env_pat = os.environ.get('JIRA_TOKEN')
             if not env_user:
                 env_user = os.environ.get('JIRA_USER') or JIRA_DEFAULT_USER
         except Exception as e:
@@ -445,7 +445,7 @@ def main():
             jira_auth = (env_user or JIRA_DEFAULT_USER, env_pat)
         else:
             if args.verbose:
-                print("No PAT found in .env or environment; Jira summaries will be unauthenticated", file=sys.stderr)
+                print("No JIRA_TOKEN found in .env or environment; Jira summaries will be unauthenticated", file=sys.stderr)
     if jira_auth and not (args.skip_jira or args.offline):
         summaries = collect_jira_summaries(issue_list, jira_auth)
     else:
