@@ -7,12 +7,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     local client = vim.lsp.get_client_by_id(client_id)
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, args.buf) then
+    if
+      client
+      and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, args.buf)
+    then
       vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
-      vim.keymap.set("i", "<C-f>", vim.lsp.inline_completion.get,
-        { buffer = args.buf, desc = "Trigger inline completion" })
-      vim.keymap.set("i", "<C-g>", function() vim.lsp.inline_completion.select({ count = 1 }) end,
-        { buffer = args.buf, desc = "Next inline completion" })
+      vim.keymap.set(
+        "i",
+        "<C-f>",
+        vim.lsp.inline_completion.get,
+        { buffer = args.buf, desc = "Trigger inline completion" }
+      )
+      vim.keymap.set("i", "<C-g>", function()
+        vim.lsp.inline_completion.select({ count = 1 })
+      end, { buffer = args.buf, desc = "Next inline completion" })
     end
 
     if client and client:supports_method("textDocument/formatting") then
@@ -20,7 +28,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("lsp_format." .. args.buf, { clear = true }),
         buffer = args.buf,
         callback = function()
-          if vim.bo[args.buf].buftype ~= "" then return end
+          if vim.bo[args.buf].buftype ~= "" then
+            return
+          end
           vim.lsp.buf.format({ bufnr = args.buf, id = client_id, timeout_ms = 3000 })
         end,
       })
@@ -71,16 +81,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
       -- Build winbar with file path and LSP symbol context
       local lsp_buf = args.buf
       local function update_winbar()
-        if not vim.api.nvim_buf_is_valid(lsp_buf) then return end
+        if not vim.api.nvim_buf_is_valid(lsp_buf) then
+          return
+        end
         local wins = vim.fn.win_findbuf(lsp_buf)
-        if #wins == 0 then return end
+        if #wins == 0 then
+          return
+        end
         local win = wins[1]
         local params = vim.lsp.util.make_position_params(win, client.offset_encoding)
         client:request("textDocument/documentSymbol", params, function(err, result)
-          if err or not result then return end
-          if not vim.api.nvim_buf_is_valid(lsp_buf) then return end
+          if err or not result then
+            return
+          end
+          if not vim.api.nvim_buf_is_valid(lsp_buf) then
+            return
+          end
           local ok, cursor = pcall(vim.api.nvim_win_get_cursor, win)
-          if not ok then return end
+          if not ok then
+            return
+          end
           local row = cursor[1] - 1
           local breadcrumbs = {}
           local function walk(symbols)
@@ -89,7 +109,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
               if range and row >= range.start.line and row <= range["end"].line then
                 local icon = kind_icons[sym.kind] or ""
                 table.insert(breadcrumbs, { icon = icon, name = sym.name })
-                if sym.children then walk(sym.children) end
+                if sym.children then
+                  walk(sym.children)
+                end
                 return
               end
             end
@@ -99,7 +121,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
           path = vim.fn.fnamemodify(path, ":.")
           local dir = vim.fn.fnamemodify(path, ":h")
           local fname = vim.fn.fnamemodify(path, ":t")
-          local icon, icon_hl = require("nvim-web-devicons").get_icon(fname, nil, { default = true })
+          local icon, icon_hl =
+            require("nvim-web-devicons").get_icon(fname, nil, { default = true })
           local bar = "%#" .. (icon_hl or "WinBarIcon") .. "#" .. winbar_escape(icon) .. "%* "
           if dir ~= "." then
             bar = bar .. "%#WinBarPath#" .. winbar_escape(dir) .. "/%*"
@@ -107,7 +130,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
           bar = bar .. "%#WinBarFile#" .. winbar_escape(fname) .. "%*"
           if #breadcrumbs > 0 then
             for _, crumb in ipairs(breadcrumbs) do
-              bar = bar .. sep .. "%#WinBarIcon#" .. winbar_escape(crumb.icon) .. "%*%#WinBarContext#" .. winbar_escape(crumb.name) .. "%*"
+              bar = bar
+                .. sep
+                .. "%#WinBarIcon#"
+                .. winbar_escape(crumb.icon)
+                .. "%*%#WinBarContext#"
+                .. winbar_escape(crumb.name)
+                .. "%*"
             end
           end
           if vim.api.nvim_win_is_valid(win) then
@@ -134,36 +163,37 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local lsp_servers = {
-  'ast_grep',
-  'awk',
-  'bashls',
-  'behave_lsp',
-  'clangd',
-  'copilot',
-  'dartls',
-  'docker_language_server',
+  "ast_grep",
+  "awk",
+  "bashls",
+  "behave_lsp",
+  "clangd",
+  "copilot",
+  "dartls",
+  "docker_language_server",
   -- 'eslint',      -- requires lspconfig.util
-  'expert',
-  'fish',
+  "expert",
+  "fish",
   -- 'graphql',     -- requires lspconfig.util
-  'html',
-  'json',
-  'just',
-  'lua',
-  'markdown-oxide',
-  'nixd',
-  'oxfmt', -- requires lspconfig.util
-  'oxlint',
-  'postgres',
-  'ruff',
-  'svelte',
+  "html",
+  "json",
+  "just",
+  "lua",
+  "markdown-oxide",
+  "nixd",
+  "oxfmt", -- requires lspconfig.util
+  "oxlint",
+  "postgres",
+  "ruff",
+  "sourcekit",
+  "svelte",
   -- 'tailwindcss', -- requires lspconfig.util
-  'ts_ls',
-  'ty',
-  'zls',
+  "ts_ls",
+  "ty",
+  "zls",
 }
 
-vim.lsp.config('*', {
+vim.lsp.config("*", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
@@ -188,10 +218,9 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
       -- Present on the host (e.g. running Neovim natively) — read normally.
       lines = vim.fn.readfile(path)
     elseif vim.env.DEVC_NAME and vim.env.DEVC_NAME ~= "" then
-      local res = vim.system(
-        { "container", "exec", "-i", vim.env.DEVC_NAME, "cat", path },
-        { text = true }
-      ):wait()
+      local res = vim
+        .system({ "container", "exec", "-i", vim.env.DEVC_NAME, "cat", path }, { text = true })
+        :wait()
       if res.code ~= 0 then
         vim.notify(
           ("devc: could not read %s from %s\n%s"):format(path, vim.env.DEVC_NAME, res.stderr or ""),
@@ -209,7 +238,9 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
     vim.bo[buf].modified = false
     vim.bo[buf].swapfile = false
     local ft = vim.filetype.match({ filename = path, buf = buf })
-    if ft then vim.bo[buf].filetype = ft end
+    if ft then
+      vim.bo[buf].filetype = ft
+    end
     vim.api.nvim_exec_autocmds("BufReadPost", { buffer = buf })
     if from_container then
       vim.bo[buf].readonly = true

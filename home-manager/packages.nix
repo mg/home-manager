@@ -219,6 +219,9 @@
     bun
     uv
     cargo
+    swift
+    sourcekit-lsp
+    swift-format
 
     # security
     mkcert # https://github.com/FiloSottile/mkcert
@@ -230,7 +233,7 @@
     # https://github.com/maraloon/timer-tui
 
     # global install of elixir
-    beam28Packages.erlang
-    beam28Packages.elixir_1_19
+    beam29Packages.erlang
+    beam29Packages.elixir_1_20
   ];
 }

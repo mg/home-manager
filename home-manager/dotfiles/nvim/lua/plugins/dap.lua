@@ -12,13 +12,14 @@
 --   - Python
 --   - Lua running inside Neovim (config/plugins)
 --   - Dart / Flutter
+--   - Swift via LLDB
 --   - Zig via LLDB
 --
 -- Project-specific configs via .vscode/launch.json
 --   - nvim-dap loads .vscode/launch.json automatically so project configs are shown
 --     alongside the global configs defined below
 --   - Use :DapOpenLaunchJson to open/create the project file
---   - Use adapter types that match this config: pwa-node, pwa-chrome, python, dart, lldb
+--   - Use adapter types that match this config: pwa-node, pwa-chrome, python, dart, swift-lldb, lldb
 --   - Keep launch.json as strict JSON here (no trailing commas)
 --
 -- Example launch.json:
@@ -160,6 +161,70 @@ local function chrome_url()
   return url
 end
 
+local function xcrun_find(tool)
+  if vim.fn.executable("xcrun") ~= 1 then
+    return nil
+  end
+
+  local result = vim.system({ "xcrun", "--find", tool }, { text = true }):wait()
+  if result.code ~= 0 then
+    return nil
+  end
+
+  local path = vim.trim(result.stdout or "")
+  if path ~= "" then
+    return path
+  end
+
+  return nil
+end
+
+local function find_executable(tool)
+  local xcode_tool = xcrun_find(tool)
+  if xcode_tool then
+    return xcode_tool
+  end
+
+  local path_tool = vim.fn.exepath(tool)
+  if path_tool ~= "" then
+    return path_tool
+  end
+
+  return nil
+end
+
+local function swift_package_root()
+  return vim.fs.root(0, "Package.swift") or vim.fn.getcwd()
+end
+
+local function swift_default_executable()
+  local root = swift_package_root()
+  local build_dir = vim.fs.joinpath(root, ".build", "debug")
+  local candidates = vim.fn.glob(build_dir .. "/*", false, true)
+  local executables = {}
+
+  for _, candidate in ipairs(candidates) do
+    local stat = vim.uv.fs_stat(candidate)
+    if stat and stat.type == "file" and vim.fn.executable(candidate) == 1 then
+      table.insert(executables, candidate)
+    end
+  end
+
+  if #executables == 1 then
+    return executables[1]
+  end
+
+  return vim.fs.joinpath(build_dir, vim.fn.fnamemodify(root, ":t"))
+end
+
+local function prompt_args(prompt)
+  local raw = vim.fn.input(prompt)
+  if raw == "" then
+    return {}
+  end
+
+  return vim.split(raw, " ", { trimempty = true })
+end
 
 return {
   "mfussenegger/nvim-dap",
@@ -528,5 +593,48 @@ return {
       dap.configurations.dart = dart_configurations
     end
 
+    -- Swift / LLDB
+    -- - Build first with :SwiftBuild (or `swift build`) so .build/debug contains an executable
+    -- - Uses the active Xcode toolchain's lldb-dap when available, falling back to PATH
+    -- Usage: open a Swift buffer, set breakpoints, run <leader>dc, and pick a config.
+    dap.adapters["swift-lldb"] = function(callback)
+      local command = find_executable("lldb-dap") or find_executable("lldb-vscode")
+      if not command then
+        vim.notify(
+          "Could not find lldb-dap or lldb-vscode for Swift debugging",
+          vim.log.levels.ERROR
+        )
+        return
+      end
+
+      callback({
+        type = "executable",
+        command = command,
+        name = "swift-lldb",
+      })
+    end
+
+    dap.configurations.swift = {
+      {
+        type = "swift-lldb",
+        request = "launch",
+        name = "Launch Swift executable",
+        program = function()
+          return vim.fn.input("Path to executable: ", swift_default_executable(), "file")
+        end,
+        cwd = swift_package_root,
+        stopOnEntry = false,
+        args = function()
+          return prompt_args("Arguments: ")
+        end,
+      },
+      {
+        type = "swift-lldb",
+        request = "attach",
+        name = "Attach to Swift process",
+        pid = require("dap.utils").pick_process,
+        cwd = swift_package_root,
+      },
+    }
   end,
 }
