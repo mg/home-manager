@@ -23,4 +23,4 @@ export PATH=$PATH:/opt/homebrew/bin
 # local bin
 export PATH=$PATH:~/bin
 
-export EDITOR=hx
+export EDITOR=nvim
