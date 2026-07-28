@@ -86,6 +86,9 @@
       export PYTHONPATH=$HOME/.local/lib/system:$PYTHONPATH
       mkdir -p ~/.local/lib/system
 
+      # project setup
+      [[ -f ~/Projects/.env ]] && source ~/Projects/.env
+
       # work setup
       [[ -f ~/Work/.env ]] && source ~/Work/.env
       export OPENCODE_CONFIG_DIR=~/Work/opencode

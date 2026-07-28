@@ -81,10 +81,18 @@
         set -gx PYTHONPATH "$HOME/.local/lib/system"
       end
 
+      # project setup
+      test -f "$HOME/Projects/.env"; and source "$HOME/Projects/.env"
+
       # work setup
       test -f "$HOME/Work/.env.fish"; and source "$HOME/Work/.env.fish"
       set -gx OPENCODE_CONFIG_DIR "$HOME/Work/opencode"
       set -gx OPENCODE_EXPERIMENTAL_LSP_TOOL true
+
+      # iris
+      if command -v iris >/dev/null 2>&1
+        alias i="iris"
+      end
     '';
 
     functions = {
