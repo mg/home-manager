@@ -280,6 +280,13 @@
   '';
 
   system.activationScripts.postActivation.text = ''
+    # nix-darwin restarts Dock after applying system.defaults.dock with `killall Dock`.
+    # On this machine launchd sometimes leaves com.apple.Dock.agent stopped after that,
+    # so explicitly kickstart it at the end of activation.
+    /bin/sleep 1
+    /bin/launchctl asuser "$(${pkgs.coreutils}/bin/id -u -- ${machineConfig.username})" \
+      /bin/launchctl kickstart -k "gui/$(${pkgs.coreutils}/bin/id -u -- ${machineConfig.username})/com.apple.Dock.agent" || true
+
     sudo -u ${machineConfig.username} ${pkgs.duti}/bin/duti -s abnerworks.Typora net.daringfireball.markdown all
 
     # Use UTIs that LaunchServices knows about. Some extensions like jsonl/json5/jsonc/har
