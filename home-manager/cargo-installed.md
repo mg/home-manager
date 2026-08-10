@@ -158,3 +158,11 @@ cargo install rmux --locked
 cargo install --git https://github.com/DanielCardonaRojas/codemark codemark-cli
 cargo install --git https://github.com/DanielCardonaRojas/codemark codemark-tui
 ```
+
+### drift
+
+[https://github.com/aymanbagabas/drift]
+
+```
+cargo install drift-diff
+```
