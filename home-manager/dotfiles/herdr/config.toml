@@ -1,0 +1,6 @@
+[theme]
+name = "nordr"
+
+[keys]
+prefix = "ctrl+a"
+toggle_sidebar = "prefix+a"

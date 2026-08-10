@@ -24,6 +24,7 @@
     # can seem to get this to work, create the symlink manually for now
     # file.".config/nvim-homemanager".source = "/home/mg/Projects/home-manager/home-manager/dotfiles/nvim";
     file."./.config/ghostty/config".source = ./dotfiles/ghostty;
+    file."./.config/herdr/config.toml".source = ./dotfiles/herdr/config.toml;
 
     file."./.config/tig/config".source = ./dotfiles/tigrc;
     # file."./.config/gh-dash/config.yml".source = ./dotfiles/gh-dash.yml;
