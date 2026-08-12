@@ -45,7 +45,13 @@
     "discord"
   ];
   taps = [
-    "azizuysal/simtool" 
-    "AlexsJones/llmfit"
+    {
+      name = "azizuysal/simtool";
+      trusted = true;
+    }
+    {
+      name = "AlexsJones/llmfit";
+      trusted = true;
+    }
   ];
 }

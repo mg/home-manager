@@ -1,6 +1,9 @@
 # https://nix-community.github.io/home-manager/options.xhtml
 {pkgs, ...}: {
   programs = {
+    # macOS provides man; Home Manager has no man package to build caches with.
+    man.generateCaches = false;
+
     bat.enable = true;
     bat.config.theme = "TwoDark"; # batextras?
 

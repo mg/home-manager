@@ -58,7 +58,7 @@
     serpl # https://github.com/yassinebridi/serpl
 
     # search
-    silver-searcher # https://github.com/ggreer/the_silver_searcher
+    silver-searcher-ng # https://github.com/ggreer/the_silver_searcher
     fd # https://github.com/sharkdp/fd
     ripgrep # https://github.com/BurntSushi/ripgrep
     fselect # https://fselect.rocks/
