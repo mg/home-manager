@@ -8,7 +8,7 @@ return {
       { "<leader>d", group = "[D]ebug" },
       { "<leader>r", group = "[R]ename" },
       { "<leader>s", group = "[S]earch" },
-      { "<leader>sg", group = "[G]rug" },
+      { "<leader>sG", group = "[G]rug" },
       { "<leader>g", group = "[G]it" },
       { "<leader>gd", group = "[D]iff" },
       { "<leader>gh", group = "[H]unk", mode = { "n", "v" } },

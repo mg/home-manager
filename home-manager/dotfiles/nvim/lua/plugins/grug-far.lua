@@ -13,7 +13,7 @@ return {
     });
   end,
   keys = {
-    { "<leader>sgw", "<cmd>lua require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } })<CR>",                     desc = "Grug word" },
-    { "<leader>sga", "<cmd>lua require('grug-far').open({ engine = 'astgrep', prefills = { search = vim.fn.expand('<cword>') } })<CR>", desc = "Grug ast-grep word" },
+    { "<leader>sGw", "<cmd>lua require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } })<CR>",                     desc = "Grug word" },
+    { "<leader>sGa", "<cmd>lua require('grug-far').open({ engine = 'astgrep', prefills = { search = vim.fn.expand('<cword>') } })<CR>", desc = "Grug ast-grep word" },
   },
 }

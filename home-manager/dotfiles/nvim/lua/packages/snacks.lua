@@ -1,3 +1,24 @@
+local function grep_app_projects()
+  local app_worktrees = vim.fs.normalize(vim.fn.expand("~/Work/app"))
+  local cwd = vim.fs.normalize(vim.fn.getcwd())
+  local current_root = Snacks.git.get_root(cwd) or cwd
+
+  if current_root ~= app_worktrees and current_root:sub(1, #app_worktrees + 1) ~= app_worktrees .. "/" then
+    Snacks.notify.warn("Cross-project grep is only available from a worktree under ~/Work/app")
+    return
+  end
+
+  Snacks.picker.grep({
+    title = "Grep app, graphql, ui-kit, and web",
+    dirs = {
+      current_root,
+      vim.fn.expand("~/Work/graphql/master"),
+      vim.fn.expand("~/Work/ui-kit/develop"),
+      vim.fn.expand("~/Work/web"),
+    },
+  })
+end
+
 local function format_lsp_workspace_symbol(item, picker)
   local ret = {}
   local kind = item.lsp_kind or item.kind or "Unknown"
@@ -116,6 +137,9 @@ return {
     { "<leader>sl",  function() Snacks.picker.loclist() end,                desc = "Location List" },
     { "<leader>sm",  function() Snacks.picker.marks() end,                  desc = "Marks" },
     { "<leader>sq",  function() Snacks.picker.qflist() end,                 desc = "Quickfix List" },
+    { "<leader>sf",  function() Snacks.picker.files() end,                  desc = "Find Files" },
+    { "<leader>sg",  function() Snacks.picker.grep() end,                   desc = "Grep" },
+    { "<leader>sx",  grep_app_projects,                                     desc = "Cross-project Grep" },
     { "<leader>sR",  function() Snacks.picker.resume() end,                 desc = "Resume" },
     { "<leader>su",  function() Snacks.picker.undo() end,                   desc = "Undo History" },
     { "<leader>sw",  function() Snacks.picker.grep_word() end,              desc = "Search Word under cursor" },

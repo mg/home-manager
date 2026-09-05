@@ -6,8 +6,8 @@ return {
     })
   end,
   keys = {
+    { "<leader>M", function() require("treesj").toggle() end, desc = "Toggle split/join" },
     { "<leader>cJ", function() require("treesj").join() end, desc = "Join" },
     { "<leader>cS", function() require("treesj").split() end, desc = "Split" },
-    { "<leader>cT", function() require("treesj").toggle() end, desc = "Toggle" },
   },
 }
