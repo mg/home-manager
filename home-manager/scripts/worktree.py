@@ -86,12 +86,20 @@ def add_worktree(branch, name=None):
                     result = None
                 else:
                     import os
-                    # Get main repo directory
-                    git_dir_result = run_command(["git", "rev-parse", "--git-dir"])
-                    main_repo_dir = os.path.abspath(os.path.join(git_dir_result.stdout.strip(), "..")) if git_dir_result and git_dir_result.returncode == 0 else os.getcwd()
+                    # Resolve paths from the current worktree root. Using --git-dir here
+                    # points inside .git/worktrees/<name> when run from a linked worktree.
+                    worktree_root_result = run_command(
+                        ["git", "rev-parse", "--show-toplevel"]
+                    )
+                    worktree_root = (
+                        worktree_root_result.stdout.strip()
+                        if worktree_root_result
+                        and worktree_root_result.returncode == 0
+                        else os.getcwd()
+                    )
                     orig_dir = os.getcwd()
                     try:
-                        os.chdir(main_repo_dir)
+                        os.chdir(worktree_root)
                         branch_exists_result = run_command(["git", "branch", "--list", branch])
                         branch_already_exists = False
                         if branch_exists_result and branch_exists_result.returncode == 0:
