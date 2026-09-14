@@ -31,7 +31,12 @@
       icons = "auto";
     };
 
-    git.enable = true;
+    git = {
+      enable = true;
+      includes = [
+        {path = ./dotfiles/gitconfig;}
+      ];
+    };
 
     nushell = {
       enable = true;

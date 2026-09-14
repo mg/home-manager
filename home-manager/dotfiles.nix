@@ -8,7 +8,6 @@
       config.lib.file.mkOutOfStoreSymlink "/Users/mg/Projects/devcontainers/fish/devc.fish";
     file."./.config/direnv/lib/devcontainer.sh".source =
       config.lib.file.mkOutOfStoreSymlink "/Users/mg/Projects/devcontainers/direnv/devcontainer.sh";
-    file."./.config/git/config".source = ./dotfiles/gitconfig;
     file."./.config/lazygit/config.yml".source = ./dotfiles/lazygit.yml;
     # file."./.config/kitty/kitty.conf".text = ''
     #   ${builtins.readFile ./dotfiles/kitty/kitty.conf}
