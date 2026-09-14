@@ -166,3 +166,11 @@ cargo install --git https://github.com/DanielCardonaRojas/codemark codemark-tui
 ```
 cargo install drift-diff
 ```
+
+### mandible
+
+[https://github.com/AS-FOSS/mandible]
+
+```
+cargo install mandible
+```
