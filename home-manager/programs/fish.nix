@@ -89,6 +89,10 @@
       set -gx OPENCODE_CONFIG_DIR "$HOME/Work/opencode"
       set -gx OPENCODE_EXPERIMENTAL_LSP_TOOL true
 
+      # pi
+      mkdir -p "$HOME/.local/lib/pi"
+      set -gx PI_CODING_AGENT_DIR "$HOME/.local/lib/pi"
+
       # iris
       if command -v iris >/dev/null 2>&1
         alias i="iris"
