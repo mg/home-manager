@@ -166,7 +166,6 @@ local lsp_servers = {
   "ast_grep",
   "awk",
   "bashls",
-  "behave_lsp",
   "clangd",
   "copilot",
   "dartls",
@@ -189,15 +188,53 @@ local lsp_servers = {
   "svelte",
   -- 'tailwindcss', -- requires lspconfig.util
   "ts_ls",
-  "ty",
+  -- Use the Python image's type server in devc; keep host ty elsewhere.
+  (vim.env.DEVC_LANG and vim.env.DEVC_LANG ~= "") and "basedpyright" or "ty",
   "zls",
 }
+
+-- behave-lsp is host-installed and isn't supplied by the Python dev image.
+-- Don't attach that host Python server to the container's Linux environment.
+if not vim.env.DEVC_LANG or vim.env.DEVC_LANG == "" then
+  table.insert(lsp_servers, "behave_lsp")
+end
 
 vim.lsp.config("*", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
 vim.lsp.enable(lsp_servers)
+
+-- Ruff skips unnamed buffers (file:/// makes it panic). Retry auto-activation
+-- after :file / :write gives a Python buffer a name, even if its ft was already
+-- set manually so no new FileType event occurs. Close the old URI before the
+-- rename too, so BasedPyright doesn't receive changes for an unopened new URI.
+local python_rename_group = vim.api.nvim_create_augroup("python_named_buffers", { clear = true })
+vim.api.nvim_create_autocmd("BufFilePre", {
+  group = python_rename_group,
+  callback = function(args)
+    if vim.bo[args.buf].filetype ~= "python" then
+      return
+    end
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = args.buf })) do
+      if client.name == "ruff" or client.name == "basedpyright" or client.name == "ty" then
+        vim.lsp.buf_detach_client(args.buf, client.id)
+      end
+    end
+  end,
+})
+vim.api.nvim_create_autocmd("BufFilePost", {
+  group = python_rename_group,
+  callback = function(args)
+    if
+      vim.bo[args.buf].filetype == "python"
+      and vim.api.nvim_buf_get_name(args.buf) ~= ""
+      and vim.lsp.is_enabled("ruff")
+    then
+      vim.lsp.enable("ruff")
+    end
+  end,
+})
 
 -- Open files that live only inside the dev container. The per-project devc
 -- container mounts the project tree at the host path, so project + deps files

@@ -59,12 +59,37 @@ local function ensure_mason_packages(packages)
   end)
 end
 
-local function python_path()
+local function in_devc()
+  return vim.env.DEVC_LANG ~= nil and vim.env.DEVC_LANG ~= ""
+end
+
+local function python_path(workspace)
+  workspace = workspace or vim.fn.getcwd()
+  if in_devc() then
+    -- Resolve in Linux: .venv/bin/python can be a dangling symlink on macOS.
+    -- Never select a host VIRTUAL_ENV, Conda env, or Nix Python for the guest.
+    local script = [[
+import os, sys
+root = sys.argv[1]
+print(next((p for name in ('.venv', 'venv')
+            if os.access(p := os.path.join(root, name, 'bin', 'python'), os.X_OK)), sys.executable))
+]]
+    local command = "devc run python -c "
+      .. vim.fn.shellescape(script)
+      .. " "
+      .. vim.fn.shellescape(workspace)
+    local result = vim.system({ "fish", "-c", command }, { text = true, timeout = 10000 }):wait()
+    local python = vim.trim(result.stdout or "")
+    if result.code ~= 0 or python == "" then
+      error("devc: could not resolve the Python debugger interpreter: " .. (result.stderr or ""))
+    end
+    return python
+  end
+
   local sep = vim.fn.has("win32") == 1 and "\\" or "/"
-  local workspace = vim.fn.getcwd()
   local environments = {
-    os.getenv("VIRTUAL_ENV"),
-    os.getenv("CONDA_PREFIX"),
+    os.getenv("VIRTUAL_ENV") or "",
+    os.getenv("CONDA_PREFIX") or "",
     workspace .. sep .. ".venv",
     workspace .. sep .. "venv",
   }
@@ -371,10 +396,10 @@ return {
     local dap = require("dap")
     local dapui = require("dapui")
 
-    local mason_packages = {
-      "debugpy",
-      "js-debug-adapter",
-    }
+    local mason_packages = { "js-debug-adapter" }
+    if not in_devc() then
+      table.insert(mason_packages, "debugpy")
+    end
 
     ensure_mason_packages(mason_packages)
 
@@ -456,12 +481,34 @@ return {
 
     -- Python
     -- - "Launch current file": debug the current Python file
-    -- - Interpreter resolution prefers VIRTUAL_ENV / CONDA_PREFIX / .venv / venv, then python3/python
+    -- - Host: Mason debugpy, VIRTUAL_ENV / CONDA_PREFIX / .venv / venv / PATH.
+    -- - devc: image debugpy, guest .venv / venv / system Python.
+    -- Launch Neovim from the direnv project shell; DEVC_LANG also covers `use local`.
     -- Usage: open a Python buffer, set breakpoints, then run <leader>dc.
-    dap.adapters.python = {
-      type = "executable",
-      command = "debugpy-adapter",
-    }
+    dap.adapters.python = function(callback)
+      local container = in_devc()
+      callback({
+        type = "executable",
+        command = container and "fish" or "debugpy-adapter",
+        args = container and { "-c", "devc run python -m debugpy.adapter" } or nil,
+        enrich_config = function(config, on_config)
+          local final = vim.deepcopy(config)
+          if final.request == "launch" then
+            -- Also applies to .vscode/launch.json. Explicit interpreter paths
+            -- there must be container paths when using devc.
+            if not final.python and not final.pythonPath then
+              final.pythonPath = python_path(final.cwd)
+            end
+            if container then
+              -- integratedTerminal asks Neovim to spawn the Linux debuggee on
+              -- macOS. internalConsole keeps it with the adapter in the VM.
+              final.console = "internalConsole"
+            end
+          end
+          on_config(final)
+        end,
+      })
+    end
 
     dap.configurations.python = {
       {
@@ -470,7 +517,6 @@ return {
         name = "Launch current file",
         program = "${file}",
         cwd = "${workspaceFolder}",
-        pythonPath = python_path,
         console = "integratedTerminal",
       },
     }

@@ -58,7 +58,7 @@ return {
       desc = "Sidekick Request Next Edit",
     },
     {
-      "<leader>ap",
+      "<leader>aP",
       function() require("sidekick.cli").prompt() end,
       mode = { "n", "x" },
       desc = "Sidekick Prompt",
