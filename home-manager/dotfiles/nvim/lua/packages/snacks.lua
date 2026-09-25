@@ -19,6 +19,66 @@ local function grep_app_projects()
   })
 end
 
+local function open_git_log_pr(picker)
+  local item = picker:current()
+  if not item or not item.commit then
+    Snacks.notify.warn("Select a commit first")
+    return
+  end
+  if vim.fn.executable("gh") ~= 1 then
+    Snacks.notify.error("Opening a PR requires the GitHub CLI (gh)")
+    return
+  end
+
+  local cwd = item.cwd or picker:cwd()
+  local function run(args, callback)
+    vim.system(args, { cwd = cwd, text = true }, vim.schedule_wrap(function(result)
+      if result.code ~= 0 then
+        Snacks.notify.error(vim.trim(result.stderr or "") ~= "" and vim.trim(result.stderr)
+          or "GitHub CLI failed; check gh auth status")
+        return
+      end
+      callback(vim.trim(result.stdout or ""))
+    end))
+  end
+
+  local function open(number)
+    run({ "gh", "pr", "view", number, "--web" }, function() end)
+  end
+
+  local number = (item.msg or ""):match("#(%d+)")
+  if number then
+    open(number)
+    return
+  end
+
+  -- Ask GitHub for associated PRs when the subject has no PR reference.
+  run({
+    "gh", "api", "repos/{owner}/{repo}/commits/" .. item.commit .. "/pulls",
+    "--jq", ".[0].number // empty",
+  }, function(result)
+    if result:match("^%d+$") then
+      open(result)
+    else
+      Snacks.notify.warn("No GitHub PR found for commit " .. item.commit)
+    end
+  end)
+end
+
+local function git_log_pr_config()
+  return {
+    actions = { open_pr = open_git_log_pr },
+    win = {
+      input = {
+        keys = { ["<A-o>"] = { "open_pr", mode = { "n", "i" }, desc = "Open PR in browser" } },
+      },
+      list = {
+        keys = { ["<A-o>"] = { "open_pr", desc = "Open PR in browser" } },
+      },
+    },
+  }
+end
+
 local function format_lsp_workspace_symbol(item, picker)
   local ret = {}
   local kind = item.lsp_kind or item.kind or "Unknown"
@@ -43,6 +103,11 @@ return {
       notifier = { enabled = true, timeout = 5000 },
       picker = {
         enabled = true,
+        sources = {
+          git_log = git_log_pr_config(),
+          git_log_file = git_log_pr_config(),
+          git_log_line = git_log_pr_config(),
+        },
         actions = setmetatable({}, {
           __index = function(_, key)
             return require("trouble.sources.snacks").actions[key]

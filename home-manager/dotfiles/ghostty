@@ -12,3 +12,5 @@ window-padding-color = background
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
+# Send Option+O as Alt+O for Neovim's Git-log PR action.
+keybind = alt+o=text:\x1bo
