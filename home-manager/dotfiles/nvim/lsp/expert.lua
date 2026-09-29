@@ -12,8 +12,10 @@
 ---@type vim.lsp.Config
 return {
   filetypes = { 'elixir', 'eelixir', 'heex', 'surface' },
-  cmd = { 'fish', '-c', 'devc run expert --stdio' },
-  -- cmd = { 'expert', '--stdio' },
+  cmd = require('devc-lsp')({ 'expert', '--stdio' }),
+  -- Give Expert time to flush its index on a normal LSP shutdown. Forced
+  -- termination then cleans up this session in the guest, not just host fish.
+  exit_timeout = 10000,
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
     --- Elixir workspaces may have multiple `mix.exs` files, for an "umbrella" layout or monorepo.

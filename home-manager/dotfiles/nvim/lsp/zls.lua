@@ -29,12 +29,7 @@ return {
       cmd = { vim.env.ZLS_PATH }
       vim.list_extend(cmd, args)
     else
-      -- devc run zls, with any args appended (shell-escaped for the fish -c string)
-      local inner = 'devc run zls'
-      for _, a in ipairs(args) do
-        inner = inner .. ' ' .. vim.fn.shellescape(a)
-      end
-      cmd = { 'fish', '-c', inner }
+      cmd = require('devc-lsp')(vim.list_extend({ 'zls' }, args))
     end
 
     return vim.lsp.rpc.start(cmd, dispatchers)

@@ -32,6 +32,44 @@
 https://github.com/saghen/blink.indent
 https://github.com/saghen/blink.cmp
 
+## Container LSP lifecycle
+
+Expert, BasedPyright, Ruff (in devc), and ZLS (unless `ZLS_PATH` is set) use
+`lua/devc-lsp.lua` → host `nvim -l scripts/devc-lsp.lua` → `devc run`. The launcher
+uses Neovim's bundled Lua/libuv in standalone mode (no editor config or plugins),
+so it needs neither host Python nor a separate Lua installation. The guest needs
+only Bash/coreutils/grep already in dev-base. No image rebuild or new plugin is required. Normal devc cwd and environment forwarding
+are preserved; host Ruff and explicit host ZLS binaries are unchanged.
+
+Why not plain `fish -c 'devc run expert --stdio'`? Neovim signals the host fish
+process on forced stop, but Apple `container exec` and the guest LSP can survive.
+Repeated restarts then leave competing Expert servers holding `.expert/indexes`.
+
+The supervisor closes guest stdin on host EOF/SIGTERM. A guest stdin relay
+observes that independently of the server, then terminates only processes with
+that launch's unique environment token, including detached children such as
+Expert's project engine. Normal server exit also cleans up leftover children.
+Guest processes get SIGTERM and a bounded grace period before SIGKILL. Neovim's
+restart waits for the supervisor to finish, so the replacement does not start
+while its predecessor is being cleaned up. Expert additionally gets up to 10s
+for normal LSP shutdown before forced termination is requested.
+
+This is not a container-wide `pkill`, and it doesn't evict another editor's
+server. Do not run two active Experts against the same project index. A broken
+container connection can still prevent cleanup; a timeout is logged to LSP stderr
+and must be investigated rather than treated as proof the guest stopped.
+
+**Migration:** include the new helper files in the git-tracked Home Manager
+source, run `just switch` yourself, and reopen Neovim. `:lsp restart` in an old
+session reuses that client's old command. After closing the old editor, inspect
+`devc run ps -eo pid,ppid,args` and stop any confirmed leftover Expert/engine PIDs
+once before reopening. The supervisor cannot adopt previously orphaned servers.
+
+Tests: `python3 tests/test_devc_lsp.py` exercises lifecycle/isolation in a
+disposable Python container; `tests/lsp_restart.lua` exercises actual Neovim
+restart and checks guest sessions (see its header for invocation). Run the latter
+only in a disposable project/container.
+
 ## Python: host vs devc
 
 Launch Neovim **from the project root's direnv-activated shell**. A nonempty

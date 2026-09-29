@@ -31,7 +31,7 @@ local root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' }
 ---@type vim.lsp.Config
 return {
   cmd = vim.env.DEVC_LANG and vim.env.DEVC_LANG ~= ''
-    and { 'fish', '-c', 'devc run ruff server' }
+    and require('devc-lsp')({ 'ruff', 'server' })
     or { 'ruff', 'server' },
   before_init = function(params)
     if vim.env.DEVC_LANG and vim.env.DEVC_LANG ~= '' then

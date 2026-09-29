@@ -3,7 +3,7 @@
 -- discovers the Linux .venv on the same-path project mount itself.
 ---@type vim.lsp.Config
 return {
-  cmd = { "fish", "-c", "devc run basedpyright-langserver --stdio" },
+  cmd = require("devc-lsp")({ "basedpyright-langserver", "--stdio" }),
   before_init = function(params)
     -- The host Neovim PID doesn't exist in the container. Otherwise the server
     -- monitors an unrelated/missing guest PID and exits a few seconds later.
