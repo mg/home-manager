@@ -4,7 +4,9 @@
 
 { pkgs, machineConfig, ... }:
 {
-  system.primaryUser = "mg"; 
+  imports = [ ./window-manager.nix ];
+
+  system.primaryUser = "mg";
   system.stateVersion = 5;
   ids.gids.nixbld = 350;
   nix.extraOptions = ''
@@ -37,6 +39,7 @@
     #fira-code-symbols
     meslo-lg
     fira-mono
+    pkgs.sketchybar-app-font
     #(nerdfonts.override { fonts = [ "Meslo" "FiraCode" "FiraMono" ]; })
   ];
 
@@ -103,6 +106,9 @@
 
   system.defaults = {
     loginwindow.GuestEnabled = false;
+    # Makes the native menu bar opaque; this also reduces transparency in
+    # other macOS interface elements.
+    # universalaccess.reduceTransparency = true;
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
@@ -259,21 +265,6 @@
     };
   };
 
-  # services.skhd.enable = true;
-  /*
-    services.yabai.enable = true;
-    services.yabai.config = {
-    # focus_follows_mouse = "autoraise";
-    mouse_follows_focus = "off";
-    window_placement    = "second_child";
-    window_opacity      = "off";
-    top_padding         = 36;
-    bottom_padding      = 10;
-    left_padding        = 10;
-    right_padding       = 10;
-    window_gap          = 10;
-    };
-  */
   system.activationScripts.activateUserSettings.text = ''
     # Run activateSettings as the primary user
     sudo -u mg /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
