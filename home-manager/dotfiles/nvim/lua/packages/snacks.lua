@@ -201,6 +201,7 @@ return {
     { "<leader>sk",  function() Snacks.picker.keymaps() end,                desc = "Keymaps" },
     { "<leader>sl",  function() Snacks.picker.loclist() end,                desc = "Location List" },
     { "<leader>sm",  function() Snacks.picker.marks() end,                  desc = "Marks" },
+    { "<leader>sM",  function() Snacks.picker.buffers({ modified = true, nofile = true }) end, desc = "Modified Buffers" },
     { "<leader>sq",  function() Snacks.picker.qflist() end,                 desc = "Quickfix List" },
     { "<leader>sf",  function() Snacks.picker.files() end,                  desc = "Find Files" },
     { "<leader>sg",  function() Snacks.picker.grep() end,                   desc = "Grep" },
