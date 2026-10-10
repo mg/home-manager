@@ -545,26 +545,43 @@ return {
       },
     }
 
-    -- Zig / LLDB inside the project's dev container.
-    -- Zig binaries are compiled in the container (Linux ELF), so both the debug
-    -- adapter (lldb-dap) and the debuggee run there via `devc run lldb-dap`. The
-    -- same-path mount makes the program path identical inside the container, so
-    -- no host lldb is involved. Requires $DEVC_LANG (neovim launched from the
-    -- zig project's direnv shell) and a Debug binary built in the container
-    -- (e.g. `devc run zig build`).
-    -- Usage: build a Debug binary in the container, set breakpoints, run <leader>dc.
-    dap.adapters.lldb = {
-      type = "executable",
-      command = "fish",
-      args = { "-c", "devc run lldb-dap" },
-      name = "lldb",
-    }
+    -- Zig / LLDB: match the compiler's host/container selection. Rebuild after
+    -- changing environments: a Linux ELF cannot be debugged by macOS LLDB.
+    dap.adapters.lldb = function(callback, config)
+      local tools = require("zig-tools")
+      local root = config.cwd or vim.fs.root(0, { "build.zig", "zls.json", ".git" }) or vim.fn.getcwd()
+      local zig, container_or_error = tools.resolve("zig", root, vim.env.ZIG_PATH)
+      if not zig then
+        vim.notify(container_or_error, vim.log.levels.ERROR)
+        return
+      end
+      local cmd, adapter_container = tools.resolve("lldb-dap", root, nil, not container_or_error)
+      if container_or_error and (not cmd or not adapter_container) then
+        vim.notify("Zig: running container needs lldb-dap; refusing to use host LLDB for a Linux executable",
+          vim.log.levels.ERROR)
+        return
+      end
+      if not container_or_error then
+        local host = find_executable("lldb-dap") or find_executable("lldb-vscode")
+        cmd = host and { host } or nil
+      end
+      if not cmd then
+        vim.notify("Zig: could not find host lldb-dap or lldb-vscode", vim.log.levels.ERROR)
+        return
+      end
+      callback({
+        type = "executable",
+        command = cmd[1],
+        args = { unpack(cmd, 2) },
+        name = "lldb",
+      })
+    end
 
     dap.configurations.zig = {
       {
         type = "lldb",
         request = "launch",
-        name = "Launch Zig executable (dev container)",
+        name = "Launch Zig executable (container or host)",
         program = function()
           local root = vim.fs.root(0, "build.zig") or vim.fn.getcwd()
           local file = vim.api.nvim_buf_get_name(0)
@@ -586,7 +603,9 @@ return {
 
           return vim.fn.input("Path to executable: ", default_program, "file")
         end,
-        cwd = "${workspaceFolder}",
+        cwd = function()
+          return vim.fs.root(0, { "build.zig", "zls.json", ".git" }) or vim.fn.getcwd()
+        end,
         stopOnEntry = false,
         args = {},
       },

@@ -34,7 +34,7 @@ https://github.com/saghen/blink.cmp
 
 ## Container LSP lifecycle
 
-Expert, BasedPyright, Ruff (in devc), and ZLS (unless `ZLS_PATH` is set) use
+Expert, BasedPyright, Ruff (in devc), and container-selected ZLS use
 `lua/devc-lsp.lua` → host `nvim -l scripts/devc-lsp.lua` → `devc run`. The launcher
 uses Neovim's bundled Lua/libuv in standalone mode (no editor config or plugins),
 so it needs neither host Python nor a separate Lua installation. The guest needs
@@ -69,6 +69,36 @@ Tests: `python3 tests/test_devc_lsp.py` exercises lifecycle/isolation in a
 disposable Python container; `tests/lsp_restart.lua` exercises actual Neovim
 restart and checks guest sessions (see its header for invocation). Run the latter
 only in a disposable project/container.
+
+## Zig: running container vs host
+
+Zig build/run/test commands, ZLS, and LLDB resolve tooling at launch time:
+
+- A direnv-activated devc session (`DEVC_LANG`, including `use local`) prefers
+  the **already-running container for the command's project root**. Detection
+  uses `devc name` and `container ls -q`; it does not start a stopped container.
+- If the container is stopped/unavailable, or lacks a tool, use the host tool
+  on `PATH`. Home Manager supplies global `zig` and `zls` from the same nixpkgs.
+- Nonempty `ZIG_PATH` and `ZLS_PATH` explicitly select host executables. Invalid
+  overrides report an error rather than silently switching environments.
+- Host compilation selects host ZLS and host LLDB (`xcrun --find lldb-dap`, then
+  `lldb-dap` / `lldb-vscode` on `PATH`). Container compilation requires a container
+  `lldb-dap`; it never falls back to macOS LLDB for a Linux binary.
+- Container ZLS retains the stdio lifecycle supervisor. Host ZLS runs directly;
+  both preserve the project's `zls.json` and working directory. Formatting on
+  save uses the active ZLS, and inlay hints remain enabled.
+
+Commands: `:ZigBuild` / Shift-F4, `:ZigRun` / F4, `:ZigTestNearest` /
+`<leader>ct`, and `:ZigTestFile` / `<leader>cT`. Debug with `<leader>dc` / F6.
+Rebuild with `:ZigBuild` after switching host/container: macOS and Linux artifacts
+are not interchangeable. Restart ZLS (`:lsp restart zls`) when the container's
+state changes; an existing LSP session does not switch backends automatically.
+Launch Neovim from the appropriate project shell when changing devc projects.
+
+Tests (no containers started): from this directory, run
+`nvim --headless -u NONE -l tests/zig_tools.lua`. They cover running/stopped
+containers, custom images, missing tools, overrides, ZLS arguments/cwd, all
+build/run/test commands, and debugger environment matching.
 
 ## Python: host vs devc
 
