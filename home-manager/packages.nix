@@ -115,6 +115,7 @@
     gnused
     gawk
     xan
+    tuxedo
 
     # video & image tools
     gifski

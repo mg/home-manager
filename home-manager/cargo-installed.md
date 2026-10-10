@@ -174,3 +174,11 @@ cargo install drift-diff
 ```
 cargo install mandible
 ```
+
+### wtfi2
+
+[https://github.com/kanywst/wtfi2]
+
+```sh
+cargo install wtfi2
+```
