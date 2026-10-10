@@ -33,11 +33,6 @@ return {
   end,
   keys = {
     {
-      "<leader>aa",
-      function() require("sidekick.cli").toggle() end,
-      desc = "Sidekick Toggle CLI",
-    },
-    {
       "<leader>ad",
       function() require("sidekick.cli").close() end,
       desc = "Sidekick Detach CLI",
