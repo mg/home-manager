@@ -8,7 +8,7 @@ return {
   end,
   keys = {
     {
-      "<leader>aa",
+      "<leader>pa",
       ":<C-u>PairAsk<CR>",
       mode = { "n", "x" },
       desc = "Pair Ask",
