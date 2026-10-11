@@ -156,6 +156,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local map = function(mode, lhs, rhs, desc)
       vim.keymap.set(mode, lhs, rhs, { buffer = buf, desc = desc })
     end
+    map("n", "K", function()
+      vim.lsp.buf.hover({ border = "rounded" })
+    end, "Hover Documentation")
     map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
     map("i", "<C-s>", vim.lsp.buf.signature_help, "Signature Help")
