@@ -7,6 +7,8 @@ default:
 # Rebuild and switch to new configuration
 switch:
   sudo darwin-rebuild switch --flake .#mg-m5
+  # Recreate the bar window after activation; run as the logged-in user, not root.
+  launchctl kickstart -k "gui/$(id -u)/org.nixos.sketchybar"
 
 # Update flake inputs
 update:

@@ -555,7 +555,9 @@ in {
       end
       clock:subscribe({"routine", "system_woke"}, update_clock)
 
-      sbar.hotload(true)
+      -- The config lives directly in /nix/store. Hotloading watches its entire
+      -- parent directory, so every Nix build/download would reload the bar.
+      sbar.hotload(false)
       sbar.end_config()
 
       update_workspaces()
