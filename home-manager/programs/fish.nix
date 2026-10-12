@@ -25,6 +25,11 @@
       # per-project containers (see ~/Projects/devcontainers), not on the host
       fish_add_path -g ${pkgs.postgresql_18}/bin
 
+      # Prefer the declared Nix Go toolchain over Homebrew's Go. Modify only
+      # this shell's PATH, not persistent fish_user_paths; --move also fixes
+      # inherited PATHs where this directory is already present later.
+      fish_add_path --path --move --prepend ${pkgs.go_1_27}/bin
+
       # go should go under ~/.local/lib/go
       mkdir -p "$HOME/.local/lib/go"
       set -gx GOPATH "$HOME/.local/lib/go"

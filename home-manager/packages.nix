@@ -216,7 +216,7 @@
     # tmuxai # https://tmuxai.dev/
 
     # system wide runtimes and compilers
-    go
+    go_1_27
     nodejs_22
     bun
     uv
