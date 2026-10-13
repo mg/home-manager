@@ -220,6 +220,7 @@
     nodejs_22
     bun
     uv
+    ty # Python type checking/navigation LSP; avoids Mason's Python installer dependency
     cargo
     swift
     sourcekit-lsp
