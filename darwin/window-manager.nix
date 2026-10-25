@@ -170,6 +170,11 @@ in {
         cmd-comma = "layout accordion horizontal vertical";
         cmd-shift-space = "layout floating tiling";
         cmd-f = "fullscreen";
+        # The § key is named sectionSign in AeroSpace. Toggle the native menu
+        # bar without restarting SystemUIServer or changing SketchyBar.
+        cmd-sectionSign = ''
+          exec-and-forget /usr/bin/osascript -e 'tell application "System Events" to tell dock preferences to set autohide menu bar to not (autohide menu bar)'
+        '';
         cmd-alt-tab = "workspace-back-and-forth";
         cmd-alt-w = "exec-and-forget ${wallpaperCommand}";
         cmd-shift-tab = "move-workspace-to-monitor --wrap-around next";
