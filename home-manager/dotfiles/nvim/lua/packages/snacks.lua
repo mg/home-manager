@@ -204,6 +204,30 @@ return {
     { "<leader>sM",  function() Snacks.picker.buffers({ modified = true, nofile = true }) end, desc = "Modified Buffers" },
     { "<leader>sq",  function() Snacks.picker.qflist() end,                 desc = "Quickfix List" },
     { "<leader>sf",  function() Snacks.picker.files() end,                  desc = "Find Files" },
+    {
+      "<leader>sF",
+      function()
+        local name = vim.api.nvim_buf_get_name(0)
+        local cwd = vim.fn.getcwd()
+        if vim.bo.filetype == "oil" then
+          cwd = require("oil").get_current_dir()
+        elseif name ~= "" and not name:match("^%a[%w+.-]*://") then
+          cwd = vim.fn.isdirectory(name) == 1 and name or vim.fs.dirname(name)
+        end
+        if not cwd or vim.fn.isdirectory(cwd) ~= 1 then
+          vim.notify("Cannot list files: buffer directory is not a local directory", vim.log.levels.WARN)
+          return
+        end
+        Snacks.picker.files({
+          cwd = cwd,
+          cmd = "fd",
+          args = { "--max-depth", "1" },
+          hidden = true,
+          ignored = true,
+        })
+      end,
+      desc = "Files in Buffer Directory",
+    },
     { "<leader>sg",  function() Snacks.picker.grep() end,                   desc = "Grep" },
     { "<leader>sx",  grep_app_projects,                                     desc = "Cross-project Grep" },
     { "<leader>sR",  function() Snacks.picker.resume() end,                 desc = "Resume" },
